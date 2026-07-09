@@ -2,6 +2,7 @@
 Interceptor（拦截器）是 gRPC 提供的一种机制，用于在 RPC 调用的前后插入通用逻辑。
 
 它的核心作用是：
+
 - 把公共逻辑从业务代码中抽离出来
 - 避免在每个 RPC 方法中重复编写相同代码。
 
@@ -97,6 +98,7 @@ Client
 
 ## 服务端拦截器（Server Interceptor）
 常见用途：
+
 - 认证
 - 鉴权
 - 日志
@@ -108,6 +110,7 @@ Client
   
 ## 客户端拦截器（Client Interceptor）
 常见用途：
+
 - 自动附加Token
 - 自动附加TraceId
 - 请求日志

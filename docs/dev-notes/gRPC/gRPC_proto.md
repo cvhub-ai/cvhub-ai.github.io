@@ -2,10 +2,10 @@
 ## Proto 文件（接口契约定义）
 Proto 文件本质上是：IDL(Interface Definition Language) 接口定义语言
 
-Proto 文件只负责：
-- 定义接口
+Proto 文件只负责：定义接口
 
 不会包含：
+
 - 业务逻辑
 - 数据库访问
 - 缓存操作
@@ -218,6 +218,7 @@ service UserService {
     );
 }
 ```
-Service 会生成对应语言的：
+Service 会生成对应语言的
+
 - Client Stub
 - Server Base Class
