@@ -12,6 +12,8 @@ theme:
 
 nav:
   - Home: index.md
+  - Architecture:
+    -Overview: architecture/overview.md
   - Dev Notes:
     - gRPC:
       - Overview: dev-notes/gRPC/gRPC.md
