@@ -1,0 +1,1664 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../..">
+      
+      
+        <link rel="next" href="../../dev-notes/gRPC/gRPC/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Overview - CvHub Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#cvhub-ai-vision-agent-platform" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="CvHub Docs" class="md-header__button md-logo" aria-label="CvHub Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CvHub Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Overview
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="CvHub Docs" class="md-nav__button md-logo" aria-label="CvHub Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    CvHub Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Architecture
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Project Structure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#client" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Client
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ai-agent-system-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AI Agent System Layer
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AI Agent System Layer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ai-agent-orchestrator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AI Agent Orchestrator
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tool-skill-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tool / Skill Management
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tool / Skill Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#skill-registry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Skill Registry
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#capability-index" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Capability Index
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#service-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Service Discovery
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metadata-schema-store" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metadata &amp; Schema Store
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#health-monitor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Health Monitor
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Memory Module
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Memory Module">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#short-term-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Short-Term Memory
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#long-term-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Long-Term Memory
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#safety-governance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Safety &amp; Governance
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rag-system-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RAG System Layer
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="RAG System Layer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#retrieval-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Retrieval Pipeline
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vector-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vector Database
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#llm-system-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LLM System Layer
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LLM System Layer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#llm-inference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LLM Inference
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inference-engine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inference Engine
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#skill-invocation-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Skill Invocation Layer
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Skill Invocation Layer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameter-builder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameter Builder
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#invoker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Invoker
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#visual-microservices-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Visual Microservices Layer
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Visual Microservices Layer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#service-contracts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Service Contracts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tool-design-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tool Design Principles
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#infrastructure-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Infrastructure Layer
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dev Notes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Dev Notes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    gRPC
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    gRPC
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev-notes/gRPC/gRPC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev-notes/gRPC/gRPC_proto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Proto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev-notes/gRPC/gRPC_patterns/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Patterns
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev-notes/gRPC/gRPC_service_impl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Service Impl
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev-notes/gRPC/gRPC_Interceptor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interceptor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Project Structure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#client" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Client
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ai-agent-system-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AI Agent System Layer
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AI Agent System Layer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ai-agent-orchestrator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AI Agent Orchestrator
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tool-skill-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tool / Skill Management
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tool / Skill Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#skill-registry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Skill Registry
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#capability-index" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Capability Index
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#service-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Service Discovery
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metadata-schema-store" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metadata &amp; Schema Store
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#health-monitor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Health Monitor
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Memory Module
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Memory Module">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#short-term-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Short-Term Memory
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#long-term-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Long-Term Memory
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#safety-governance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Safety &amp; Governance
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rag-system-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RAG System Layer
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="RAG System Layer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#retrieval-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Retrieval Pipeline
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vector-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vector Database
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#llm-system-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LLM System Layer
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LLM System Layer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#llm-inference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LLM Inference
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inference-engine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inference Engine
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#skill-invocation-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Skill Invocation Layer
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Skill Invocation Layer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameter-builder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameter Builder
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#invoker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Invoker
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#visual-microservices-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Visual Microservices Layer
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Visual Microservices Layer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#service-contracts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Service Contracts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tool-design-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tool Design Principles
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#infrastructure-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Infrastructure Layer
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="cvhub-ai-vision-agent-platform">CvHub AI Vision Agent Platform</h1>
+<h2 id="overview">Overview</h2>
+<p>The CvHub AI Vision Agent Platform is an intelligent computer vision platform built around AI Agents, Large Language Models (LLMs), Retrieval-Augmented Generation (RAG), and Visual Microservices.</p>
+<p>Rather than focusing on a single computer vision algorithm, the platform aims to build an intelligent system capable of understanding user requests, planning execution workflows, invoking multiple visual capabilities, and generating comprehensive results.</p>
+<p>The entire platform adopts a microservices-based architecture with Docker-native deployment. AI Agent, LLM, RAG, and all computer vision tools are designed as independent modules that can be developed, deployed, upgraded, and scaled independently.</p>
+<p>The platform consists of six core systems:</p>
+<ul>
+<li>AI Agent System</li>
+<li>RAG System</li>
+<li>LLM System</li>
+<li>Skill Invocation Layer</li>
+<li>Visual Microservices</li>
+<li>Infrastructure Layer</li>
+</ul>
+<h2 id="project-structure">Project Structure</h2>
+<p><img alt="Architecture" src="../../assets/images/agent_architecture.png" /></p>
+<h2 id="client">Client</h2>
+<p>The Client serves as the entry point for user interaction.</p>
+<p>Future client implementations may include:</p>
+<ul>
+<li>Web</li>
+<li>Desktop</li>
+<li>Mobile</li>
+<li>REST-API</li>
+</ul>
+<p>The Client communicates exclusively with the AI Agent.</p>
+<p>Users do not need to know how many visual services, LLMs, or RAG components exist behind the system, nor which tools are used to complete a particular task.</p>
+<h2 id="ai-agent-system-layer">AI Agent System Layer</h2>
+<p>The AI Agent is the orchestration layer of the platform.</p>
+<p>It is responsible for understanding user intentions, planning execution workflows, coordinating different systems, and composing the final response.</p>
+<p>The Agent itself neither stores knowledge nor performs language model inference directly. Instead, it orchestrates the interactions between the RAG system, the LLM system, and the Visual Services.</p>
+<p>The AI Agent consists of the following core modules.</p>
+<h3 id="ai-agent-orchestrator">AI Agent Orchestrator</h3>
+<p>The execution engine of the AI Agent.</p>
+<p>It manages the complete workflow of every task.</p>
+<p>Main responsibilities include:</p>
+<ul>
+<li>Intent Analysis</li>
+<li>Understand the user's actual request.</li>
+<li>Task Planning</li>
+<li>Break complex requests into executable subtasks.</li>
+<li>Execution Scheduling</li>
+<li>Determine tool execution order</li>
+<li>Parallel execution</li>
+<li>Retry handling</li>
+<li>Timeout management</li>
+<li>Workflow orchestration</li>
+<li>Result Composition</li>
+<li>Aggregate outputs from multiple tools</li>
+<li>Generate the final response</li>
+</ul>
+<p>The Orchestrator serves as the <code>CPU</code> of the AI Agent.</p>
+<h3 id="tool-skill-management">Tool / Skill Management</h3>
+<p>Responsible for managing all available tools within the platform.</p>
+<h4 id="skill-registry">Skill Registry</h4>
+<p>Maintains the registry of all available visual tools.</p>
+<p>Examples include:</p>
+<ul>
+<li>OCR</li>
+<li>Object Detection</li>
+<li>Feature Matching</li>
+<li>Geometry Analysis</li>
+</ul>
+<h4 id="capability-index">Capability Index</h4>
+<p>Describes the capabilities of each tool.</p>
+<p>The Agent uses this capability index to determine which tools should be invoked for a given task.</p>
+<h4 id="service-discovery">Service Discovery</h4>
+<p>Maintains the network locations of all microservices.</p>
+<p>This component can later be replaced by solutions such as Consul or Kubernetes Service Discovery.</p>
+<h4 id="metadata-schema-store">Metadata &amp; Schema Store</h4>
+<p>Maintains the interface definitions for every tool.</p>
+<p>Including:</p>
+<ul>
+<li>Proto definitions</li>
+<li>RPC schemas</li>
+<li>Input specification</li>
+<li>Output specification</li>
+<li>Parameters</li>
+<li>Constraints</li>
+</ul>
+<p>The Agent does not hardcode tool implementations. Instead, requests are dynamically constructed based on the stored schemas.</p>
+<h4 id="health-monitor">Health Monitor</h4>
+<p>Continuously monitors the health of every service.</p>
+<p>Examples:</p>
+<ul>
+<li>Service availability</li>
+<li>Model loading status</li>
+<li>GPU availability</li>
+<li>Request readiness</li>
+</ul>
+<p>Healthy services are prioritized during task scheduling.</p>
+<h3 id="memory-module">Memory Module</h3>
+<p>The Memory Module maintains the runtime state of the AI Agent.</p>
+<h4 id="short-term-memory">Short-Term Memory</h4>
+<p>Stores the context of the current task.</p>
+<p>Examples:</p>
+<ul>
+<li>Current workflow state</li>
+<li>Intermediate tool results</li>
+<li>Runtime variables</li>
+</ul>
+<h4 id="long-term-memory">Long-Term Memory</h4>
+<p>Stores persistent user-related information.</p>
+<p>Examples:</p>
+<ul>
+<li>User preferences</li>
+<li>Frequently used parameters</li>
+<li>Historical tasks</li>
+</ul>
+<p>Memory belongs to the Agent runtime and should not be confused with the knowledge base used by RAG.</p>
+<h3 id="safety-governance">Safety &amp; Governance</h3>
+<p>Responsible for system-wide security and governance.</p>
+<p>Including:</p>
+<ul>
+<li>Input Security</li>
+<li>Prompt injection detection</li>
+<li>Malicious request filtering</li>
+<li>Access Control</li>
+<li>User permissions</li>
+<li>Tool permissions</li>
+<li>Logging</li>
+<li>Tool invocation logs</li>
+<li>Workflow execution logs</li>
+<li>Rate Limiting</li>
+</ul>
+<h2 id="rag-system-layer">RAG System Layer</h2>
+<p>The RAG System is designed as an independent subsystem.</p>
+<p>Its responsibility is knowledge retrieval rather than workflow orchestration.</p>
+<p>This separation allows the knowledge system to evolve independently from the AI Agent.</p>
+<p>The RAG System consists of:</p>
+<h3 id="retrieval-pipeline">Retrieval Pipeline</h3>
+<p>Responsible for:</p>
+<pre><code class="language-text">Query
+    ↓
+Retriever
+    ↓
+Re-ranker
+    ↓
+Retrieved Context
+</code></pre>
+<h3 id="vector-database">Vector Database</h3>
+<p>Stores the platform's knowledge base.</p>
+<p>Examples include:</p>
+<ul>
+<li>Technical documentation</li>
+<li>API documentation</li>
+<li>Tool manifests</li>
+<li>Workflow examples</li>
+<li>Prompt templates</li>
+<li>Service documentation</li>
+<li>Development guidelines</li>
+</ul>
+<p>All documents are first split into chunks, converted into embeddings, and stored in a vector database.</p>
+<p>When additional context is required, the Agent retrieves relevant information through the RAG system before sending it to the LLM for reasoning.</p>
+<h2 id="llm-system-layer">LLM System Layer</h2>
+<p>The LLM System is designed as an independent inference service.</p>
+<p>Its sole responsibility is to receive inference requests from the AI Agent, perform language model inference, and return the generated results.</p>
+<p>The LLM System does not manage prompts, workflows, memory, RAG retrieval, or tool execution. These responsibilities belong to the AI Agent System.</p>
+<p>The current implementation uses <strong>vLLM</strong> as the inference engine and <strong>Qwen</strong> as the deployed language model.</p>
+<h3 id="llm-inference">LLM Inference</h3>
+<p>The LLM System receives a complete inference request from the AI Agent.</p>
+<p>A request typically includes:</p>
+<ul>
+<li>System prompt</li>
+<li>User request</li>
+<li>Conversation context</li>
+<li>Retrieved RAG context</li>
+<li>Generation parameters</li>
+</ul>
+<p>The LLM System performs inference and returns:</p>
+<ul>
+<li>Generated response</li>
+<li>Token usage</li>
+<li>Inference metadata</li>
+</ul>
+<p>The LLM System is intentionally designed to be stateless. It only performs model inference and does not retain conversation state or business logic.</p>
+<h3 id="inference-engine">Inference Engine</h3>
+<p>The current implementation is based on <strong>vLLM</strong>, which provides efficient model serving and high-throughput inference.</p>
+<p>The AI Agent communicates with the LLM System through a unified interface, allowing the underlying inference engine or model to be replaced in the future without affecting the overall system architecture.</p>
+<h2 id="skill-invocation-layer">Skill Invocation Layer</h2>
+<p>The Skill Invocation Layer bridges the AI Agent and the Visual Services. It provides a unified interface for invoking all tools.</p>
+<h3 id="parameter-builder">Parameter Builder</h3>
+<p>Transforms Agent outputs into tool requests.</p>
+<p>Responsibilities include:</p>
+<ul>
+<li>Parameter validation</li>
+<li>Default parameter generation</li>
+<li>Data conversion</li>
+</ul>
+<h3 id="invoker">Invoker</h3>
+<p>Provides a centralized gRPC client layer.</p>
+<p>All tool invocations are routed through this component instead of being called directly by the Agent.</p>
+<h2 id="visual-microservices-layer">Visual Microservices Layer</h2>
+<p>All computer vision capabilities are implemented as independent microservices.</p>
+<p>Each tool corresponds to:</p>
+<ul>
+<li>An independent Git repository</li>
+<li>An independent Docker container</li>
+<li>An independent gRPC service</li>
+</ul>
+<p>Each service is fully decoupled from the others and can be developed, deployed, tested, and upgraded independently.</p>
+<p>Examples include:</p>
+<ul>
+<li>OCR Service</li>
+<li>Object Detection Service</li>
+<li>Feature Matching Service</li>
+<li>Barcode Service</li>
+<li>Geometry Analysis Service</li>
+</ul>
+<p>New visual capabilities can be added without modifying the Agent architecture.</p>
+<h3 id="service-contracts">Service Contracts</h3>
+<p>All services share a common contract definition.</p>
+<p>Including:</p>
+<ul>
+<li>Proto files</li>
+<li>Schemas</li>
+<li>Shared models</li>
+<li>Metadata</li>
+<li>common.proto</li>
+<li>image.proto</li>
+<li>metrics.proto</li>
+</ul>
+<p>This ensures interface consistency and version compatibility across all microservices.</p>
+<h3 id="tool-design-principles">Tool Design Principles</h3>
+<p>Each Tool should represent a complete business capability rather than a single algorithmic step.</p>
+<p>For example, an OCR service should accept an image as input and return:</p>
+<ul>
+<li>Recognized text</li>
+<li>Bounding boxes</li>
+<li>Confidence scores</li>
+</ul>
+<p>Instead of exposing internal processing stages。</p>
+<p>The Agent should always interact with complete business capabilities.</p>
+<p>Each Tool should satisfy the following principles:</p>
+<ul>
+<li>Independent business objective</li>
+<li>Stable input/output interface</li>
+<li>Independent Docker container</li>
+<li>Independent Git repository</li>
+<li>Independent deployment</li>
+<li>Independent versioning</li>
+<li>Independent testing</li>
+<li>Fault isolation</li>
+</ul>
+<h2 id="infrastructure-layer">Infrastructure Layer</h2>
+<p>The entire platform is designed for Docker-native deployment.</p>
+<p>Independent containers are provided for:</p>
+<ul>
+<li>AI Agent</li>
+<li>RAG System</li>
+<li>LLM System</li>
+<li>Visual Services</li>
+</ul>
+<p>The Infrastructure Layer is responsible for:</p>
+<ul>
+<li>Containers</li>
+<li>Networks</li>
+<li>Volumes</li>
+<li>Environment variables</li>
+<li>Logging</li>
+<li>Monitoring</li>
+</ul>
+<p>The current deployment solution is based on Docker Compose.</p>
+<p>In the future, the platform can be migrated to Kubernetes to support automatic scaling, service discovery, load balancing, and high availability.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
