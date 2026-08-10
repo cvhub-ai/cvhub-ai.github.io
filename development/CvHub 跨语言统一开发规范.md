@@ -1,155 +1,177 @@
-# 1. 适用范围
+# 跨语言统一开发规范
 
-本规范适用于 CvHub 项目中的所有组件，包括：
+## 1. 适用范围
 
-- AI Agent
-- Microservice
-  - OCR Service
-  - Object Detection Service
-  - Feature Matching Service
-  - QR / Barcode Service
-  - ...
-- Python、C#、TypeScript、C++ 等不同语言实现
+本规范适用于 CvHub 项目中使用不同编程语言实现的所有代码，包括但不限于：
 
-各语言必须先遵守本规范，再遵守对应语言的适配规范。
+* Python
+* C#
+* C++
+* TypeScript
 
+本规范用于统一跨语言的软件设计原则、命名方式和基础编码习惯。
 
-# 2. 微服务开发规范 - 核心原则
+各语言在遵守本规范的基础上，还应遵循对应语言自身的官方或团队规范。
 
-## 2.1 单一职责
+## 2. 软件设计原则
 
-一个服务只提供一个相对完整、独立的视觉能力。
+### 2.1 模块职责单一
+
+每个模块、类或组件应只负责一个明确职责。
+
+推荐：
+
+```text
+Detector
+Recognizer
+Preprocessor
+Postprocessor
+Decoder
+Validator
+```
+
+避免一个类同时负责：
+
+- 读取配置
+- 模型加载
+- 数据预处理
+- 模型推理
+- 结果转换
+- 日志输出
+
+模块职责越清晰，越容易：
+
+* 独立测试
+* 独立替换
+* 独立维护
+* 复用
+
+### 2.2 Pipeline 模块化
+
+复杂处理流程应拆分为职责明确的模块，并由统一 Pipeline 负责组织。
 
 例如：
 
-- OCR Service：完成完整 OCR 流程
-- Object Detection Service：完成目标检测流程
-- Feature Matching Service：完成特征匹配流程
-
-不要把多个无关能力放进同一个服务。
-
-## 2.2 接口保持精简
-
-每个视觉服务原则上只提供少量稳定接口：
-
-```
-Health
-GetCapabilities
-Process
-```
-
-必要时可以增加：
-
-```
-GetTaskStatus
-CancelTask
-```
-
-**不要把 Pipeline 中的每个内部步骤都暴露成独立 API。**
-
-例如 OCR 内部可以包含：
-
-- 图像预处理
-- 文本检测
-- 文本识别
-- 结果后处理
-
-但对外只暴露完整的 OCR 处理接口。
-
-## 2.3 业务逻辑与通信协议分离
-
-HTTP、gRPC、消息队列只负责通信，不负责核心业务逻辑。
-
-推荐结构：
-
-```
-API / gRPC Layer
-        ↓
-Application Layer
-        ↓
-Domain / Pipeline Layer
-        ↓
-Infrastructure Layer
-```
-
-核心 Pipeline 不应直接依赖：
-
-- FastAPI
-- ASP.NET Core
-- gRPC Request
-- HTTP Request
-- 数据库连接对象
-
-## 2.4 Pipeline 模块化与明确边界
-
-完整的处理流程应拆分为职责独立、边界清晰的模块，并由统一的 Pipeline 负责模块编排。
-
-例如：
-
-```
-输入验证
-→ 数据解码
-→ 数据预处理
-→ 模型推理
-→ 结果后处理
-→ 结果输出
+```text
+Input Validation
+→ Decode
+→ Preprocess
+→ Inference
+→ Postprocess
+→ Result
 ```
 
 每个模块应：
 
-- 只负责一个明确的处理阶段；
-- 具有清晰的输入和输出；
-- 不依赖其他模块的内部实现；
-- 可以独立测试和替换；
-- 不直接负责完整流程的调度。
+* 具有明确输入和输出
+* 不依赖其他模块内部实现
+* 可以独立测试
+* 可以独立替换
+* 不负责完整流程调度
 
 Pipeline 负责：
 
-- 按照确定顺序调用各个模块；
-- 在模块之间传递数据；
-- 组织完整的业务处理流程；
-- 对外提供统一、稳定的处理入口。
+* 模块调用顺序
+* 数据传递
+* 完整处理流程编排
+* 对外提供统一入口
 
-外部调用方不需要了解 Pipeline 内部的所有处理细节，只需调用完整处理接口：
+避免：
 
+* 将完整流程写在一个大型函数中
+* 模块之间形成复杂调用关系
+* 在 API 层手动组织内部处理步骤
+
+### 2.3 优先组合，谨慎继承
+
+优先通过组合构建复杂能力。
+
+推荐：
+
+```text
+Pipeline
+├── Detector
+├── Recognizer
+├── Preprocessor
+└── Postprocessor
 ```
-result = processingPipeline.run(request)
+
+例如：
+
+```python
+pipeline = OcrPipeline(
+    detector=detector,
+    recognizer=recognizer,
+)
+```
+
+只有存在明确且稳定的 `is-a` 关系时才使用继承。
+
+避免为了少量代码复用构建复杂继承层级。
+
+### 2.4 依赖抽象而不是具体实现
+
+当一个模块存在多个可替换实现时，应优先依赖稳定接口或抽象类型。
+
+例如：
+
+```text
+TextDetector
+    ↑
+    ├── PaddleTextDetector
+    └── CraftTextDetector
+```
+
+Pipeline 应依赖：
+
+```text
+TextDetector
+```
+
+而不是直接依赖：
+
+```text
+PaddleTextDetector
+```
+
+具体实现由 Factory 或依赖注入机制负责构建。
+
+### 2.5 显式优于隐式
+
+重要逻辑、配置和处理步骤应明确表达。
+
+推荐：
+
+```text
+Input
+→ Validate
+→ Decode
+→ Process
+→ Result
 ```
 
 避免：
 
-- **将所有处理逻辑堆积在一个大型函数中**
-- **模块之间直接调用并形成复杂依赖**
-- **在 API 或 gRPC 层中手动组织 Pipeline 的内部步骤**
-- **将内部处理阶段全部暴露为外部接口**
+* 隐藏关键处理流程
+* 依赖大量全局状态
+* 使用难以理解的默认行为
+* 在函数内部偷偷创建复杂依赖
 
-## 2.5 优先组合，谨慎继承
+代码应尽可能让调用关系和数据流清晰可见。
 
-优先通过组合组装不同模块：
+## 3. 命名规范
 
-```
-Pipeline
-├── Decoder
-├── Preprocessor
-├── Inference Engine
-└── Postprocessor
-```
-
-只有存在明确且稳定的继承关系时才使用继承。
-
-# 3. 跨语言命名规范
-
-## 3.1 类和类型
+### 3.1 类和类型
 
 类、接口、枚举、异常统一使用：
 
-```
+```text
 UpperCamelCase
 ```
 
 例如：
 
-```
+```text
 OcrPipeline
 ImageProcessor
 ProcessingRequest
@@ -158,17 +180,17 @@ ModelLoadError
 ProcessingStatus
 ```
 
-## 3.2 函数、方法和变量
+### 3.2 函数、方法和变量
 
-统一使用：
+跨语言逻辑命名统一使用：
 
-```
+```text
 lowerCamelCase
 ```
 
 例如：
 
-```
+```text
 loadModel
 processImage
 requestId
@@ -177,27 +199,31 @@ processingResult
 confidenceThreshold
 ```
 
-## 3.3 常量
+具体语言如果存在强制或主流命名规范，可以在语言适配规范中调整。
 
-统一使用：
+例如 Python 会使用 `snake_case`。
 
-```
+### 3.3 常量
+
+常量统一使用：
+
+```text
 UPPER_SNAKE_CASE
 ```
 
 例如：
 
-```
+```text
 DEFAULT_TIMEOUT_SECONDS
 MAX_IMAGE_SIZE_BYTES
 SUPPORTED_IMAGE_FORMATS
 ```
 
-## 3.4 布尔命名
+### 3.4 布尔变量
 
-布尔变量或判断函数使用：
+布尔变量或判断函数应使用具有判断语义的前缀：
 
-```
+```text
 is...
 has...
 can...
@@ -206,397 +232,534 @@ should...
 
 例如：
 
-```
+```text
 isModelLoaded
 hasValidInput
 canProcessRequest
 shouldApplyRotation
 ```
 
-禁止使用含义不清晰的名称：
+避免：
 
-```
+```text
 flag
 check
 statusFlag
+value
 ```
 
-## 3.5 集合命名
+### 3.5 集合命名
 
-集合使用复数：
+集合使用复数形式：
 
-```
+```text
 images
 textRegions
 processingResults
 modelNames
 ```
 
-映射关系应体现键值：
+不要使用：
 
+```text
+imageList
+resultList
+dataArray
 ```
+
+除非数据结构类型本身对业务语义非常重要。
+
+映射关系应体现 Key 和 Value：
+
+```text
 modelByName
 resultByRequestId
 serviceByCapability
 ```
 
-## 3.6 缩写命名
+### 3.6 缩写命名
 
-缩写按照普通单词处理：
+缩写按照普通单词处理。
 
-```
+推荐：
+
+```text
 OcrPipeline
 HttpClient
 JsonSerializer
 GrpcServer
 ApiRequest
+GpuDevice
 ```
 
-项目中必须保持一致，不要混用：
+避免项目中混用：
 
-```
+```text
 OCRPipeline
 OcrPipeline
 ocrPipeline
 ```
 
-# 4. API 和数据格式
+同一缩写必须保持统一。
 
-## 4.1 JSON 字段
+### 3.7 名称表达业务含义
 
-所有服务的 JSON 字段统一使用：
-
-```
-lowerCamelCase
-```
-
-例如：
-
-```json
-{
-  "requestId": "req-123",
-  "processingTimeMs": 125.4,
-  "resultCount": 3
-}
-```
-
-## 4.2 gRPC 字段
-
-gRPC Message 字段统一使用：
-
-```
-lowerCamelCase
-```
-
-例如：
-
-```protobuf
-message ProcessingRequest {
-  string requestId = 1;
-  float confidenceThreshold = 2;
-}
-```
-
-## 4.3 时间和单位
-
-名称中必须写明单位。
+变量名称应表达其真实业务含义。
 
 推荐：
 
-```
-timeoutSeconds
-processingTimeMs
-fileSizeBytes
-memoryLimitMb
+```text
+confidenceThreshold
+processingResult
+detectedRegions
+modelConfig
 ```
 
 不推荐：
 
-```
-timeout
-duration
-size
-limit
-```
-
-## 4.4 统一错误结构
-
-所有服务使用统一错误格式：
-
-```json
-{
-  "errorCode": "INVALID_IMAGE_FORMAT",
-  "message": "The image format is not supported.",
-  "requestId": "req-123",
-  "details": {}
-}
+```text
+data
+temp
+obj
+value
+info
+result2
 ```
 
-字段含义：
+短生命周期局部变量除外。
 
-```
-errorCode   稳定错误代码
-message     人类可读错误信息
-requestId   请求追踪标识
-details     可选附加信息
-```
+## 4. 参数设计
 
-# 5. 服务目录职责
+### 4.1 避免含义不清晰的布尔参数
 
-不同语言的具体目录名称可以不同，但逻辑职责应保持一致。
+不推荐：
 
-- API
-- Application
-- Domain
-- Infrastructure
-- Pipeline
-- Config
-- Tests
-
-## 5.1 API
-
-负责：
-
-- 接收请求
-- 参数解析
-- 协议转换
-- 状态码或 gRPC 状态处理
-
-不负责核心业务逻辑。
-
-## 5.2 Application
-
-负责组织具体用例：
-
-- 处理图片
-- 批量处理
-- 查询任务
-- 调用 Pipeline
-
-## 5.3 Domain
-
-负责：
-
-- 核心数据模型
-- 业务规则
-- 枚举
-- 异常
-- 抽象接口
-
-## 5.4 Infrastructure
-
-负责：
-
-- 模型加载
-- 数据库
-- 文件系统
-- 第三方库
-- 外部服务
-
-## 5.5 Pipeline
-
-- 负责组织完整处理流程。
-
-
-# 6. 服务接口标准
-
-## 6.1 Health
-
-每个服务必须提供健康检查。
-
-建议区分：
-
-Liveness：
-- 服务进程是否正常运行
-
-Readiness：
-- 模型是否加载完成
-- GPU 是否可用
-- 必要依赖是否正常
-
-## 6.2 GetCapabilities
-
-服务应能够描述自身能力，例如：
-
-```json
-{
-  "serviceName": "ocr-service",
-  "version": "1.0.0",
-  "capabilities": [
-    "textDetection",
-    "textRecognition"
-  ],
-  "supportedFormats": [
-    "jpg",
-    "png",
-    "pdf"
-  ]
-}
+```python
+processImage(image, True, False, True)
 ```
 
-Capabilities 用于：
+调用方无法直接理解每个参数的含义。
 
-- Agent 选择工具
-- 服务注册
-- 运行时检查
-- 文档生成
+推荐使用明确参数：
 
-## 6.3 Process
-
-处理接口只接收完成任务所需参数。
-
-请求参数可以包括：
-
-- requestId
-- 输入数据
-- confidenceThreshold
-- language
-- processingOptions
-- ...
-
-不允许请求方修改服务内部配置，例如：
-
-- modelPath
-- gpuDevice
-- workerCount
-- logLevel
-
-# 7. 模型和资源管理
-
-AI 模型属于重量级资源，必须：
-
-- 服务启动时加载
-- 整个服务生命周期内复用
-- 服务关闭时释放
-
-禁止每个请求重复加载模型。
-
-推荐生命周期：
-
-```
-读取配置
-→ 初始化日志
-→ 检查运行环境
-→ 加载模型
-→ 模型预热
-→ 启动服务
-→ 接收请求
-→ 优雅关闭
+```python
+processImage(
+    image=image,
+    enableRotation=True,
+    enableResize=False,
+)
 ```
 
-# 8. 日志规范
+如果参数存在多个明确状态，优先使用枚举。
 
-所有服务日志至少包含：
+例如：
 
-- timestamp
-- serviceName
-- logLevel
-- requestId
-- message
+```python
+options = ImageProcessingOptions(
+    rotationMode=RotationMode.AUTO,
+    resizeMode=ResizeMode.DISABLED,
+)
+```
 
-处理请求时建议记录：
+### 4.2 参数数量应保持合理
 
-- requestId
-- 处理开始时间
-- 处理结束时间
-- 处理耗时
-- 结果数量
-- 错误信息
+函数参数过多通常意味着：
 
-禁止记录：
+* 函数职责过多
+* 配置没有合理封装
+* 数据结构设计不清晰
 
-- 密码
-- API Key
-- Access Token
-- 完整敏感数据
+当多个参数属于同一业务概念时，应封装为 Options、Config 或 Request 对象。
 
-# 9. 异常处理
+例如：
 
-异常应分为：
+```text
+ProcessingOptions
+ModelConfig
+ImageProcessingOptions
+```
 
-- 输入错误
-- 业务错误
-- 模型错误
-- 依赖错误
-- 系统错误
+### 4.3 不使用魔法数字
 
-错误信息必须提供上下文。
+不推荐：
+
+```python
+if confidence < 0.5:
+```
 
 推荐：
 
+```python
+if confidence < MIN_CONFIDENCE_THRESHOLD:
 ```
+
+或者：
+
+```python
+if confidence < config.confidenceThreshold:
+```
+
+重要阈值应：
+
+* 使用常量
+* 使用配置
+* 或明确解释来源
+
+## 5. 函数和方法设计
+
+### 5.1 单一职责
+
+一个函数应完成一个明确任务。
+
+如果函数同时包含：
+
+```text
+读取文件
+→ 解析配置
+→ 加载模型
+→ 推理
+→ 保存结果
+```
+
+通常应该拆分。
+
+### 5.2 控制函数长度
+
+不设置绝对行数限制，但函数应保持容易理解。
+
+当函数出现以下情况时应考虑拆分：
+
+* 多层嵌套
+* 多个不同处理阶段
+* 大量局部变量
+* 多个不同错误处理逻辑
+* 难以用一句话描述函数职责
+
+### 5.3 减少嵌套
+
+优先使用提前返回。
+
+不推荐：
+
+```python
+if request is not None:
+    if request.image is not None:
+        if is_valid(request.image):
+            process(request.image)
+```
+
+推荐：
+
+```python
+if request is None:
+    return
+
+if request.image is None:
+    return
+
+if not isValid(request.image):
+    return
+
+process(request.image)
+```
+
+### 5.4 避免隐藏副作用
+
+函数名称应能够反映其行为。
+
+例如：
+
+```text
+loadModel()
+saveResult()
+deleteFile()
+```
+
+不应该在：
+
+```text
+getResult()
+```
+
+中偷偷：
+
+* 写数据库
+* 删除文件
+* 修改配置
+* 初始化模型
+
+## 6. 数据模型
+
+### 6.1 使用明确的数据结构
+
+跨模块传递数据时，应优先使用明确的数据模型。
+
+例如：
+
+```text
+ProcessingRequest
+ProcessingResult
+DetectionResult
+RecognitionResult
+BoundingBox
+```
+
+避免大量使用：
+
+```text
+dict
+Dictionary<string, object>
+Map<string, any>
+tuple
+```
+
+来传递核心业务数据。
+
+### 6.2 输入输出保持稳定
+
+模块之间的输入和输出结构应尽可能稳定。
+
+修改公共模型时，应考虑：
+
+* 是否影响其他模块
+* 是否影响 API
+* 是否需要兼容旧字段
+* 是否需要更新测试
+
+### 6.3 DTO 与内部模型分离
+
+外部通信使用的数据结构不应直接等同于内部业务模型。
+
+例如：
+
+```text
+gRPC Request
+        ↓
+DTO / Mapper
+        ↓
+Internal Model
+```
+
+这样可以避免通信协议变化直接影响内部逻辑。
+
+## 7. 配置管理
+
+### 7.1 配置与代码分离
+
+以下内容不应硬编码在业务代码中：
+
+* 模型路径
+* 服务地址
+* GPU 设备
+* 日志级别
+* 超时时间
+* 最大批量数量
+* 文件大小限制
+
+应通过：
+
+```text
+Environment Variables
+Config File
+Validated Config Object
+```
+
+统一管理。
+
+### 7.2 配置集中读取
+
+环境变量和配置文件应集中读取。
+
+不推荐：
+
+```text
+module A → getenv()
+module B → getenv()
+module C → getenv()
+```
+
+推荐：
+
+```text
+Environment
+    ↓
+Config Loader
+    ↓
+Validated Config
+    ↓
+Modules
+```
+
+### 7.3 提供默认值时应明确
+
+默认值必须：
+
+* 合理
+* 可解释
+* 有明确单位
+* 不隐藏关键行为
+
+例如：
+
+```text
+DEFAULT_TIMEOUT_SECONDS
+MAX_BATCH_SIZE
+MAX_IMAGE_SIZE_BYTES
+```
+
+## 8. 错误与异常设计
+
+### 8.1 使用明确异常类型
+
+推荐：
+
+```text
+InvalidInputError
+ModelLoadError
+InferenceError
+ConfigurationError
+```
+
+避免所有错误都使用：
+
+```text
+Exception
+RuntimeError
+```
+
+### 8.2 错误信息必须包含上下文
+
+推荐：
+
+```text
 Failed to load model 'ocr-recognizer' from '/models/ocr'.
 ```
 
 不推荐：
 
-```
-Failed
-Error
-Something went wrong
+```text
+Load failed.
 ```
 
-异常不能被静默忽略。
+### 8.3 不静默忽略异常
 
-# 10. 测试规范
+禁止：
 
-每个服务至少包含：
-
-- Unit Tests
-  - 测试单个模块或类
-- Integration Tests
-  - 测试 Pipeline 和模型
-  - 测试数据库或外部依赖
-- Service Tests
-  - 通过 HTTP 或 gRPC 测试完整服务
-
-测试名称应体现：
-
-- 测试对象
-- 触发条件
-- 预期结果
-
-# 11. Git 规范
-
-## 11.1 Commit 格式
-
+```python
+try:
+    process()
+except Exception:
+    pass
 ```
-<type>: <description>
+
+异常必须：
+
+* 被处理
+* 被转换
+* 被记录
+* 或重新抛出
+
+## 9. 注释和文档
+
+### 9.1 注释解释“为什么”
+
+不推荐：
+
+```python
+# Increase index
+index += 1
 ```
+
+推荐：
+
+```python
+# Skip the background class because it is not part of the output labels.
+index += 1
+```
+
+代码本身应该尽可能说明“做什么”，注释主要解释：
+
+* 为什么这样做
+* 特殊约束
+* 算法假设
+* 非显而易见的设计选择
+
+### 9.2 公共接口需要文档
+
+公共类、公共方法和重要模块应说明：
+
+* 功能
+* 输入
+* 输出
+* 异常
+* 必要限制
+
+尤其是：
+
+```text
+Pipeline
+Detector
+Recognizer
+Factory
+Service Interface
+```
+
+## 10. 代码一致性
+
+同一个项目中，相同问题应采用一致解决方式。
 
 例如：
 
-```
-feat: add OCR processing endpoint
-fix: handle empty image input
-refactor: split preprocessing pipeline
-test: add model loading tests
-docs: update gRPC interface
-```
+* 相同类型的配置使用相同结构
+* 相同类型的异常使用相同模式
+* 相同类型的 Factory 使用相似设计
+* 相同缩写采用相同命名
+* 相同模块遵循相似目录结构
 
-常用类型：
+不要因为个人偏好在不同模块中采用完全不同的设计风格。
 
-- feat
-- fix
-- refactor
-- test
-- docs
-- build
-- ci
-- chore
-- perf
+## 11. 避免过度设计
 
-# 12. Code Review 检查项
+只有存在明确需求时才增加：
 
-提交前检查：
+* 抽象层
+* Factory
+* Adapter
+* Repository
+* Interface
+* Event System
+* Plugin System
 
-- 命名是否符合统一规范
-- 服务职责是否单一
-- API 是否过度拆分
-- 业务逻辑是否进入 API 层
-- 模型是否重复加载
-- 异常是否被静默忽略
-- 日志是否包含 requestId
-- 是否存在敏感信息
-- 是否有必要的测试
-- 不同服务的数据结构是否一致
+不要为了“以后可能会用”提前构建复杂架构。
+
+但如果已经明确存在：
+
+* 多个可替换实现
+* 多种后端
+* 明确扩展点
+* 第三方依赖隔离需求
+
+则应提前建立稳定抽象。
+
+原则是：
+
+> 保持简单，但保留明确边界。
+
+## 12. 开发检查项
+
+提交代码前至少检查：
+
+* 命名是否清晰并符合规范
+* 模块职责是否单一
+* Pipeline 是否承担完整流程编排
+* 是否存在不必要的继承
+* 是否可以通过组合简化
+* 是否依赖具体实现而不是抽象
+* 是否存在魔法数字
+* 是否存在含义不清晰的布尔参数
+* 函数是否过长或嵌套过深
+* 数据模型是否明确
+* 配置是否被硬编码
+* 异常是否被静默忽略
+* 是否存在不必要的复杂设计
+* 相似模块是否保持统一风格
