@@ -21,3 +21,10 @@ nav:
       - Patterns: dev-notes/gRPC/gRPC_patterns.md
       - Service Impl: dev-notes/gRPC/gRPC_service_impl.md
       - Interceptor: dev-notes/gRPC/gRPC_Interceptor.md
+    - llm:
+      - Model Basics: dev-notes/llm/01_llm_model_basics.md
+      - Precision and Quantization: dev-notes/llm/02_llm_precision_and_quantization.md
+      - Model Format: dev-notes/llm/03_llm_model_formats.md
+      - Inference Engine: dev-notes/llm/04_llm_inference_engines.md
+      - Serving: dev-notes/llm/05_serving.md
+      - Application: dev-notes/llm/06_applications.md
