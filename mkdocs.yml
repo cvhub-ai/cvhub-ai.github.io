@@ -28,3 +28,10 @@ nav:
       - Inference Engine: dev-notes/llm/04_llm_inference_engines.md
       - Serving: dev-notes/llm/05_llm_serving.md
       - Application: dev-notes/llm/06_llm_applications.md
+    - RAG System:
+      - Overview: dev-notes/rag/01_rag_overview.md
+      - Document Ingestion & Chunking: dev-notes/rag/02_document_ingestion_and_chunking.md
+      - Embedding & Indexing: dev-notes/rag/03_embedding_and_indexing.md
+      - Retrieval Pipeline: dev-notes/rag/04_retrieval_pipeline.md
+      - Context Generation & Grounding: dev-notes/rag/05_context_generation_and_grounding.md
+      - Evaluation, Operations & Security: dev-notes/rag/06_rag_evaluation_operations_security.md
