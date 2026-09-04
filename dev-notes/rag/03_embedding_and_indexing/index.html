@@ -567,7 +567,7 @@
   <span class="md-ellipsis">
     
   
-    llm
+    LLM
   
 
     
@@ -583,7 +583,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    llm
+    LLM
   
 
           </label>
@@ -1885,7 +1885,7 @@
 
 <h1 id="rag-embeddingvector-store-indexing">RAG Embedding、Vector Store 与 Indexing</h1>
 <h2 id="1">1. 整体位置</h2>
-<pre><code class="language-text">Chunk
+<div class="highlight"><pre><span></span><code>Chunk
  ↓
 Embedding Model
  ↓
@@ -1896,7 +1896,7 @@ Vector Store
 Vector Index
  ↓
 Retrieval
-</code></pre>
+</code></pre></div>
 <p>这一阶段解决两个核心问题：</p>
 <ol>
 <li>如何把知识转换成可比较的数学表示？</li>
@@ -1909,36 +1909,36 @@ Retrieval
 <p>将文本映射到高维向量空间。</p>
 </blockquote>
 <p>例如：</p>
-<pre><code class="language-text">&quot;汽车用高强度塑料&quot;
+<div class="highlight"><pre><span></span><code>&quot;汽车用高强度塑料&quot;
 
 ↓
 
 [0.13, -0.72, 0.44, ...]
-</code></pre>
+</code></pre></div>
 <p>语义相近的文本通常在向量空间中距离更近。</p>
 <hr />
 <h2 id="3-document-embedding-query-embedding">3. Document Embedding 与 Query Embedding</h2>
 <p>建立索引：</p>
-<pre><code class="language-text">Chunk
+<div class="highlight"><pre><span></span><code>Chunk
  ↓
 Embedding Model
  ↓
 Document Vector
-</code></pre>
+</code></pre></div>
 <p>查询：</p>
-<pre><code class="language-text">Query
+<div class="highlight"><pre><span></span><code>Query
  ↓
 Same / Compatible Embedding Model
  ↓
 Query Vector
-</code></pre>
+</code></pre></div>
 <p>然后：</p>
-<pre><code class="language-text">Query Vector
+<div class="highlight"><pre><span></span><code>Query Vector
       ↓
 Similarity Search
       ↓
 Document Vectors
-</code></pre>
+</code></pre></div>
 <p>关键原则：</p>
 <blockquote>
 <p>Query Embedding 与 Document Embedding 必须位于兼容的向量空间。</p>
@@ -1949,12 +1949,12 @@ Document Vectors
 <p>选择模型时需要关注：</p>
 <h3 id="dimension">Dimension</h3>
 <p>例如：</p>
-<pre><code class="language-text">384
+<div class="highlight"><pre><span></span><code>384
 768
 1024
 1536
 ...
-</code></pre>
+</code></pre></div>
 <p>Dimension 会影响：</p>
 <ul>
 <li>Storage</li>
@@ -1972,10 +1972,10 @@ Document Vectors
 </ul>
 <h3 id="language-support">Language Support</h3>
 <p>模型可能是：</p>
-<pre><code class="language-text">English
+<div class="highlight"><pre><span></span><code>English
 Chinese
 Multilingual
-</code></pre>
+</code></pre></div>
 <h3 id="domain">Domain</h3>
 <p>通用模型不一定在专业领域表现最佳。</p>
 <p>例如：</p>
@@ -1989,28 +1989,28 @@ Multilingual
 <h3 id="query-document-instruction">Query / Document Instruction</h3>
 <p>部分 Embedding Model 对 Query 和 Document 使用不同 prefix / instruction。</p>
 <p>例如概念上：</p>
-<pre><code class="language-text">query: ...
+<div class="highlight"><pre><span></span><code>query: ...
 passage: ...
-</code></pre>
+</code></pre></div>
 <p>因此必须遵循具体模型的推荐使用方式。</p>
 <hr />
 <h2 id="5-multilingual-embedding">5. Multilingual Embedding</h2>
 <p>现代 Multilingual Model 可以支持：</p>
-<pre><code class="language-text">中文 Query
+<div class="highlight"><pre><span></span><code>中文 Query
  ↓
 Embedding
  ↓
 英文 / 德文 Document
-</code></pre>
+</code></pre></div>
 <p>即：</p>
-<pre><code class="language-text">Cross-lingual Retrieval
-</code></pre>
+<div class="highlight"><pre><span></span><code>Cross-lingual Retrieval
+</code></pre></div>
 <p>但：</p>
 <blockquote>
 <p>支持某种语言不代表在该语言和特定领域上的效果一定足够好。</p>
 </blockquote>
 <p>推荐流程：</p>
-<pre><code class="language-text">Multilingual Knowledge Base
+<div class="highlight"><pre><span></span><code>Multilingual Knowledge Base
         ↓
 Multilingual Embedding Model
         ↓
@@ -2019,59 +2019,59 @@ Real Retrieval Evaluation
 效果不足
         ↓
 考虑领域模型 / Fine-tuning
-</code></pre>
+</code></pre></div>
 <p>通常不建议项目一开始就 Fine-tune。</p>
 <hr />
 <h2 id="6-similarity-metric">6. Similarity Metric</h2>
 <p>常见向量相似度 / 距离：</p>
 <h3 id="cosine-similarity">Cosine Similarity</h3>
 <p>比较向量方向：</p>
-<pre><code class="language-text">cos(A, B)
-</code></pre>
+<div class="highlight"><pre><span></span><code>cos(A, B)
+</code></pre></div>
 <p>常用于语义 Embedding。</p>
 <h3 id="dot-product">Dot Product</h3>
-<pre><code class="language-text">A · B
-</code></pre>
+<div class="highlight"><pre><span></span><code>A · B
+</code></pre></div>
 <p>如果两个向量都进行了 L2 Normalization：</p>
-<pre><code class="language-text">Dot Product
+<div class="highlight"><pre><span></span><code>Dot Product
 ≈
 Cosine Similarity
-</code></pre>
+</code></pre></div>
 <h3 id="euclidean-distance-l2">Euclidean Distance / L2</h3>
 <p>比较空间距离：</p>
-<pre><code class="language-text">||A - B||
-</code></pre>
+<div class="highlight"><pre><span></span><code>||A - B||
+</code></pre></div>
 <p>使用哪一种 Metric 应遵循 Embedding Model 和 Vector Store 的设计要求。</p>
 <hr />
 <h2 id="7-embedding-normalization">7. Embedding Normalization</h2>
 <p>常见：</p>
-<pre><code class="language-text">normalize_embeddings=True
-</code></pre>
+<div class="highlight"><pre><span></span><code>normalize_embeddings=True
+</code></pre></div>
 <p>将向量长度归一化。</p>
 <p>好处之一是：</p>
-<pre><code class="language-text">Normalized Vector
+<div class="highlight"><pre><span></span><code>Normalized Vector
 +
 Dot Product
-</code></pre>
+</code></pre></div>
 <p>可以直接表示 Cosine Similarity。</p>
 <p>但是否应该 Normalize，需要根据具体模型建议决定。</p>
 <hr />
 <h2 id="8-embedding-model-version">8. Embedding Model Version</h2>
 <p>这是生产系统非常重要的 Metadata。</p>
 <p>例如：</p>
-<pre><code class="language-text">embedding_model = bge-m3
+<div class="highlight"><pre><span></span><code>embedding_model = bge-m3
 embedding_version = xxx
 dimension = 1024
-</code></pre>
+</code></pre></div>
 <p>如果从：</p>
-<pre><code class="language-text">Model A
-</code></pre>
+<div class="highlight"><pre><span></span><code>Model A
+</code></pre></div>
 <p>切换到：</p>
-<pre><code class="language-text">Model B
-</code></pre>
+<div class="highlight"><pre><span></span><code>Model B
+</code></pre></div>
 <p>旧 Vector 与新 Vector 通常不能直接混用。</p>
 <p>常见迁移：</p>
-<pre><code class="language-text">New Embedding Model
+<div class="highlight"><pre><span></span><code>New Embedding Model
        ↓
 Re-embed Chunks
        ↓
@@ -2080,16 +2080,16 @@ Build New Index
 Evaluate
        ↓
 Switch Index
-</code></pre>
+</code></pre></div>
 <hr />
 <h2 id="9-embedding">9. Embedding 计算</h2>
 <p>对于大量文档：</p>
-<pre><code class="language-text">Chunks
+<div class="highlight"><pre><span></span><code>Chunks
  ↓
 Batch Embedding
  ↓
 Vectors
-</code></pre>
+</code></pre></div>
 <p>常见优化：</p>
 <ul>
 <li>Batch Processing</li>
@@ -2103,17 +2103,17 @@ Vectors
 <hr />
 <h2 id="10-vector-store">10. Vector Store 保存什么</h2>
 <p>逻辑上需要维护：</p>
-<pre><code class="language-text">Vector Record
+<div class="highlight"><pre><span></span><code>Vector Record
 ├── vector
 ├── chunk_id
 └── metadata
-</code></pre>
+</code></pre></div>
 <p>有些系统同时保存：</p>
-<pre><code class="language-text">text
-</code></pre>
+<div class="highlight"><pre><span></span><code>text
+</code></pre></div>
 <p>也有系统只保存：</p>
-<pre><code class="language-text">vector + chunk_id
-</code></pre>
+<div class="highlight"><pre><span></span><code>vector + chunk_id
+</code></pre></div>
 <p>然后通过 ID 到其他数据库读取正文。</p>
 <p>因此更准确的定义是：</p>
 <blockquote>
@@ -2122,10 +2122,10 @@ Vectors
 <hr />
 <h2 id="11-vector-database">11. Vector Database</h2>
 <p>Vector Database 是针对：</p>
-<pre><code class="language-text">Vector Storage
+<div class="highlight"><pre><span></span><code>Vector Storage
 Vector Index
 Nearest Neighbor Search
-</code></pre>
+</code></pre></div>
 <p>优化的数据库或存储系统。</p>
 <p>常见专用系统：</p>
 <ul>
@@ -2135,19 +2135,19 @@ Nearest Neighbor Search
 <li>Weaviate</li>
 </ul>
 <p>也可以使用：</p>
-<pre><code class="language-text">PostgreSQL
+<div class="highlight"><pre><span></span><code>PostgreSQL
 +
 pgvector
-</code></pre>
+</code></pre></div>
 <p>因此：</p>
-<pre><code class="language-text">Vector Database
+<div class="highlight"><pre><span></span><code>Vector Database
 ≠
 必须使用一种独立数据库产品
-</code></pre>
+</code></pre></div>
 <hr />
 <h2 id="12-exact-search">12. Exact Search</h2>
 <p>最直接的方法：</p>
-<pre><code class="language-text">Query Vector
+<div class="highlight"><pre><span></span><code>Query Vector
  ↓
 Compare Vector 1
 Compare Vector 2
@@ -2156,10 +2156,10 @@ Compare Vector 3
 Compare Vector N
  ↓
 Top-K
-</code></pre>
+</code></pre></div>
 <p>这属于：</p>
-<pre><code class="language-text">Brute Force / Exact Search
-</code></pre>
+<div class="highlight"><pre><span></span><code>Brute Force / Exact Search
+</code></pre></div>
 <p>优点：</p>
 <ul>
 <li>Recall 精确</li>
@@ -2178,10 +2178,10 @@ Top-K
 <p>不保证逐个检查全部 Vector，而是通过索引快速找到高概率最近邻。</p>
 </blockquote>
 <p>核心 trade-off：</p>
-<pre><code class="language-text">Search Speed
+<div class="highlight"><pre><span></span><code>Search Speed
 vs
 Recall
-</code></pre>
+</code></pre></div>
 <hr />
 <h2 id="14-hnsw">14. HNSW</h2>
 <p>HNSW：</p>
@@ -2191,7 +2191,7 @@ Recall
 <p>将相似 Vector 建立多层 Graph，通过 Graph Navigation 快速接近 Query 的邻域。</p>
 </blockquote>
 <p>简单理解：</p>
-<pre><code class="language-text">High Layer
+<div class="highlight"><pre><span></span><code>High Layer
 节点少，快速定位
     ↓
 Middle Layer
@@ -2199,26 +2199,26 @@ Middle Layer
     ↓
 Bottom Layer
 寻找局部近邻
-</code></pre>
+</code></pre></div>
 <p>关键词：</p>
-<pre><code class="language-text">Graph
+<div class="highlight"><pre><span></span><code>Graph
 Neighbor
 Navigation
 Hierarchy
-</code></pre>
+</code></pre></div>
 <p>常见参数：</p>
-<pre><code class="language-text">M
+<div class="highlight"><pre><span></span><code>M
 efConstruction
 efSearch
-</code></pre>
+</code></pre></div>
 <p>通常：</p>
-<pre><code class="language-text">efSearch ↑
+<div class="highlight"><pre><span></span><code>efSearch ↑
  ↓
 搜索节点更多
  ↓
 Recall ↑
 Latency ↑
-</code></pre>
+</code></pre></div>
 <hr />
 <h2 id="15-ivf">15. IVF</h2>
 <p>IVF：</p>
@@ -2227,7 +2227,7 @@ Latency ↑
 <blockquote>
 <p>先将 Vector 分区 / 聚类，Query 时只搜索最相关的部分 Cluster。</p>
 </blockquote>
-<pre><code class="language-text">All Vectors
+<div class="highlight"><pre><span></span><code>All Vectors
  ↓
 Clustering
  ↓
@@ -2235,33 +2235,33 @@ Cluster 1
 Cluster 2
 Cluster 3
 ...
-</code></pre>
+</code></pre></div>
 <p>Query：</p>
-<pre><code class="language-text">Query
+<div class="highlight"><pre><span></span><code>Query
  ↓
 Find Nearest Centroids
  ↓
 Select Relevant Clusters
  ↓
 Search Inside Clusters
-</code></pre>
+</code></pre></div>
 <p>关键词：</p>
-<pre><code class="language-text">Cluster
+<div class="highlight"><pre><span></span><code>Cluster
 Centroid
 Partition
-</code></pre>
+</code></pre></div>
 <p>常见参数：</p>
-<pre><code class="language-text">nlist
+<div class="highlight"><pre><span></span><code>nlist
 nprobe
-</code></pre>
+</code></pre></div>
 <p>通常：</p>
-<pre><code class="language-text">nprobe ↑
+<div class="highlight"><pre><span></span><code>nprobe ↑
  ↓
 Search More Clusters
  ↓
 Recall ↑
 Latency ↑
-</code></pre>
+</code></pre></div>
 <hr />
 <h2 id="16-hnsw-vs-ivf">16. HNSW vs IVF</h2>
 <table>
@@ -2309,34 +2309,34 @@ Latency ↑
 <h2 id="17-hnsw-knowledge-graph">17. HNSW 与 Knowledge Graph</h2>
 <p>两者完全不同。</p>
 <h3 id="hnsw-graph">HNSW Graph</h3>
-<pre><code class="language-text">Vector A ─ Vector B
+<div class="highlight"><pre><span></span><code>Vector A ─ Vector B
    │          │
 Vector C ─ Vector D
-</code></pre>
+</code></pre></div>
 <p>边的意义：</p>
 <blockquote>
 <p>为 Vector Search 提供快速导航。</p>
 </blockquote>
 <h3 id="knowledge-graph">Knowledge Graph</h3>
 <p>例如：</p>
-<pre><code class="language-text">Product
+<div class="highlight"><pre><span></span><code>Product
    │ contains
    ↓
 Component
    │ depends_on
    ↓
 Library
-</code></pre>
+</code></pre></div>
 <p>边具有业务语义。</p>
 <p>因此：</p>
-<pre><code class="language-text">HNSW
+<div class="highlight"><pre><span></span><code>HNSW
 =
 Vector Index Data Structure
 
 Knowledge Graph
 =
 Business Knowledge Representation
-</code></pre>
+</code></pre></div>
 <hr />
 <h2 id="18-relational-dbvector-storegraph-db">18. Relational DB、Vector Store、Graph DB</h2>
 <h3 id="relational-database">Relational Database</h3>
@@ -2369,17 +2369,17 @@ Business Knowledge Representation
 <hr />
 <h2 id="19-postgresql-pgvector">19. PostgreSQL + pgvector</h2>
 <p>对于很多普通 RAG：</p>
-<pre><code class="language-text">PostgreSQL
+<div class="highlight"><pre><span></span><code>PostgreSQL
 +
 pgvector
-</code></pre>
+</code></pre></div>
 <p>已经可以同时管理：</p>
-<pre><code class="language-text">Document Metadata
+<div class="highlight"><pre><span></span><code>Document Metadata
 Chunk Text
 Structured Metadata
 Embedding
 Vector Index
-</code></pre>
+</code></pre></div>
 <p>优势：</p>
 <ul>
 <li>架构简单</li>
@@ -2401,7 +2401,7 @@ Vector Index
 <h2 id="20-index-lifecycle">20. Index Lifecycle</h2>
 <p>索引不是建立一次后永久不变。</p>
 <p>需要考虑：</p>
-<pre><code class="language-text">Document Insert
+<div class="highlight"><pre><span></span><code>Document Insert
 Document Update
 Document Delete
 
@@ -2409,16 +2409,16 @@ Embedding Model Update
 Chunking Strategy Update
 
 Metadata Schema Update
-</code></pre>
+</code></pre></div>
 <p>可能触发：</p>
-<pre><code class="language-text">Incremental Index
+<div class="highlight"><pre><span></span><code>Incremental Index
 Re-embedding
 Re-index
 Full Index Rebuild
-</code></pre>
+</code></pre></div>
 <hr />
 <h2 id="21">21. 最终框架</h2>
-<pre><code class="language-text">Chunk
+<div class="highlight"><pre><span></span><code>Chunk
  ↓
 Embedding Model
  ↓
@@ -2435,7 +2435,7 @@ Vector Index
       └── IVF
  ↓
 Top-K Search
-</code></pre>
+</code></pre></div>
 <p>核心原则：</p>
 <blockquote>
 <p><strong>Embedding 决定知识如何表示，Index 决定如何快速寻找，但最终方案仍然必须通过真实 Retrieval Evaluation 选择。</strong></p>
@@ -2495,6 +2495,8 @@ Top-K Search
       <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@11/dist/mermaid.min.js"></script>
       
     
   </body>

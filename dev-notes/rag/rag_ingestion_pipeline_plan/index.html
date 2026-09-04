@@ -561,7 +561,7 @@
   <span class="md-ellipsis">
     
   
-    llm
+    LLM
   
 
     
@@ -577,7 +577,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    llm
+    LLM
   
 
           </label>
@@ -1401,7 +1401,7 @@
 <p>模型只用于真正需要模型理解的部分。</p>
 <hr />
 <h2 id="2-pipeline">2. 总体 Pipeline</h2>
-<pre><code class="language-text">Input
+<div class="highlight"><pre><span></span><code>Input
   ↓
 Document / Text Detection
   ↓
@@ -1418,36 +1418,36 @@ Final Chunks
 Embedding
   ↓
 Vector Store
-</code></pre>
+</code></pre></div>
 <hr />
 <h2 id="3-parser">3. Parser 层</h2>
 <p>文档类输入只选择一个主要 Document Parser：</p>
-<pre><code class="language-text">Docling
+<div class="highlight"><pre><span></span><code>Docling
    OR
 PaddleOCR-VL
-</code></pre>
+</code></pre></div>
 <p>不同时维护多套主要解析系统。</p>
 <p>统一接口：</p>
-<pre><code class="language-python">class DocumentParser:
-    def parse(self, source) -&gt; StructuredDocument:
-        ...
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">DocumentParser</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">StructuredDocument</span><span class="p">:</span>
+        <span class="o">...</span>
+</code></pre></div>
 <p>底层实现可以是：</p>
-<pre><code class="language-text">DoclingParser
-</code></pre>
+<div class="highlight"><pre><span></span><code>DoclingParser
+</code></pre></div>
 <p>或者：</p>
-<pre><code class="language-text">PaddleOCRVLParser
-</code></pre>
+<div class="highlight"><pre><span></span><code>PaddleOCRVLParser
+</code></pre></div>
 <p>上层逻辑不关心具体实现。</p>
 <p>这样未来可以替换 parser，而不影响：</p>
-<pre><code class="language-text">Normalization
+<div class="highlight"><pre><span></span><code>Normalization
 Chunking
 Embedding
 Vector Store
-</code></pre>
+</code></pre></div>
 <hr />
 <h2 id="4">4. 输入处理策略</h2>
-<pre><code class="language-text">Input
+<div class="highlight"><pre><span></span><code>Input
 │
 ├── PDF / Image / Document
 │      ↓
@@ -1460,7 +1460,7 @@ Vector Store
    Text Structure Detection
        ↓
    Structured / Unstructured
-</code></pre>
+</code></pre></div>
 <p>对于 PDF：</p>
 <ul>
 <li>有 Native Text</li>
@@ -1469,19 +1469,19 @@ Vector Store
 </ul>
 <p>尽量交给选定的 Document Parser 自己统一处理。</p>
 <p>项目本身不开发复杂的：</p>
-<pre><code class="language-text">OCR
+<div class="highlight"><pre><span></span><code>OCR
  ↓
 Layout Detection
  ↓
 Fusion
  ↓
 Structure Reconstruction
-</code></pre>
+</code></pre></div>
 <p>Pipeline。</p>
 <hr />
 <h2 id="5-structureddocument">5. StructuredDocument</h2>
 <p>Parser 输出统一的数据结构，例如：</p>
-<pre><code class="language-text">StructuredDocument
+<div class="highlight"><pre><span></span><code>StructuredDocument
 ├── metadata
 ├── pages
 └── blocks
@@ -1492,26 +1492,26 @@ Structure Reconstruction
     ├── Figure
     ├── Formula
     └── Code
-</code></pre>
+</code></pre></div>
 <p>每个 Block 尽量包含：</p>
-<pre><code class="language-text">text
+<div class="highlight"><pre><span></span><code>text
 type
 page
 bbox
 heading_path
 parent
 metadata
-</code></pre>
+</code></pre></div>
 <p>这一层是 Parser 和 Chunker 之间的统一边界。</p>
 <hr />
 <h2 id="6-normalization-cleaning">6. Normalization / Cleaning</h2>
 <p>解析完成后先执行确定性清理：</p>
-<pre><code class="language-text">StructuredDocument
+<div class="highlight"><pre><span></span><code>StructuredDocument
        ↓
 Normalizer
        ↓
 CleanStructuredDocument
-</code></pre>
+</code></pre></div>
 <p>主要职责：</p>
 <ul>
 <li>删除 Header / Footer / Page Number</li>
@@ -1525,17 +1525,17 @@ CleanStructuredDocument
 </ul>
 <p>尽量使用规则代码，不使用 LLM。</p>
 <p>接口：</p>
-<pre><code class="language-python">class DocumentNormalizer:
-    def normalize(
-        self,
-        document: StructuredDocument
-    ) -&gt; StructuredDocument:
-        ...
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">DocumentNormalizer</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">normalize</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">document</span><span class="p">:</span> <span class="n">StructuredDocument</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">StructuredDocument</span><span class="p">:</span>
+        <span class="o">...</span>
+</code></pre></div>
 <hr />
 <h2 id="7-chunking">7. Chunking 总体策略</h2>
 <p>Chunking 使用分层策略：</p>
-<pre><code class="language-text">Structured Content
+<div class="highlight"><pre><span></span><code>Structured Content
         ↓
 Structure-aware Split
         ↓
@@ -1549,7 +1549,7 @@ Semantic Split     Merge
    └────────┬───────┘
             ↓
        Final Chunks
-</code></pre>
+</code></pre></div>
 <hr />
 <h2 id="8">8. 第一层：规则结构分割</h2>
 <p>只要存在可靠结构，就优先使用代码规则。</p>
@@ -1565,24 +1565,24 @@ Semantic Split     Merge
 <li>Figure / Caption</li>
 </ul>
 <p>典型逻辑：</p>
-<pre><code class="language-text">Heading
+<div class="highlight"><pre><span></span><code>Heading
   ↓
 收集属于该 Heading 的 Blocks
   ↓
 形成逻辑 Section
-</code></pre>
+</code></pre></div>
 <p>接口：</p>
-<pre><code class="language-python">class StructureChunker:
-    def split(
-        self,
-        document: StructuredDocument
-    ) -&gt; list[ChunkCandidate]:
-        ...
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">StructureChunker</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">split</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">document</span><span class="p">:</span> <span class="n">StructuredDocument</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">ChunkCandidate</span><span class="p">]:</span>
+        <span class="o">...</span>
+</code></pre></div>
 <hr />
 <h2 id="9-size-control">9. 第二层：Size Control</h2>
 <p>每个候选 Chunk 做长度判断：</p>
-<pre><code class="language-text">ChunkCandidate
+<div class="highlight"><pre><span></span><code>ChunkCandidate
       ↓
 Token Count
       ↓
@@ -1591,13 +1591,13 @@ Token Count
 Too Large   Suitable      Too Small
 │            │             │
 Split        Keep          Merge
-</code></pre>
+</code></pre></div>
 <p>配置：</p>
-<pre><code class="language-text">max_tokens
+<div class="highlight"><pre><span></span><code>max_tokens
 target_tokens
 min_tokens
 overlap
-</code></pre>
+</code></pre></div>
 <hr />
 <h2 id="10-semantic-segmentation">10. 第三层：Semantic Segmentation</h2>
 <p>只有以下情况才调用：</p>
@@ -1608,7 +1608,7 @@ overlap
 </ul>
 <p>默认不让所有内容经过模型。</p>
 <h3 id="aembedding-based">可选方案 A：Embedding-based</h3>
-<pre><code class="language-text">Long Text
+<div class="highlight"><pre><span></span><code>Long Text
    ↓
 Sentence Split
    ↓
@@ -1617,41 +1617,41 @@ Embedding
 Similarity Change
    ↓
 Semantic Boundaries
-</code></pre>
+</code></pre></div>
 <h3 id="bllm-based">可选方案 B：LLM-based</h3>
 <p>项目规划中可以重点考虑：</p>
-<pre><code class="language-text">Large Unstructured Segment
+<div class="highlight"><pre><span></span><code>Large Unstructured Segment
           ↓
          LLM
           ↓
 Semantic Boundaries
           ↓
 Sub-segments
-</code></pre>
+</code></pre></div>
 <p>LLM 定位：</p>
 <blockquote>
 <p><strong>fallback / conditional semantic segmenter</strong></p>
 </blockquote>
 <p>而不是默认 Chunker。</p>
 <p>统一接口：</p>
-<pre><code class="language-python">class SemanticSegmenter:
-    def split(self, text: str) -&gt; list[str]:
-        ...
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">SemanticSegmenter</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">split</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="o">...</span>
+</code></pre></div>
 <p>底层以后可以替换：</p>
-<pre><code class="language-text">EmbeddingSemanticSegmenter
+<div class="highlight"><pre><span></span><code>EmbeddingSemanticSegmenter
 LLMSemanticSegmenter
-</code></pre>
+</code></pre></div>
 <hr />
 <h2 id="11-small-chunk-merge">11. Small Chunk Merge</h2>
 <p>过小 Chunk 不直接进入 Embedding。</p>
 <p>可以按照规则：</p>
-<pre><code class="language-text">Small Chunk
+<div class="highlight"><pre><span></span><code>Small Chunk
     ↓
 是否有 Parent Heading？
     ↓
 与 Parent Context / Neighbor 合并
-</code></pre>
+</code></pre></div>
 <p>优先考虑：</p>
 <ol>
 <li>同一 Section 内相邻 Chunk</li>
@@ -1659,13 +1659,13 @@ LLMSemanticSegmenter
 <li>不跨越明显 Topic Boundary</li>
 </ol>
 <p>接口：</p>
-<pre><code class="language-python">class ChunkMerger:
-    def merge(
-        self,
-        chunks: list[ChunkCandidate]
-    ) -&gt; list[Chunk]:
-        ...
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">ChunkMerger</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">merge</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">chunks</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">ChunkCandidate</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Chunk</span><span class="p">]:</span>
+        <span class="o">...</span>
+</code></pre></div>
 <hr />
 <h2 id="12-block">12. 特殊 Block 策略</h2>
 <h3 id="table">Table</h3>
@@ -1696,7 +1696,7 @@ LLMSemanticSegmenter
 <hr />
 <h2 id="13-final-chunk-schema">13. Final Chunk Schema</h2>
 <p>最终进入 Embedding 的 Chunk 建议包含：</p>
-<pre><code class="language-text">Chunk
+<div class="highlight"><pre><span></span><code>Chunk
 ├── id
 ├── document_id
 ├── text
@@ -1707,93 +1707,93 @@ LLMSemanticSegmenter
 ├── source
 ├── language
 └── metadata
-</code></pre>
+</code></pre></div>
 <p>必要时还可以保存：</p>
-<pre><code class="language-text">parent_chunk_id
+<div class="highlight"><pre><span></span><code>parent_chunk_id
 bbox
 parser_version
 chunker_version
-</code></pre>
+</code></pre></div>
 <hr />
 <h2 id="14-embedding">14. Embedding 层</h2>
 <p>统一接口：</p>
-<pre><code class="language-python">class Embedder:
-    def embed(
-        self,
-        texts: list[str]
-    ) -&gt; list[Vector]:
-        ...
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Embedder</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">embed</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">texts</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Vector</span><span class="p">]:</span>
+        <span class="o">...</span>
+</code></pre></div>
 <p>流程：</p>
-<pre><code class="language-text">Final Chunks
+<div class="highlight"><pre><span></span><code>Final Chunks
      ↓
 Embedder
      ↓
 Vectors
-</code></pre>
+</code></pre></div>
 <p>Chunking 和 Embedding 解耦。</p>
 <hr />
 <h2 id="15-vector-store">15. Vector Store</h2>
 <p>统一接口：</p>
-<pre><code class="language-python">class VectorStore:
-    def upsert(
-        self,
-        chunks: list[Chunk],
-        vectors: list[Vector]
-    ):
-        ...
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VectorStore</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">upsert</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">chunks</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Chunk</span><span class="p">],</span>
+        <span class="n">vectors</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Vector</span><span class="p">]</span>
+    <span class="p">):</span>
+        <span class="o">...</span>
+</code></pre></div>
 <p>保存：</p>
-<pre><code class="language-text">Chunk Text
+<div class="highlight"><pre><span></span><code>Chunk Text
 +
 Embedding
 +
 Metadata
-</code></pre>
+</code></pre></div>
 <p>具体实现以后可以是：</p>
-<pre><code class="language-text">PostgreSQL + pgvector
+<div class="highlight"><pre><span></span><code>PostgreSQL + pgvector
 Qdrant
 Milvus
 ...
-</code></pre>
+</code></pre></div>
 <p>但不影响 ingestion 主流程。</p>
 <hr />
 <h2 id="16-pipeline">16. Pipeline 类</h2>
 <p>整体可以有：</p>
-<pre><code class="language-python">class IngestionPipeline:
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">IngestionPipeline</span><span class="p">:</span>
 
-    def ingest(self, source):
+    <span class="k">def</span><span class="w"> </span><span class="nf">ingest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">):</span>
 
-        document = parser.parse(source)
+        <span class="n">document</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
 
-        document = normalizer.normalize(document)
+        <span class="n">document</span> <span class="o">=</span> <span class="n">normalizer</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="n">document</span><span class="p">)</span>
 
-        candidates = structure_chunker.split(document)
+        <span class="n">candidates</span> <span class="o">=</span> <span class="n">structure_chunker</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">document</span><span class="p">)</span>
 
-        chunks = hierarchical_chunker.process(candidates)
+        <span class="n">chunks</span> <span class="o">=</span> <span class="n">hierarchical_chunker</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">candidates</span><span class="p">)</span>
 
-        vectors = embedder.embed(
-            [chunk.text for chunk in chunks]
-        )
+        <span class="n">vectors</span> <span class="o">=</span> <span class="n">embedder</span><span class="o">.</span><span class="n">embed</span><span class="p">(</span>
+            <span class="p">[</span><span class="n">chunk</span><span class="o">.</span><span class="n">text</span> <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">chunks</span><span class="p">]</span>
+        <span class="p">)</span>
 
-        vector_store.upsert(
-            chunks,
-            vectors
-        )
-</code></pre>
+        <span class="n">vector_store</span><span class="o">.</span><span class="n">upsert</span><span class="p">(</span>
+            <span class="n">chunks</span><span class="p">,</span>
+            <span class="n">vectors</span>
+        <span class="p">)</span>
+</code></pre></div>
 <p>其中：</p>
-<pre><code class="language-text">hierarchical_chunker
-</code></pre>
+<div class="highlight"><pre><span></span><code>hierarchical_chunker
+</code></pre></div>
 <p>内部负责：</p>
-<pre><code class="language-text">Size Check
+<div class="highlight"><pre><span></span><code>Size Check
 +
 Semantic Split
 +
 Small Chunk Merge
-</code></pre>
+</code></pre></div>
 <hr />
 <h2 id="17">17. 推荐模块结构</h2>
-<pre><code class="language-text">rag/
+<div class="highlight"><pre><span></span><code>rag/
 │
 ├── parsing/
 │   ├── base.py
@@ -1820,12 +1820,12 @@ Small Chunk Merge
 │   └── chunk.py
 │
 └── ingestion_pipeline.py
-</code></pre>
+</code></pre></div>
 <p>项目初期不一定需要真的拆这么多文件，但职责可以按照这个思路设计。</p>
 <hr />
 <h2 id="18">18. 第一版实际技术策略</h2>
 <p>建议第一版保持简单：</p>
-<pre><code class="language-text">Document Parser
+<div class="highlight"><pre><span></span><code>Document Parser
     ↓
 Docling OR PaddleOCR-VL
 
@@ -1855,24 +1855,24 @@ Final Chunks
 Embedding
     ↓
 Vector Store
-</code></pre>
+</code></pre></div>
 <hr />
 <h2 id="19">19. 核心设计原则</h2>
 <h3 id="parser">Parser 单一化</h3>
 <p>项目中选择一个主 Document Parser 即可：</p>
-<pre><code class="language-text">Docling
+<div class="highlight"><pre><span></span><code>Docling
 OR
 PaddleOCR-VL
-</code></pre>
+</code></pre></div>
 <p>避免维护多个并行 Pipeline。</p>
 <hr />
 <h3 id="_1">规则优先</h3>
 <p>能通过：</p>
-<pre><code class="language-text">Heading
+<div class="highlight"><pre><span></span><code>Heading
 Paragraph
 Token Count
 Block Type
-</code></pre>
+</code></pre></div>
 <p>解决的问题，直接使用代码。</p>
 <hr />
 <h3 id="llm">LLM 兜底</h3>
@@ -1883,20 +1883,20 @@ Block Type
 <hr />
 <h3 id="chunking">Chunking 分层化</h3>
 <p>不是：</p>
-<pre><code class="language-text">选择一种 Chunking Algorithm
-</code></pre>
+<div class="highlight"><pre><span></span><code>选择一种 Chunking Algorithm
+</code></pre></div>
 <p>而是：</p>
-<pre><code class="language-text">Structure
+<div class="highlight"><pre><span></span><code>Structure
    ↓
 Size
    ↓
 Semantic
    ↓
 Merge
-</code></pre>
+</code></pre></div>
 <hr />
 <h3 id="_2">组件解耦</h3>
-<pre><code class="language-text">Parser
+<div class="highlight"><pre><span></span><code>Parser
  ↓
 Normalizer
  ↓
@@ -1905,12 +1905,12 @@ Chunker
 Embedder
  ↓
 VectorStore
-</code></pre>
+</code></pre></div>
 <p>每层有统一接口。</p>
 <p>以后替换任何一个实现时，不应该影响其他层。</p>
 <hr />
 <h2 id="20">20. 最终规划图</h2>
-<pre><code class="language-text">                         Input
+<div class="highlight"><pre><span></span><code>                         Input
                            │
                  Document / Plain Text
                            │
@@ -1947,7 +1947,7 @@ VectorStore
                            │
                            ▼
                       Vector Store
-</code></pre>
+</code></pre></div>
 <p>这套 Pipeline 的核心是：</p>
 <blockquote>
 <p><strong>Parser 单一化、规则优先、LLM 条件式参与、Chunking 分层化、组件之间保持解耦。</strong></p>
@@ -2007,6 +2007,8 @@ VectorStore
       <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@11/dist/mermaid.min.js"></script>
       
     
   </body>

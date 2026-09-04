@@ -755,7 +755,7 @@
   <span class="md-ellipsis">
     
   
-    llm
+    LLM
   
 
     
@@ -771,7 +771,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    llm
+    LLM
   
 
           </label>
@@ -1370,22 +1370,22 @@
 <p>gRPC（Google Remote Procedure Call）是 Google 开源的高性能 RPC 框架。它允许开发者像调用本地函数一样调用远程服务。</p>
 <h3 id="rpc-vs-http">RPC vs HTTP</h3>
 <h4 id="http">传统 HTTP 调用：</h4>
-<pre><code class="language-text">客户端
+<p><div class="highlight"><pre><span></span><code>客户端
   │
   │ GET /users/1001
   ▼
 服务端
-</code></pre>
-<p>开发者需要关心：
+</code></pre></div>
+开发者需要关心：
 - URL
 - HTTP Method
 - Header
 - JSON序列化
 - JSON反序列化</p>
 <h4 id="rpc">RPC 方式：</h4>
-<pre><code>user_service.GetUser(1001)
-</code></pre>
-<p>开发者只关注：
+<p><div class="highlight"><pre><span></span><code>user_service.GetUser(1001)
+</code></pre></div>
+开发者只关注：
 - 调用哪个方法
 - 传什么参数
 - 返回什么结果</p>
@@ -1397,12 +1397,12 @@
 - 方法(RPC)
 - 请求(Request)
 - 响应(Response)</p>
-<p>例如：</p>
-<pre><code class="language-proto">service UserService {
-    rpc GetUser(GetUserRequest)
-        returns (GetUserResponse);
-}
-</code></pre>
+<p>例如：
+<div class="highlight"><pre><span></span><code><span class="kd">service</span><span class="w"> </span><span class="n">UserService</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">rpc</span><span class="w"> </span><span class="n">GetUser</span><span class="p">(</span><span class="n">GetUserRequest</span><span class="p">)</span>
+<span class="w">        </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">GetUserResponse</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></p>
 <h3 id="protobuf">Protobuf</h3>
 <p>gRPC 默认使用 Protocol Buffers 作为序列化协议。</p>
 <p>特点：
@@ -1411,8 +1411,8 @@
 - 编解码速度快
 - 强类型</p>
 <h3 id="code-generation">Code Generation</h3>
-<p>根据 proto 自动生成代码：</p>
-<pre><code class="language-text">user.proto
+<p>根据 proto 自动生成代码：
+<div class="highlight"><pre><span></span><code>user.proto
     │
     ▼
   protoc
@@ -1423,8 +1423,8 @@
     Go
    Node
     C#
-</code></pre>
-<p>无需手写：
+</code></pre></div>
+无需手写：
 - DTO
 - 接口定义
 - 序列化逻辑</p>
@@ -1436,26 +1436,26 @@
 <li>自动生成代码</li>
 </ul>
 <h2 id="grpc_4">gRPC 在微服务中的作用</h2>
-<p>最常见用途：</p>
-<pre><code class="language-text">  服务A
+<p>最常见用途：
+<div class="highlight"><pre><span></span><code>  服务A
     │
     ▼
   gRPC
     │
     ▼
   服务B
-</code></pre>
-<p>例如：</p>
-<pre><code class="language-text">Order Service
+</code></pre></div>
+例如：
+<div class="highlight"><pre><span></span><code>Order Service
     │
     ├── User Service
     ├── Inventory Service
     └── Payment Service
 
 服务之间通过 gRPC 通信。
-</code></pre>
+</code></pre></div></p>
 <h2 id="grpc_5">gRPC服务开发基本流程</h2>
-<pre><code class="language-text">Proto Definition
+<div class="highlight"><pre><span></span><code>Proto Definition
         │
         ▼
       protoc
@@ -1481,7 +1481,7 @@ Start gRPC Server
         │
         ▼
 Receive RPC Requests
-</code></pre>
+</code></pre></div>
 
 
 
@@ -1537,6 +1537,8 @@ Receive RPC Requests
       <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@11/dist/mermaid.min.js"></script>
       
     
   </body>

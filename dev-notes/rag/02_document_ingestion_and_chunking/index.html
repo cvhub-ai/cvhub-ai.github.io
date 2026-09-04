@@ -567,7 +567,7 @@
   <span class="md-ellipsis">
     
   
-    llm
+    LLM
   
 
     
@@ -583,7 +583,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    llm
+    LLM
   
 
           </label>
@@ -1958,7 +1958,7 @@
 <p>尽可能恢复原始知识的结构，并生成适合 Retrieval 的知识单元。</p>
 </blockquote>
 <p>推荐链路：</p>
-<pre><code class="language-text">Raw Input
+<div class="highlight"><pre><span></span><code>Raw Input
    ↓
 Document Loading
    ↓
@@ -1971,7 +1971,7 @@ Normalization / Cleaning
 Hierarchical Chunking
    ↓
 Chunks + Metadata
-</code></pre>
+</code></pre></div>
 <hr />
 <h2 id="2-document-loading-parsing">2. Document Loading 与 Parsing 的区别</h2>
 <h3 id="loader">Loader</h3>
@@ -1980,27 +1980,27 @@ Chunks + Metadata
 <p>获取原始内容。</p>
 </blockquote>
 <p>例如：</p>
-<pre><code class="language-text">PDF Loader
+<div class="highlight"><pre><span></span><code>PDF Loader
 Markdown Loader
 HTML Loader
 XML Loader
 Database Loader
 API Loader
-</code></pre>
+</code></pre></div>
 <h3 id="parser">Parser</h3>
 <p>Parser 负责：</p>
 <blockquote>
 <p>理解内容结构并转换成统一 StructuredDocument。</p>
 </blockquote>
 <p>因此：</p>
-<pre><code class="language-text">Loader
+<div class="highlight"><pre><span></span><code>Loader
 =
 Read / Fetch
 
 Parser
 =
 Understand / Structure
-</code></pre>
+</code></pre></div>
 <p>并不是所有输入都需要复杂 Parser。</p>
 <p>Markdown、HTML、XML 本身已经包含较强结构，可以直接利用。</p>
 <hr />
@@ -2038,7 +2038,7 @@ Understand / Structure
 <li>没有可靠 Native Text</li>
 </ul>
 <p>需要恢复：</p>
-<pre><code class="language-text">Text
+<div class="highlight"><pre><span></span><code>Text
 Layout
 Reading Order
 Table
@@ -2046,7 +2046,7 @@ Heading
 Paragraph
 Figure
 Caption
-</code></pre>
+</code></pre></div>
 <p>可以使用：</p>
 <ul>
 <li>OCR + Layout Analysis</li>
@@ -2057,26 +2057,26 @@ Caption
 <hr />
 <h3 id="cmixed-pdf">场景 C：Mixed PDF</h3>
 <p>例如：</p>
-<pre><code class="language-text">Page 1 → Native Text
+<div class="highlight"><pre><span></span><code>Page 1 → Native Text
 Page 2 → Native Text
 Page 3 → Scan
 Page 4 → Scan
 Page 5 → Native Text
-</code></pre>
+</code></pre></div>
 <p>不能简单将整个 PDF 二分为：</p>
-<pre><code class="language-text">Text PDF
+<div class="highlight"><pre><span></span><code>Text PDF
 or
 Scan PDF
-</code></pre>
+</code></pre></div>
 <p>更合理的是支持：</p>
-<pre><code class="language-text">Page-level
+<div class="highlight"><pre><span></span><code>Page-level
 or
 Block-level
-</code></pre>
+</code></pre></div>
 <p>判断和 fallback。</p>
 <p>最终所有页面统一输出：</p>
-<pre><code class="language-text">StructuredDocument
-</code></pre>
+<div class="highlight"><pre><span></span><code>StructuredDocument
+</code></pre></div>
 <hr />
 <h3 id="d">场景 D：有完整结构的文本</h3>
 <p>例如：</p>
@@ -2101,11 +2101,11 @@ Block-level
 <hr />
 <h3 id="e">场景 E：无可靠结构的纯文本</h3>
 <p>特点：</p>
-<pre><code class="language-text">只有连续文本
+<div class="highlight"><pre><span></span><code>只有连续文本
 没有 Heading
 没有 Section
 视觉信息已经丢失
-</code></pre>
+</code></pre></div>
 <p>这时才需要更多语义方法：</p>
 <ul>
 <li>Sentence Splitting</li>
@@ -2118,7 +2118,7 @@ Block-level
 <h2 id="4-structured-document">4. Structured Document</h2>
 <p>Parser 的目标输出应该尽可能统一。</p>
 <p>例如：</p>
-<pre><code class="language-text">Document
+<div class="highlight"><pre><span></span><code>Document
 ├── Title
 ├── Section
 │   ├── Heading
@@ -2129,9 +2129,9 @@ Block-level
     ├── Paragraph
     ├── Figure
     └── Caption
-</code></pre>
+</code></pre></div>
 <p>典型 Block 类型：</p>
-<pre><code class="language-text">Title
+<div class="highlight"><pre><span></span><code>Title
 Heading
 Paragraph
 List
@@ -2140,20 +2140,20 @@ Figure
 Caption
 Formula
 Code
-</code></pre>
+</code></pre></div>
 <p>典型结构信息：</p>
-<pre><code class="language-text">page
+<div class="highlight"><pre><span></span><code>page
 bbox
 reading_order
 parent
 section
 heading_path
-</code></pre>
+</code></pre></div>
 <hr />
 <h2 id="5-normalization-cleaning">5. Normalization / Cleaning</h2>
 <p>Parser 输出后不建议直接进入 Chunker。</p>
 <p>完整流程：</p>
-<pre><code class="language-text">Parser
+<div class="highlight"><pre><span></span><code>Parser
  ↓
 Raw Structured Document
  ↓
@@ -2162,7 +2162,7 @@ Normalization / Cleaning
 Clean Structured Document
  ↓
 Chunker
-</code></pre>
+</code></pre></div>
 <p>这一层主要处理：</p>
 <ul>
 <li>Header / Footer 去除</li>
@@ -2181,22 +2181,22 @@ Chunker
 <hr />
 <h2 id="6-chunk">6. Chunk 是什么</h2>
 <p>Chunk 是 Retrieval 的基本文本单元。</p>
-<pre><code class="language-text">Document
+<div class="highlight"><pre><span></span><code>Document
    ↓
 Chunk 1
 Chunk 2
 Chunk 3
 ...
-</code></pre>
+</code></pre></div>
 <p>Chunking 的目标不是单纯控制长度，而是同时考虑：</p>
-<pre><code class="language-text">Semantic Completeness
+<div class="highlight"><pre><span></span><code>Semantic Completeness
 +
 Retrieval Precision
 +
 Context Completeness
 +
 Token Cost
-</code></pre>
+</code></pre></div>
 <hr />
 <h2 id="7-chunking">7. 常见 Chunking 方法</h2>
 <h3 id="fixed-size-chunking">Fixed-size Chunking</h3>
@@ -2225,14 +2225,14 @@ Token Cost
 <hr />
 <h3 id="recursive-chunking">Recursive Chunking</h3>
 <p>按照一组优先级逐级切分：</p>
-<pre><code class="language-text">Section
+<div class="highlight"><pre><span></span><code>Section
  ↓
 Paragraph
  ↓
 Sentence
  ↓
 Token
-</code></pre>
+</code></pre></div>
 <p>直到满足 Size Limit。</p>
 <p>比纯 Fixed-size 更合理。</p>
 <hr />
@@ -2252,7 +2252,7 @@ Token
 <h3 id="semantic-chunking">Semantic Chunking</h3>
 <p>根据语义变化寻找 Chunk Boundary。</p>
 <p>典型流程：</p>
-<pre><code class="language-text">Text
+<div class="highlight"><pre><span></span><code>Text
  ↓
 Sentence Split
  ↓
@@ -2263,7 +2263,7 @@ Compare Adjacent Semantics
 Detect Topic Change
  ↓
 Segment
-</code></pre>
+</code></pre></div>
 <p>适用于：</p>
 <ul>
 <li>长 Section</li>
@@ -2297,7 +2297,7 @@ Segment
 <hr />
 <h2 id="8-hierarchical-chunking">8. 推荐的 Hierarchical Chunking</h2>
 <p>更合理的策略不是选择一种 Chunker，而是：</p>
-<pre><code class="language-text">Structured Content
+<div class="highlight"><pre><span></span><code>Structured Content
        ↓
 Structure First
        ↓
@@ -2313,11 +2313,11 @@ Split Further      Merge
    └────────┬───────┘
             ↓
        Final Chunk
-</code></pre>
+</code></pre></div>
 <h3 id="too-big">Too Big</h3>
 <p>例如：</p>
-<pre><code class="language-text">Section = 5000 tokens
-</code></pre>
+<div class="highlight"><pre><span></span><code>Section = 5000 tokens
+</code></pre></div>
 <p>继续：</p>
 <ul>
 <li>Paragraph Split</li>
@@ -2327,8 +2327,8 @@ Split Further      Merge
 </ul>
 <h3 id="too-small">Too Small</h3>
 <p>例如：</p>
-<pre><code class="language-text">Heading + 30 token paragraph
-</code></pre>
+<div class="highlight"><pre><span></span><code>Heading + 30 token paragraph
+</code></pre></div>
 <p>可以：</p>
 <ul>
 <li>与 Parent Heading 合并</li>
@@ -2338,9 +2338,9 @@ Split Further      Merge
 <hr />
 <h2 id="9-chunk-overlap">9. Chunk Overlap</h2>
 <p>固定 Chunking 中常见：</p>
-<pre><code class="language-text">Chunk 1: token 0-500
+<div class="highlight"><pre><span></span><code>Chunk 1: token 0-500
 Chunk 2: token 450-950
-</code></pre>
+</code></pre></div>
 <p>Overlap 可以减少边界导致的上下文丢失。</p>
 <p>但 Overlap 过大会造成：</p>
 <ul>
@@ -2358,12 +2358,12 @@ Chunk 2: token 450-950
 <h3 id="table">Table</h3>
 <p>表格不能简单转换成无结构连续文本。</p>
 <p>需要尽量保留：</p>
-<pre><code class="language-text">Header
+<div class="highlight"><pre><span></span><code>Header
 Row
 Column
 Cell Relation
 Caption
-</code></pre>
+</code></pre></div>
 <p>可以使用：</p>
 <ul>
 <li>Markdown Table</li>
@@ -2404,19 +2404,19 @@ Caption
 <li>Caption 跨页</li>
 </ul>
 <p>因此：</p>
-<pre><code class="language-text">Page Boundary
+<div class="highlight"><pre><span></span><code>Page Boundary
 ≠
 Semantic Boundary
-</code></pre>
+</code></pre></div>
 <p>Chunking 前应该进行：</p>
-<pre><code class="language-text">Block Continuity Detection
+<div class="highlight"><pre><span></span><code>Block Continuity Detection
 +
 Cross-page Merge
-</code></pre>
+</code></pre></div>
 <hr />
 <h2 id="12-metadata">12. Metadata</h2>
 <p>Chunk 建议保留：</p>
-<pre><code class="language-text">chunk_id
+<div class="highlight"><pre><span></span><code>chunk_id
 document_id
 document_version
 page
@@ -2427,26 +2427,26 @@ language
 source
 bbox
 created_at
-</code></pre>
+</code></pre></div>
 <p>可以进一步区分：</p>
 <h3 id="document-level-metadata">Document-level Metadata</h3>
 <p>例如：</p>
-<pre><code class="language-text">document_id
+<div class="highlight"><pre><span></span><code>document_id
 version
 source
 language
 created_at
 permissions
-</code></pre>
+</code></pre></div>
 <h3 id="chunk-level-metadata">Chunk-level Metadata</h3>
 <p>例如：</p>
-<pre><code class="language-text">chunk_id
+<div class="highlight"><pre><span></span><code>chunk_id
 page
 heading_path
 chunk_type
 bbox
 parent_chunk_id
-</code></pre>
+</code></pre></div>
 <p>Metadata 用于：</p>
 <ul>
 <li>Filter</li>
@@ -2459,29 +2459,29 @@ parent_chunk_id
 <hr />
 <h2 id="13-parent-child-hierarchical-chunk">13. Parent-Child / Hierarchical Chunk</h2>
 <p>可以同时维护不同粒度：</p>
-<pre><code class="language-text">Document
+<div class="highlight"><pre><span></span><code>Document
  ↓
 Section
  ↓
 Paragraph Chunk
-</code></pre>
+</code></pre></div>
 <p>例如：</p>
 <blockquote>
 <p>使用较小 Chunk 做精确 Retrieval，但最终返回它所属的较大 Parent Section。</p>
 </blockquote>
 <p>这类方法通常称为：</p>
-<pre><code class="language-text">Parent-Child Retrieval
+<div class="highlight"><pre><span></span><code>Parent-Child Retrieval
 Small-to-Big Retrieval
-</code></pre>
+</code></pre></div>
 <p>核心思想：</p>
-<pre><code class="language-text">Small Chunk
+<div class="highlight"><pre><span></span><code>Small Chunk
 =
 Retrieval Precision
 
 Large Parent
 =
 Context Completeness
-</code></pre>
+</code></pre></div>
 <hr />
 <h2 id="14">14. 多语言</h2>
 <p>语言会影响：</p>
@@ -2492,8 +2492,8 @@ Context Completeness
 <li>Embedding</li>
 </ul>
 <p>建议保留：</p>
-<pre><code class="language-text">language metadata
-</code></pre>
+<div class="highlight"><pre><span></span><code>language metadata
+</code></pre></div>
 <p>并使用：</p>
 <ul>
 <li>Multilingual Sentence Splitter</li>
@@ -2503,18 +2503,18 @@ Context Completeness
 <hr />
 <h2 id="15">15. 文档版本</h2>
 <p>Knowledge Base 可能存在：</p>
-<pre><code class="language-text">Document v1
+<div class="highlight"><pre><span></span><code>Document v1
 Document v2
 Document v3
-</code></pre>
+</code></pre></div>
 <p>应考虑：</p>
-<pre><code class="language-text">document_id
+<div class="highlight"><pre><span></span><code>document_id
 version
 active / inactive
 updated_at
-</code></pre>
+</code></pre></div>
 <p>更新时需要：</p>
-<pre><code class="language-text">Delete / Deactivate Old Chunks
+<div class="highlight"><pre><span></span><code>Delete / Deactivate Old Chunks
  ↓
 Parse New Version
  ↓
@@ -2523,25 +2523,25 @@ Re-chunk
 Re-embed
  ↓
 Re-index
-</code></pre>
+</code></pre></div>
 <hr />
 <h2 id="16-parsing-chunking-evaluation">16. Parsing / Chunking Evaluation</h2>
 <p>不能只根据感觉选择：</p>
-<pre><code class="language-text">500 tokens
+<div class="highlight"><pre><span></span><code>500 tokens
 1000 tokens
 Semantic Chunking
 Docling
 Document VLM
-</code></pre>
+</code></pre></div>
 <p>应该通过真实 Query 测试：</p>
-<pre><code class="language-text">Parsing Strategy
+<div class="highlight"><pre><span></span><code>Parsing Strategy
       +
 Chunk Strategy
       ↓
 Retrieval
       ↓
 Evaluation
-</code></pre>
+</code></pre></div>
 <p>常见 Retrieval 指标：</p>
 <ul>
 <li>Recall@K</li>
@@ -2609,6 +2609,8 @@ Evaluation
       <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@11/dist/mermaid.min.js"></script>
       
     
   </body>

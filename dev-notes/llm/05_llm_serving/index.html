@@ -569,7 +569,7 @@
   <span class="md-ellipsis">
     
   
-    llm
+    LLM
   
 
     
@@ -585,7 +585,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    llm
+    LLM
   
 
           </label>
@@ -1211,7 +1211,7 @@
 <p><strong>让其他程序调用模型。</strong></p>
 </blockquote>
 <p>整体关系可以理解为：</p>
-<pre><code class="language-text">Application
+<div class="highlight"><pre><span></span><code>Application
      ↓
 LLM API
      ↓
@@ -1220,7 +1220,7 @@ Serving
 Inference Engine
      ↓
 Model
-</code></pre>
+</code></pre></div>
 <h2 id="2-api">2. 常见 API 形式</h2>
 <p>Serving Layer 常见的接口形式包括：</p>
 <ul>
@@ -1232,7 +1232,7 @@ Model
 <p>它们的核心作用都是在 Application 和底层模型推理之间建立稳定的调用接口。</p>
 <h2 id="3-openai-compatible-api">3. OpenAI-compatible API</h2>
 <p>工程部署中经常会看到：</p>
-<pre><code class="language-text">Application
+<div class="highlight"><pre><span></span><code>Application
      ↓
 OpenAI-compatible API
      ↓
@@ -1241,7 +1241,7 @@ LLM Serving
 Inference Engine
      ↓
 Model
-</code></pre>
+</code></pre></div>
 <p>OpenAI-compatible API 的价值在于统一上层调用方式。</p>
 <p>例如以下应用：</p>
 <ul>
@@ -1253,7 +1253,7 @@ Model
 <p>可以依赖统一 API，而不需要直接关心底层模型到底由哪个 Runtime 执行。</p>
 <h2 id="4-serving">4. Serving 与高并发推理</h2>
 <p>在模型 Serving 场景中，可能同时存在多个用户请求：</p>
-<pre><code class="language-text">User A ─┐
+<div class="highlight"><pre><span></span><code>User A ─┐
 User B ─┤
 User C ─┤
 User D ─┘
@@ -1263,7 +1263,7 @@ User D ─┘
 Inference / Serving Engine
          ↓
        GPU
-</code></pre>
+</code></pre></div>
 <p>因此高性能 Serving Engine 会重点关注：</p>
 <ul>
 <li>GPU 利用率</li>
@@ -1276,20 +1276,20 @@ Inference / Serving Engine
 <p>vLLM 和 SGLang 都属于这一类高性能 GPU LLM Serving / Runtime 生态。</p>
 <h2 id="5-serving-application">5. Serving 与 Application 的关系</h2>
 <p>Serving Layer 位于推理引擎与业务应用之间：</p>
-<pre><code class="language-text">Model
+<div class="highlight"><pre><span></span><code>Model
   ↓
 Inference Runtime
   ↓
 Serving / API
   ↓
 Application
-</code></pre>
+</code></pre></div>
 <p>这样可以把模型运行方式与业务系统解耦。</p>
 <p>上层 Application 只需要知道：</p>
-<pre><code class="language-text">调用哪个 API
+<div class="highlight"><pre><span></span><code>调用哪个 API
 发送什么 Request
 接收什么 Response
-</code></pre>
+</code></pre></div>
 <p>而不需要直接处理：</p>
 <ul>
 <li>模型文件加载</li>
@@ -1354,6 +1354,8 @@ Application
       <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@11/dist/mermaid.min.js"></script>
       
     
   </body>

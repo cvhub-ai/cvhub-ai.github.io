@@ -569,7 +569,7 @@
   <span class="md-ellipsis">
     
   
-    llm
+    LLM
   
 
     
@@ -585,7 +585,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    llm
+    LLM
   
 
           </label>
@@ -1341,7 +1341,7 @@
 <li>Tokenizer / Config</li>
 </ul>
 <p>还需要程序负责：</p>
-<pre><code class="language-text">Load Model
+<div class="highlight"><pre><span></span><code>Load Model
      ↓
 Load Tokenizer
      ↓
@@ -1354,7 +1354,7 @@ Manage KV Cache
 Token Sampling
      ↓
 Generate Output
-</code></pre>
+</code></pre></div>
 <p>负责这些工作的系统可以称为：</p>
 <p><strong>Inference Runtime / Inference Engine</strong></p>
 <p>常见工具包括：</p>
@@ -1380,23 +1380,23 @@ Generate Output
 <li>适合低资源本地运行</li>
 </ul>
 <p>典型关系：</p>
-<pre><code class="language-text">GGUF
+<div class="highlight"><pre><span></span><code>GGUF
   ↓
 llama.cpp
   ↓
 CPU / GPU
   ↓
 Text Output
-</code></pre>
+</code></pre></div>
 <p>llama.cpp 也可以通过 <code>llama-server</code> 提供 HTTP 服务：</p>
-<pre><code class="language-text">Application
+<div class="highlight"><pre><span></span><code>Application
      ↓
 HTTP
      ↓
 llama-server
      ↓
 GGUF Model
-</code></pre>
+</code></pre></div>
 <h2 id="3-ollama">3. Ollama</h2>
 <p>Ollama 与 llama.cpp、vLLM 的定位并不完全相同。</p>
 <p>它更接近：</p>
@@ -1414,7 +1414,7 @@ GGUF Model
 <li>本地服务管理</li>
 </ul>
 <p>可以粗略理解为：</p>
-<pre><code class="language-text">Ollama
+<div class="highlight"><pre><span></span><code>Ollama
 │
 ├── Model Management
 ├── API
@@ -1422,7 +1422,7 @@ GGUF Model
 └── Inference Backend
         ↓
     Local Model
-</code></pre>
+</code></pre></div>
 <p>因此：</p>
 <blockquote>
 <p><strong>llama.cpp 更接近底层 Inference Runtime。</strong></p>
@@ -1444,7 +1444,7 @@ GGUF Model
 <li>Model Serving</li>
 </ul>
 <p>典型场景：</p>
-<pre><code class="language-text">User A ─┐
+<div class="highlight"><pre><span></span><code>User A ─┐
 User B ─┤
 User C ─┤
 User D ─┘
@@ -1454,17 +1454,17 @@ User D ─┘
        vLLM
          ↓
  GPU / GPU Cluster
-</code></pre>
+</code></pre></div>
 <p>vLLM 的代表性技术之一是 <strong>PagedAttention</strong>，用于更加高效地管理 Attention 推理过程中涉及的 KV Cache 等资源。</p>
 <p>工程部署中常见：</p>
-<pre><code class="language-text">Application
+<div class="highlight"><pre><span></span><code>Application
      ↓
 OpenAI-compatible API
      ↓
 vLLM
      ↓
 Model
-</code></pre>
+</code></pre></div>
 <p>这样上层 Application 可以通过统一 API 调用模型，而不需要直接依赖模型内部实现。</p>
 <h2 id="5-sglang">5. SGLang</h2>
 <p>SGLang 同样属于高性能 LLM Serving / Runtime 生态。</p>
@@ -1478,12 +1478,12 @@ Model
 <li>Concurrent Requests</li>
 </ul>
 <p>可以粗略理解：</p>
-<pre><code class="language-text">        GPU LLM Serving
+<div class="highlight"><pre><span></span><code>        GPU LLM Serving
               │
       ┌───────┴───────┐
       ↓               ↓
     vLLM           SGLang
-</code></pre>
+</code></pre></div>
 <p>两者存在明显的使用场景重叠。</p>
 <blockquote>
 <p>具体性能、功能和模型支持会随着版本快速变化，因此不适合长期固定地认为其中一个一定优于另一个。</p>
@@ -1491,7 +1491,7 @@ Model
 <h2 id="6-hugging-face-transformers">6. Hugging Face Transformers</h2>
 <p>Transformers 和 vLLM、Ollama 的定位并不完全一样。</p>
 <p>它首先是完整的 Transformer 模型开发生态：</p>
-<pre><code class="language-text">Transformers
+<div class="highlight"><pre><span></span><code>Transformers
 │
 ├── Model
 ├── Tokenizer
@@ -1499,7 +1499,7 @@ Model
 ├── Training
 ├── Fine-tuning
 └── Inference
-</code></pre>
+</code></pre></div>
 <p>非常适合：</p>
 <ul>
 <li>模型研究</li>
@@ -1524,14 +1524,14 @@ Model
 <li>Data Center Deployment</li>
 </ul>
 <p>整体方向：</p>
-<pre><code class="language-text">Model
+<div class="highlight"><pre><span></span><code>Model
   ↓
 NVIDIA Inference Optimization
   ↓
 TensorRT-LLM
   ↓
 NVIDIA GPU
-</code></pre>
+</code></pre></div>
 <p>它通常更适合追求 NVIDIA 平台极致推理性能的部署环境。</p>
 <h2 id="8-exllamav2">8. ExLlamaV2</h2>
 <p>ExLlamaV2 主要面向 NVIDIA GPU 上的高效量化模型推理。</p>
@@ -1613,7 +1613,7 @@ NVIDIA GPU
 <p>具体支持情况会随版本变化，应以各项目当前文档为准。</p>
 <h2 id="11-llamacppollama-vllm">11. llama.cpp、Ollama 与 vLLM</h2>
 <p>这三个概念非常容易混淆，可以粗略理解为：</p>
-<pre><code class="language-text">llama.cpp
+<div class="highlight"><pre><span></span><code>llama.cpp
 → 怎么高效地在本地硬件上运行模型
 
 Ollama
@@ -1621,7 +1621,7 @@ Ollama
 
 vLLM
 → 怎么高性能地把 GPU 模型作为服务提供出去
-</code></pre>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1704,6 +1704,8 @@ vLLM
       <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@11/dist/mermaid.min.js"></script>
       
     
   </body>

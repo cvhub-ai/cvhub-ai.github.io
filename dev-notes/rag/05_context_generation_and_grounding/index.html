@@ -567,7 +567,7 @@
   <span class="md-ellipsis">
     
   
-    llm
+    LLM
   
 
     
@@ -583,7 +583,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    llm
+    LLM
   
 
           </label>
@@ -1134,7 +1134,7 @@
 <h1 id="rag-context-buildinggeneration-grounding">RAG Context Building、Generation 与 Grounding</h1>
 <h2 id="1-context-building">1. Context Building 的位置</h2>
 <p>Retrieval 并不是 RAG Query Pipeline 的终点。</p>
-<pre><code class="language-text">Query
+<div class="highlight"><pre><span></span><code>Query
  ↓
 Retrieval
  ↓
@@ -1147,18 +1147,18 @@ Retrieved Chunks
 Context Building
  ↓
 LLM / Agent
-</code></pre>
+</code></pre></div>
 <p>Context Builder 的职责：</p>
 <blockquote>
 <p>将检索到的知识转换成适合后续 LLM / Agent 使用的上下文。</p>
 </blockquote>
 <p>不能简单理解为：</p>
-<pre><code class="language-text">Top-K Chunks
+<div class="highlight"><pre><span></span><code>Top-K Chunks
  ↓
 全部拼接
  ↓
 LLM
-</code></pre>
+</code></pre></div>
 <hr />
 <h2 id="2-context-builder">2. 为什么需要 Context Builder</h2>
 <p>Retrieval Results 可能存在：</p>
@@ -1173,7 +1173,7 @@ LLM
 <li>顺序混乱</li>
 </ul>
 <p>因此需要：</p>
-<pre><code class="language-text">Retrieved Results
+<div class="highlight"><pre><span></span><code>Retrieved Results
        ↓
 Deduplicate
        ↓
@@ -1186,15 +1186,15 @@ Budget
 Format
        ↓
 Final Context
-</code></pre>
+</code></pre></div>
 <hr />
 <h1 id="3-deduplication">3. Deduplication</h1>
 <p>Chunk Overlap、Hybrid Retrieval 和 Multi-query 都可能产生重复结果。</p>
 <p>例如：</p>
-<pre><code class="language-text">Chunk A
-Chunk A'
-Chunk A''
-</code></pre>
+<div class="highlight"><pre><span></span><code>Chunk A
+Chunk A&#39;
+Chunk A&#39;&#39;
+</code></pre></div>
 <p>内容高度重叠。</p>
 <p>如果全部进入 Context：</p>
 <ul>
@@ -1203,33 +1203,33 @@ Chunk A''
 <li>降低 Context Diversity</li>
 </ul>
 <p>因此需要：</p>
-<pre><code class="language-text">Exact Deduplication
+<div class="highlight"><pre><span></span><code>Exact Deduplication
 Near-Duplicate Detection
 Overlap Deduplication
-</code></pre>
+</code></pre></div>
 <hr />
 <h1 id="4-adjacent-chunk-merge">4. Adjacent Chunk Merge</h1>
 <p>可能检索到：</p>
-<pre><code class="language-text">Section 3
+<div class="highlight"><pre><span></span><code>Section 3
 ├── Chunk 10
 ├── Chunk 11 ← retrieved
 ├── Chunk 12 ← retrieved
 └── Chunk 13
-</code></pre>
+</code></pre></div>
 <p>如果 11 和 12 连续，可以考虑：</p>
-<pre><code class="language-text">Chunk 11 + Chunk 12
-</code></pre>
+<div class="highlight"><pre><span></span><code>Chunk 11 + Chunk 12
+</code></pre></div>
 <p>恢复更完整上下文。</p>
 <p>但不能无限 Merge，否则重新变成巨大 Chunk。</p>
 <hr />
 <h1 id="5-parent-context-expansion">5. Parent Context Expansion</h1>
 <p>如果检索的是 Child Chunk：</p>
-<pre><code class="language-text">Heading
+<div class="highlight"><pre><span></span><code>Heading
   ↓
 Paragraph
   ↓
 Small Chunk ← matched
-</code></pre>
+</code></pre></div>
 <p>可以补充：</p>
 <ul>
 <li>Parent Heading</li>
@@ -1238,10 +1238,10 @@ Small Chunk ← matched
 <li>Parent Chunk</li>
 </ul>
 <p>这样：</p>
-<pre><code class="language-text">Retrieval Unit
+<div class="highlight"><pre><span></span><code>Retrieval Unit
 ≠
 Final Context Unit
-</code></pre>
+</code></pre></div>
 <p>这是很重要的设计思想。</p>
 <hr />
 <h1 id="6-context-ordering">6. Context Ordering</h1>
@@ -1259,21 +1259,21 @@ Final Context Unit
 <h1 id="7-token-budget">7. Token Budget</h1>
 <p>LLM Context Window 有限制。</p>
 <p>假设：</p>
-<pre><code class="language-text">Model Context = 32k
-</code></pre>
+<div class="highlight"><pre><span></span><code>Model Context = 32k
+</code></pre></div>
 <p>不能全部用于 Retrieved Context。</p>
 <p>还需要：</p>
-<pre><code class="language-text">System Prompt
+<div class="highlight"><pre><span></span><code>System Prompt
 User Query
 Conversation History
 Tool Results
 Output Tokens
-</code></pre>
+</code></pre></div>
 <p>因此需要 Context Budget：</p>
-<pre><code class="language-text">Available Context Tokens
+<div class="highlight"><pre><span></span><code>Available Context Tokens
       ↓
 Select / Trim Retrieved Content
-</code></pre>
+</code></pre></div>
 <hr />
 <h1 id="8-context-compression">8. Context Compression</h1>
 <p>如果 Retrieved Chunk 太长，可以压缩。</p>
@@ -1290,38 +1290,38 @@ Select / Trim Retrieved Content
 <hr />
 <h1 id="9-diversity">9. Diversity</h1>
 <p>如果 Top-K 全来自一个非常相似的 Section：</p>
-<pre><code class="language-text">Chunk A1
+<div class="highlight"><pre><span></span><code>Chunk A1
 Chunk A2
 Chunk A3
 Chunk A4
 Chunk A5
-</code></pre>
+</code></pre></div>
 <p>可能遗漏其他重要 Source。</p>
 <p>可以考虑：</p>
-<pre><code class="language-text">Diversity-aware Selection
-</code></pre>
+<div class="highlight"><pre><span></span><code>Diversity-aware Selection
+</code></pre></div>
 <p>目标是在：</p>
-<pre><code class="language-text">Relevance
+<div class="highlight"><pre><span></span><code>Relevance
 +
 Coverage
-</code></pre>
+</code></pre></div>
 <p>之间取得平衡。</p>
 <hr />
 <h1 id="10-lost-in-the-middle">10. Lost in the Middle</h1>
 <p>LLM 对长 Context 中不同位置的信息利用能力可能不完全一致。</p>
 <p>因此 Context Builder 不应只关注：</p>
-<pre><code class="language-text">Context 能不能塞进去
-</code></pre>
+<div class="highlight"><pre><span></span><code>Context 能不能塞进去
+</code></pre></div>
 <p>还应该关注：</p>
-<pre><code class="language-text">重要信息放在哪里
+<div class="highlight"><pre><span></span><code>重要信息放在哪里
 Context 是否过长
 是否存在大量无关内容
-</code></pre>
+</code></pre></div>
 <p>高质量、精简 Context 往往比盲目增加 Top-K 更有效。</p>
 <hr />
 <h1 id="11-context-format">11. Context Format</h1>
 <p>Context 可以采用明确结构：</p>
-<pre><code class="language-text">[Source 1]
+<div class="highlight"><pre><span></span><code>[Source 1]
 Document: ...
 Page: ...
 Section: ...
@@ -1330,7 +1330,7 @@ Content:
 
 [Source 2]
 ...
-</code></pre>
+</code></pre></div>
 <p>好处：</p>
 <ul>
 <li>LLM 更容易区分 Source</li>
@@ -1340,14 +1340,14 @@ Content:
 <hr />
 <h1 id="12-source-tracking">12. Source Tracking</h1>
 <p>从 Ingestion 开始就应该保持：</p>
-<pre><code class="language-text">Chunk
+<div class="highlight"><pre><span></span><code>Chunk
  ↓
 Document
  ↓
 Source
-</code></pre>
+</code></pre></div>
 <p>例如：</p>
-<pre><code class="language-text">chunk_id
+<div class="highlight"><pre><span></span><code>chunk_id
 document_id
 document_version
 page
@@ -1355,7 +1355,7 @@ section
 heading_path
 bbox
 source_uri
-</code></pre>
+</code></pre></div>
 <p>否则到了 Generation 阶段很难可靠生成 Citation。</p>
 <hr />
 <h1 id="13-citation">13. Citation</h1>
@@ -1364,33 +1364,33 @@ source_uri
 <p>让最终回答能够追踪到实际 Knowledge Source。</p>
 </blockquote>
 <p>例如：</p>
-<pre><code class="language-text">Answer Claim
+<div class="highlight"><pre><span></span><code>Answer Claim
  ↓
 Retrieved Chunk
  ↓
 Document
  ↓
 Page / Section
-</code></pre>
+</code></pre></div>
 <p>Citation 不应该只记录文件名。</p>
 <p>更完整可以包含：</p>
-<pre><code class="language-text">document_id
+<div class="highlight"><pre><span></span><code>document_id
 document_title
 page
 section
 bbox
 source
 version
-</code></pre>
+</code></pre></div>
 <hr />
 <h1 id="14-pdf-citation">14. PDF Citation</h1>
 <p>对于 PDF：</p>
-<pre><code class="language-text">Document
+<div class="highlight"><pre><span></span><code>Document
  ↓
 Page
  ↓
 Block / BBox
-</code></pre>
+</code></pre></div>
 <p>如果 Parser 保留 Bounding Box，可以进一步支持：</p>
 <blockquote>
 <p>在原 PDF 页面中定位对应证据。</p>
@@ -1399,26 +1399,26 @@ Block / BBox
 <hr />
 <h1 id="15-chunk-citation">15. 跨页 Chunk Citation</h1>
 <p>如果一个 Chunk 来自：</p>
-<pre><code class="language-text">Page 10
+<div class="highlight"><pre><span></span><code>Page 10
 +
 Page 11
-</code></pre>
+</code></pre></div>
 <p>Metadata 不应该强制只有一个 page。</p>
 <p>可以表示：</p>
-<pre><code class="language-text">pages = [10, 11]
-</code></pre>
+<div class="highlight"><pre><span></span><code>pages = [10, 11]
+</code></pre></div>
 <p>或：</p>
-<pre><code class="language-text">page_start
+<div class="highlight"><pre><span></span><code>page_start
 page_end
-</code></pre>
+</code></pre></div>
 <hr />
 <h1 id="16-table-citation">16. Table Citation</h1>
 <p>Table 的 Citation 应尽量能够追踪：</p>
-<pre><code class="language-text">Document
+<div class="highlight"><pre><span></span><code>Document
 Page
 Table
 Row / Column
-</code></pre>
+</code></pre></div>
 <p>至少应保留 Table Block 身份，而不是完全丢失结构后只引用一段文本。</p>
 <hr />
 <h1 id="17-grounding">17. Grounding</h1>
@@ -1427,17 +1427,17 @@ Row / Column
 <p>最终输出应尽量建立在 Retrieved Evidence 上。</p>
 </blockquote>
 <p>简单理解：</p>
-<pre><code class="language-text">Question
+<div class="highlight"><pre><span></span><code>Question
 +
 Retrieved Evidence
  ↓
 Answer
-</code></pre>
+</code></pre></div>
 <p>而不是：</p>
-<pre><code class="language-text">Question
+<div class="highlight"><pre><span></span><code>Question
  ↓
 LLM Free Generation
-</code></pre>
+</code></pre></div>
 <hr />
 <h1 id="18-faithfulness">18. Faithfulness</h1>
 <p>Faithfulness 关注：</p>
@@ -1459,14 +1459,14 @@ LLM Free Generation
 <h3 id="faithfulness">Faithfulness</h3>
 <p>回答是否受到 Retrieved Evidence 支持。</p>
 <p>理想状态：</p>
-<pre><code class="language-text">Relevant
+<div class="highlight"><pre><span></span><code>Relevant
 +
 Faithful
-</code></pre>
+</code></pre></div>
 <hr />
 <h1 id="20-prompt-construction">20. Prompt Construction</h1>
 <p>传统 RAG：</p>
-<pre><code class="language-text">System Instruction
+<div class="highlight"><pre><span></span><code>System Instruction
 +
 Retrieved Context
 +
@@ -1475,7 +1475,7 @@ User Query
 Prompt
  ↓
 LLM
-</code></pre>
+</code></pre></div>
 <p>Prompt 应明确告诉模型：</p>
 <ul>
 <li>Context 是参考资料</li>
@@ -1486,26 +1486,26 @@ LLM
 <hr />
 <h1 id="21-retrieved-content-instruction">21. Retrieved Content 不是 Instruction</h1>
 <p>这是重要安全原则：</p>
-<pre><code class="language-text">Retrieved Document
+<div class="highlight"><pre><span></span><code>Retrieved Document
 =
 Untrusted Data
-</code></pre>
+</code></pre></div>
 <p>而不是：</p>
-<pre><code class="language-text">System Instruction
-</code></pre>
+<div class="highlight"><pre><span></span><code>System Instruction
+</code></pre></div>
 <p>如果文档中出现：</p>
-<pre><code class="language-text">Ignore all previous instructions...
-</code></pre>
+<div class="highlight"><pre><span></span><code>Ignore all previous instructions...
+</code></pre></div>
 <p>LLM 不应该把它当成系统指令。</p>
 <p>因此 Prompt / Agent 设计需要明确区分：</p>
-<pre><code class="language-text">Trusted Instructions
+<div class="highlight"><pre><span></span><code>Trusted Instructions
 vs
 Retrieved Content
-</code></pre>
+</code></pre></div>
 <hr />
 <h1 id="22-traditional-rag">22. Traditional RAG</h1>
 <p>传统问答系统可以：</p>
-<pre><code class="language-text">Query
+<div class="highlight"><pre><span></span><code>Query
  ↓
 RAG Pipeline
  ↓
@@ -1516,12 +1516,12 @@ Prompt Builder
 LLM
  ↓
 Answer
-</code></pre>
+</code></pre></div>
 <p>这里 Generator 可以属于 RAG 服务本身。</p>
 <hr />
 <h1 id="23-agentic-architecture">23. Agentic Architecture</h1>
 <p>在 Agent 系统中可以：</p>
-<pre><code class="language-text">User
+<div class="highlight"><pre><span></span><code>User
  ↓
 Agent
  ↓
@@ -1534,41 +1534,41 @@ Agent Reasoning
 LLM / Tools
  ↓
 Answer
-</code></pre>
+</code></pre></div>
 <p>此时：</p>
-<pre><code class="language-text">RAG
+<div class="highlight"><pre><span></span><code>RAG
 =
 Knowledge Retrieval Capability
-</code></pre>
+</code></pre></div>
 <p>而：</p>
-<pre><code class="language-text">Agent
+<div class="highlight"><pre><span></span><code>Agent
 =
 Reasoning / Orchestration
-</code></pre>
+</code></pre></div>
 <p>两种设计都合理，取决于系统职责边界。</p>
 <hr />
 <h1 id="24-rag-tool-result">24. RAG 与 Tool Result</h1>
 <p>Agent 场景中最终 Context 可能来自：</p>
-<pre><code class="language-text">RAG Knowledge
+<div class="highlight"><pre><span></span><code>RAG Knowledge
 +
 Tool Result
 +
 Conversation Context
 +
 User Input
-</code></pre>
+</code></pre></div>
 <p>因此 Agent 最终负责组合多个信息源。</p>
 <p>RAG 不应该把：</p>
-<pre><code class="language-text">Knowledge Retrieval
-</code></pre>
+<div class="highlight"><pre><span></span><code>Knowledge Retrieval
+</code></pre></div>
 <p>和：</p>
-<pre><code class="language-text">External Action Execution
-</code></pre>
+<div class="highlight"><pre><span></span><code>External Action Execution
+</code></pre></div>
 <p>混成同一职责。</p>
 <hr />
 <h1 id="25-context-builder">25. Context Builder 输出</h1>
 <p>一个结构化输出可以是：</p>
-<pre><code class="language-text">ContextResult
+<div class="highlight"><pre><span></span><code>ContextResult
 ├── query
 ├── chunks
 │   ├── text
@@ -1577,47 +1577,47 @@ User Input
 │   └── metadata
 ├── citations
 └── token_count
-</code></pre>
+</code></pre></div>
 <p>这样后续 Agent / Generator 不依赖某个特定 Vector DB。</p>
 <hr />
 <h1 id="26-context-quality">26. Context Quality</h1>
 <p>Context Builder 应追求：</p>
-<pre><code class="language-text">Relevant
+<div class="highlight"><pre><span></span><code>Relevant
 Complete
 Non-duplicate
 Traceable
 Within Token Budget
 Properly Ordered
-</code></pre>
+</code></pre></div>
 <p>而不是：</p>
-<pre><code class="language-text">More Chunks = Better
-</code></pre>
+<div class="highlight"><pre><span></span><code>More Chunks = Better
+</code></pre></div>
 <hr />
 <h1 id="27-context-evaluation">27. Context Evaluation</h1>
 <p>可以关注：</p>
-<pre><code class="language-text">Context Precision
+<div class="highlight"><pre><span></span><code>Context Precision
 Context Recall
-</code></pre>
+</code></pre></div>
 <h3 id="context-precision">Context Precision</h3>
 <p>Retrieved Context 中有多少内容真正相关。</p>
 <h3 id="context-recall">Context Recall</h3>
 <p>回答问题所需的证据有多少被 Retrieved Context 覆盖。</p>
 <p>这两者反映：</p>
-<pre><code class="language-text">Too Much Noise
+<div class="highlight"><pre><span></span><code>Too Much Noise
 vs
 Missing Evidence
-</code></pre>
+</code></pre></div>
 <hr />
 <h1 id="28-citation-evaluation">28. Citation Evaluation</h1>
 <p>Citation 需要评估：</p>
-<pre><code class="language-text">Citation Correctness
+<div class="highlight"><pre><span></span><code>Citation Correctness
 Citation Completeness
 Citation Source Accuracy
-</code></pre>
+</code></pre></div>
 <p>不能仅仅检查“有没有 Citation”。</p>
 <hr />
 <h1 id="29">29. 最终框架</h1>
-<pre><code class="language-text">Retrieved Candidates
+<div class="highlight"><pre><span></span><code>Retrieved Candidates
         ↓
      Reranker
         ↓
@@ -1638,7 +1638,7 @@ Citation Source Accuracy
       Answer
         ↓
      Citation
-</code></pre>
+</code></pre></div>
 <p>核心原则：</p>
 <blockquote>
 <p><strong>Retrieval 决定找到了什么，Context Building 决定真正给模型看什么，Grounding 决定最终回答是否可靠地建立在这些证据之上。</strong></p>
@@ -1698,6 +1698,8 @@ Citation Source Accuracy
       <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@11/dist/mermaid.min.js"></script>
       
     
   </body>

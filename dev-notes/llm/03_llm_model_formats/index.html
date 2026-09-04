@@ -569,7 +569,7 @@
   <span class="md-ellipsis">
     
   
-    llm
+    LLM
   
 
     
@@ -585,7 +585,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    llm
+    LLM
   
 
           </label>
@@ -1215,12 +1215,12 @@
 </ul>
 <p>模型文件格式与模型本身、数据精度以及量化方法不是同一个概念。</p>
 <p>例如：</p>
-<pre><code class="language-text">Qwen3-8B       → Model
+<div class="highlight"><pre><span></span><code>Qwen3-8B       → Model
 AWQ            → Quantization Method
 Q4_K_M         → Quantization Type
 GGUF           → File Format
 safetensors    → File Format
-</code></pre>
+</code></pre></div>
 <h2 id="2-gguf">2. GGUF</h2>
 <p>GGUF 是 llama.cpp 生态中非常重要的模型文件格式。</p>
 <p>它可以包含：</p>
@@ -1235,10 +1235,10 @@ safetensors    → File Format
 <p><strong>GGUF 是文件格式，不等于量化算法。</strong></p>
 </blockquote>
 <p>例如：</p>
-<pre><code class="language-text">Qwen-9B-Q4_K_M.gguf
-</code></pre>
+<div class="highlight"><pre><span></span><code>Qwen-9B-Q4_K_M.gguf
+</code></pre></div>
 <p>可以拆成：</p>
-<pre><code class="language-text">Qwen-9B
+<div class="highlight"><pre><span></span><code>Qwen-9B
 └── Model
 
 Q4_K_M
@@ -1246,7 +1246,7 @@ Q4_K_M
 
 GGUF
 └── File Format
-</code></pre>
+</code></pre></div>
 <p>GGUF 文件中经常出现 Q4_K_M、Q5_K_M、Q6_K、Q8_0 等量化类型，但这些量化类型本身并不等于 GGUF。</p>
 <h2 id="3-safetensors">3. safetensors</h2>
 <p><code>safetensors</code> 是 Hugging Face 模型生态中非常常见的权重文件格式。</p>
@@ -1260,14 +1260,14 @@ GGUF
 <li>...</li>
 </ul>
 <p>例如一个较大的模型可能包含：</p>
-<pre><code class="language-text">model-00001-of-00004.safetensors
+<div class="highlight"><pre><span></span><code>model-00001-of-00004.safetensors
 model-00002-of-00004.safetensors
 ...
-</code></pre>
+</code></pre></div>
 <p>模型较大时，权重通常会被拆成多个文件。</p>
 <h2 id="4-gguf-safetensors">4. GGUF 与 safetensors</h2>
 <p>可以粗略建立下面的常见生态关系：</p>
-<pre><code class="language-text">GGUF
+<div class="highlight"><pre><span></span><code>GGUF
  ↓
 llama.cpp ecosystem
  ↓
@@ -1279,7 +1279,7 @@ safetensors
 Hugging Face ecosystem
  ↓
 Transformers / vLLM / SGLang / GPU Serving
-</code></pre>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1304,17 +1304,17 @@ Transformers / vLLM / SGLang / GPU Serving
 <p>但这只是常见生态关系，并不是绝对限制。</p>
 <h2 id="5">5. 核心关系</h2>
 <p>理解模型文件时，最重要的是不要把不同层次混在一起：</p>
-<pre><code class="language-text">Model
+<div class="highlight"><pre><span></span><code>Model
   ↓
 Model Weights
   ↓
 Precision / Quantization
   ↓
 Serialization / File Format
-</code></pre>
+</code></pre></div>
 <p>例如：</p>
-<pre><code class="language-text">Qwen3-8B-Q4_K_M.gguf
-</code></pre>
+<div class="highlight"><pre><span></span><code>Qwen3-8B-Q4_K_M.gguf
+</code></pre></div>
 <p>描述了：</p>
 <ul>
 <li><code>Qwen3-8B</code>：模型</li>
@@ -1322,8 +1322,8 @@ Serialization / File Format
 <li><code>.gguf</code>：文件格式</li>
 </ul>
 <p>而类似：</p>
-<pre><code class="language-text">Qwen-xxx-AWQ
-</code></pre>
+<div class="highlight"><pre><span></span><code>Qwen-xxx-AWQ
+</code></pre></div>
 <p>其中 <code>AWQ</code> 描述的是量化方法，并不是文件格式。</p>
 
 
@@ -1380,6 +1380,8 @@ Serialization / File Format
       <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@11/dist/mermaid.min.js"></script>
       
     
   </body>

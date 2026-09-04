@@ -567,7 +567,7 @@
   <span class="md-ellipsis">
     
   
-    llm
+    LLM
   
 
     
@@ -583,7 +583,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    llm
+    LLM
   
 
           </label>
@@ -1296,7 +1296,7 @@
 <p>从 Knowledge Base 中找到能够支持当前问题的高相关、高质量知识。</p>
 </blockquote>
 <p>完整 Pipeline 可以表示为：</p>
-<pre><code class="language-text">User / Agent Query
+<div class="highlight"><pre><span></span><code>User / Agent Query
        ↓
 Query Processing
        ↓
@@ -1317,17 +1317,17 @@ Candidate Results
 Final Top-K
        ↓
 Context Builder
-</code></pre>
+</code></pre></div>
 <hr />
 <h2 id="2-query-processing">2. Query Processing</h2>
 <p>原始 Query 不一定是最适合检索的 Query。</p>
 <p>因此可以增加：</p>
-<pre><code class="language-text">Original Query
+<div class="highlight"><pre><span></span><code>Original Query
       ↓
 Query Processor
       ↓
 Retrieval Query
-</code></pre>
+</code></pre></div>
 <p>但 Query Processing 应按需求使用，而不是默认堆叠所有方法。</p>
 <hr />
 <h2 id="3-query-normalization">3. Query Normalization</h2>
@@ -1349,12 +1349,12 @@ Retrieval Query
 <h2 id="4-query-rewrite">4. Query Rewrite</h2>
 <p>将用户表达转换为更适合 Retrieval 的表达。</p>
 <p>例如：</p>
-<pre><code class="language-text">User:
+<div class="highlight"><pre><span></span><code>User:
 &quot;那个 OCR 服务最大能传多大的图？&quot;
 
 Rewrite:
 &quot;OCR service maximum supported image size input limit&quot;
-</code></pre>
+</code></pre></div>
 <p>目的：</p>
 <ul>
 <li>消除口语表达</li>
@@ -1376,14 +1376,14 @@ Rewrite:
 <li>Domain Terminology</li>
 </ul>
 <p>例如：</p>
-<pre><code class="language-text">OCR
+<div class="highlight"><pre><span></span><code>OCR
 → Optical Character Recognition
-</code></pre>
+</code></pre></div>
 <p>可以提高 Recall。</p>
 <hr />
 <h2 id="6-multi-query-retrieval">6. Multi-query Retrieval</h2>
 <p>一个问题生成多个 Retrieval Query：</p>
-<pre><code class="language-text">Original Query
+<div class="highlight"><pre><span></span><code>Original Query
       ↓
  ┌────┼────┐
  Q1   Q2   Q3
@@ -1392,7 +1392,7 @@ Retrieval
  └────┬────┘
       ↓
     Fusion
-</code></pre>
+</code></pre></div>
 <p>适用于：</p>
 <ul>
 <li>用户问题表达模糊</li>
@@ -1409,14 +1409,14 @@ Retrieval
 <h2 id="7-query-decomposition">7. Query Decomposition</h2>
 <p>复杂问题可以拆成多个子问题。</p>
 <p>例如：</p>
-<pre><code class="language-text">Question
+<div class="highlight"><pre><span></span><code>Question
  ↓
 Sub-query A
 Sub-query B
 Sub-query C
  ↓
 Retrieve Separately
-</code></pre>
+</code></pre></div>
 <p>适合：</p>
 <ul>
 <li>Multi-hop Question</li>
@@ -1428,14 +1428,14 @@ Retrieve Separately
 <p>HyDE：</p>
 <p><strong>Hypothetical Document Embeddings</strong></p>
 <p>基本思路：</p>
-<pre><code class="language-text">Query
+<div class="highlight"><pre><span></span><code>Query
  ↓
 LLM generates hypothetical answer/document
  ↓
 Embedding
  ↓
 Vector Retrieval
-</code></pre>
+</code></pre></div>
 <p>目的：</p>
 <blockquote>
 <p>使用更接近文档表达方式的文本进行向量检索。</p>
@@ -1444,22 +1444,22 @@ Vector Retrieval
 <hr />
 <h2 id="9-metadata-filter-extraction">9. Metadata Filter Extraction</h2>
 <p>Query 中可能包含明确条件：</p>
-<pre><code class="language-text">&quot;查 2026 年版本的 OCR 文档&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code>&quot;查 2026 年版本的 OCR 文档&quot;
+</code></pre></div>
 <p>可以提取：</p>
-<pre><code class="language-text">year = 2026
+<div class="highlight"><pre><span></span><code>year = 2026
 service = OCR
-</code></pre>
+</code></pre></div>
 <p>然后：</p>
-<pre><code class="language-text">Semantic Search
+<div class="highlight"><pre><span></span><code>Semantic Search
 +
 Metadata Filter
-</code></pre>
+</code></pre></div>
 <p>这比单纯依赖 Embedding 更可靠。</p>
 <hr />
 <h1 id="10-dense-retrieval">10. Dense Retrieval</h1>
 <p>Dense Retrieval：</p>
-<pre><code class="language-text">Query
+<div class="highlight"><pre><span></span><code>Query
  ↓
 Embedding Model
  ↓
@@ -1468,7 +1468,7 @@ Query Vector
 Vector Search
  ↓
 Top-K Chunks
-</code></pre>
+</code></pre></div>
 <p>优势：</p>
 <ul>
 <li>Semantic Similarity</li>
@@ -1485,8 +1485,8 @@ Top-K Chunks
 <hr />
 <h1 id="11-sparse-retrieval">11. Sparse Retrieval</h1>
 <p>典型方法：</p>
-<pre><code class="language-text">BM25
-</code></pre>
+<div class="highlight"><pre><span></span><code>BM25
+</code></pre></div>
 <p>它依赖文本中的实际 Term。</p>
 <p>优势：</p>
 <ul>
@@ -1500,12 +1500,12 @@ Top-K Chunks
 <hr />
 <h2 id="12-bm25">12. BM25 基础</h2>
 <p>BM25 的核心来自：</p>
-<pre><code class="language-text">TF
+<div class="highlight"><pre><span></span><code>TF
 +
 IDF
 +
 Document Length Normalization
-</code></pre>
+</code></pre></div>
 <h3 id="tf">TF</h3>
 <p>Term Frequency：</p>
 <blockquote>
@@ -1525,10 +1525,10 @@ Document Length Normalization
 <hr />
 <h2 id="13-tokenizer-sparse-retrieval">13. Tokenizer 对 Sparse Retrieval 的影响</h2>
 <p>不同语言：</p>
-<pre><code class="language-text">English
+<div class="highlight"><pre><span></span><code>English
 German
 Chinese
-</code></pre>
+</code></pre></div>
 <p>Tokenization 不同。</p>
 <p>还需要考虑：</p>
 <ul>
@@ -1544,28 +1544,28 @@ Chinese
 <h1 id="14-metadata-retrieval-filtering">14. Metadata Retrieval / Filtering</h1>
 <p>有些条件不应该通过 Semantic Similarity 判断。</p>
 <p>例如：</p>
-<pre><code class="language-text">language = de
+<div class="highlight"><pre><span></span><code>language = de
 version = 3
 service = OCR
 document_type = API_DOC
-</code></pre>
+</code></pre></div>
 <p>可以直接使用 Metadata Filter。</p>
 <p>典型方式：</p>
-<pre><code class="language-text">Filter
+<div class="highlight"><pre><span></span><code>Filter
 +
 Vector Search
-</code></pre>
+</code></pre></div>
 <p>Filter 可以：</p>
 <h3 id="pre-filter">Pre-filter</h3>
 <p>先过滤：</p>
-<pre><code class="language-text">All Chunks
+<div class="highlight"><pre><span></span><code>All Chunks
  ↓
 Metadata Filter
  ↓
 Candidate Subset
  ↓
 Vector Search
-</code></pre>
+</code></pre></div>
 <h3 id="post-filter">Post-filter</h3>
 <p>先搜索再过滤。</p>
 <p>通常需要根据数据库能力、数据规模和过滤条件选择。</p>
@@ -1573,7 +1573,7 @@ Vector Search
 <h1 id="15-hybrid-retrieval">15. Hybrid Retrieval</h1>
 <p>Dense 与 Sparse 各有优势。</p>
 <p>因此：</p>
-<pre><code class="language-text">             Query
+<div class="highlight"><pre><span></span><code>             Query
                │
        ┌───────┴───────┐
        ↓               ↓
@@ -1583,24 +1583,24 @@ Vector Top-K        BM25 Top-K
        └───────┬───────┘
                ↓
              Fusion
-</code></pre>
+</code></pre></div>
 <p>目标：</p>
-<pre><code class="language-text">Semantic Recall
+<div class="highlight"><pre><span></span><code>Semantic Recall
 +
 Exact Keyword Recall
-</code></pre>
+</code></pre></div>
 <hr />
 <h1 id="16-fusion">16. Fusion</h1>
 <p>多个 Retriever 返回不同：</p>
-<pre><code class="language-text">Document
+<div class="highlight"><pre><span></span><code>Document
 Rank
 Score Scale
-</code></pre>
+</code></pre></div>
 <p>因此不能简单假设：</p>
-<pre><code class="language-text">Vector Score 0.8
+<div class="highlight"><pre><span></span><code>Vector Score 0.8
 =
 BM25 Score 0.8
-</code></pre>
+</code></pre></div>
 <p>两种 Score 的含义和范围可能完全不同。</p>
 <p>需要 Fusion Strategy。</p>
 <hr />
@@ -1612,7 +1612,7 @@ BM25 Score 0.8
 <p>更关注 Result 在各个 Retriever 中的排名，而不是直接比较原始 Score。</p>
 </blockquote>
 <p>概念上：</p>
-<pre><code class="language-text">Vector Ranking
+<div class="highlight"><pre><span></span><code>Vector Ranking
 1 A
 2 B
 3 C
@@ -1626,7 +1626,7 @@ BM25 Ranking
       RRF
        ↓
 Combined Ranking
-</code></pre>
+</code></pre></div>
 <p>优势：</p>
 <ul>
 <li>不要求不同 Retriever 的 Score 同尺度</li>
@@ -1637,15 +1637,15 @@ Combined Ranking
 <hr />
 <h2 id="18-weighted-score-fusion">18. Weighted Score Fusion</h2>
 <p>另一种方法：</p>
-<pre><code class="language-text">Final Score
+<div class="highlight"><pre><span></span><code>Final Score
 =
 α × Dense Score
 +
 β × Sparse Score
-</code></pre>
+</code></pre></div>
 <p>但前提通常需要：</p>
-<pre><code class="language-text">Score Normalization
-</code></pre>
+<div class="highlight"><pre><span></span><code>Score Normalization
+</code></pre></div>
 <p>否则两个不同尺度的 Score 无法合理直接相加。</p>
 <p>优点：</p>
 <ul>
@@ -1660,7 +1660,7 @@ Combined Ranking
 <h1 id="19-candidate-size">19. Candidate Size</h1>
 <p>Retriever 通常不会只返回最终需要的数量。</p>
 <p>例如：</p>
-<pre><code class="language-text">Dense Top 20
+<div class="highlight"><pre><span></span><code>Dense Top 20
 +
 BM25 Top 20
  ↓
@@ -1671,12 +1671,12 @@ Top 20
 Reranker
  ↓
 Final Top 5
-</code></pre>
+</code></pre></div>
 <p>因此需要区分：</p>
-<pre><code class="language-text">retrieval_top_k
+<div class="highlight"><pre><span></span><code>retrieval_top_k
 rerank_top_n
 final_top_k
-</code></pre>
+</code></pre></div>
 <p>这些参数应通过 Evaluation 调整。</p>
 <hr />
 <h1 id="20-reranking">20. Reranking</h1>
@@ -1688,34 +1688,34 @@ final_top_k
 <blockquote>
 <p>对较小候选集进行更精确的相关性判断。</p>
 </blockquote>
-<pre><code class="language-text">Retrieve Top-N
+<div class="highlight"><pre><span></span><code>Retrieve Top-N
       ↓
 Reranker
       ↓
 Final Top-K
-</code></pre>
+</code></pre></div>
 <hr />
 <h2 id="21-cross-encoder-reranker">21. Cross-Encoder Reranker</h2>
 <p>典型输入：</p>
-<pre><code class="language-text">(Query, Chunk)
+<div class="highlight"><pre><span></span><code>(Query, Chunk)
  ↓
 Cross Encoder
  ↓
 Relevance Score
-</code></pre>
+</code></pre></div>
 <p>与 Embedding Retrieval 不同：</p>
 <p>Dense Retrieval：</p>
-<pre><code class="language-text">Query → Vector
+<div class="highlight"><pre><span></span><code>Query → Vector
 Chunk → Vector
 Compare
-</code></pre>
+</code></pre></div>
 <p>Cross Encoder：</p>
-<pre><code class="language-text">Query + Chunk
+<div class="highlight"><pre><span></span><code>Query + Chunk
       ↓
 Model Jointly Reads Both
       ↓
 Score
-</code></pre>
+</code></pre></div>
 <p>通常：</p>
 <ul>
 <li>更准确</li>
@@ -1725,12 +1725,12 @@ Score
 <hr />
 <h2 id="22-llm-reranker">22. LLM Reranker</h2>
 <p>可以让 LLM 判断：</p>
-<pre><code class="language-text">Query
+<div class="highlight"><pre><span></span><code>Query
 +
 Candidate Documents
  ↓
 Relevance Judgment
-</code></pre>
+</code></pre></div>
 <p>优点：</p>
 <ul>
 <li>复杂语义理解强</li>
@@ -1746,12 +1746,12 @@ Relevance Judgment
 <h2 id="23-rule-based-reranking">23. Rule-based Reranking</h2>
 <p>某些领域规则非常可靠。</p>
 <p>例如：</p>
-<pre><code class="language-text">Exact Model Number Match
+<div class="highlight"><pre><span></span><code>Exact Model Number Match
 Unit Match
 Language Match
 Document Version
 Service Name
-</code></pre>
+</code></pre></div>
 <p>可以作为：</p>
 <ul>
 <li>Filter</li>
@@ -1765,17 +1765,17 @@ Service Name
 <hr />
 <h1 id="24-retrieval-score-reranking-score">24. Retrieval Score 与 Reranking Score</h1>
 <p>不要认为：</p>
-<pre><code class="language-text">Embedding Similarity Score
+<div class="highlight"><pre><span></span><code>Embedding Similarity Score
 =
 Reranking Relevance Score
-</code></pre>
+</code></pre></div>
 <p>它们来自不同模型，含义不同。</p>
 <p>建议结果中保留：</p>
-<pre><code class="language-text">dense_score
+<div class="highlight"><pre><span></span><code>dense_score
 sparse_score
 fusion_rank
 rerank_score
-</code></pre>
+</code></pre></div>
 <p>方便：</p>
 <ul>
 <li>Debugging</li>
@@ -1785,26 +1785,26 @@ rerank_score
 <hr />
 <h1 id="25-parent-child-retrieval">25. Parent-Child Retrieval</h1>
 <p>如果小 Chunk 检索准确但上下文不足：</p>
-<pre><code class="language-text">Small Child Chunk
+<div class="highlight"><pre><span></span><code>Small Child Chunk
  ↓
 Retrieve
  ↓
 Find Parent Section
  ↓
 Return Parent Context
-</code></pre>
+</code></pre></div>
 <p>即：</p>
-<pre><code class="language-text">Small-to-Big Retrieval
-</code></pre>
+<div class="highlight"><pre><span></span><code>Small-to-Big Retrieval
+</code></pre></div>
 <p>用于平衡：</p>
-<pre><code class="language-text">Precision
+<div class="highlight"><pre><span></span><code>Precision
 vs
 Context Completeness
-</code></pre>
+</code></pre></div>
 <hr />
 <h1 id="26-multi-stage-retrieval">26. Multi-stage Retrieval</h1>
 <p>更复杂系统可以：</p>
-<pre><code class="language-text">Large Knowledge Base
+<div class="highlight"><pre><span></span><code>Large Knowledge Base
       ↓
 Stage 1: Broad Retrieval
       ↓
@@ -1813,26 +1813,26 @@ Stage 2: Filter / Fusion
 Stage 3: Rerank
       ↓
 Final Context
-</code></pre>
+</code></pre></div>
 <p>不要一开始过度设计。</p>
 <p>基础系统通常：</p>
-<pre><code class="language-text">Hybrid Retrieval
+<div class="highlight"><pre><span></span><code>Hybrid Retrieval
 +
 RRF
 +
 Cross-Encoder Reranker
-</code></pre>
+</code></pre></div>
 <p>已经是非常完整的 Retrieval Pipeline。</p>
 <hr />
 <h1 id="27-retrieval-evaluation">27. Retrieval Evaluation</h1>
 <p>Retriever 应使用真实 Query Dataset 测试。</p>
 <p>常见指标：</p>
-<pre><code class="language-text">Recall@K
+<div class="highlight"><pre><span></span><code>Recall@K
 Precision@K
 Hit Rate
 MRR
 nDCG
-</code></pre>
+</code></pre></div>
 <p>尤其需要关注：</p>
 <blockquote>
 <p>正确知识是否进入候选集合。</p>
@@ -1840,7 +1840,7 @@ nDCG
 <p>如果正确 Chunk 根本没有被 Retriever 找到，后面的 Reranker 和 LLM 通常无法补救。</p>
 <hr />
 <h1 id="28">28. 推荐认知框架</h1>
-<pre><code class="language-text">                     Query
+<div class="highlight"><pre><span></span><code>                     Query
                        ↓
                 Query Processing
                        ↓
@@ -1860,7 +1860,7 @@ nDCG
                    Final Top-K
                        ↓
                  Context Builder
-</code></pre>
+</code></pre></div>
 <p>核心原则：</p>
 <blockquote>
 <p><strong>Retriever 首先保证 Recall，Fusion 组合不同 Retrieval 信号，Reranker 再提高 Precision。</strong></p>
@@ -1920,6 +1920,8 @@ nDCG
       <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@11/dist/mermaid.min.js"></script>
       
     
   </body>

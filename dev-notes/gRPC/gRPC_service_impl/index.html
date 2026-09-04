@@ -905,7 +905,7 @@
   <span class="md-ellipsis">
     
   
-    llm
+    LLM
   
 
     
@@ -921,7 +921,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    llm
+    LLM
   
 
           </label>
@@ -1667,182 +1667,182 @@
 
 <h1 id="grpc-code-generation-service-implementation">gRPC Code Generation &amp; Service Implementation</h1>
 <h2 id="_1">核心思想</h2>
-<pre><code class="language-text">.proto
+<p><div class="highlight"><pre><span></span><code>.proto
    ↓
 生成服务接口骨架
    ↓
 实现这个接口
    ↓
 注册到 gRPC Server
-</code></pre>
-<p>对于服务的具体实现，不同的语言需要选择不同的语言特性</p>
+</code></pre></div>
+对于服务的具体实现，不同的语言需要选择不同的语言特性</p>
 <h2 id="python">Python：继承基类</h2>
 <h3 id="proto">Proto文件</h3>
-<pre><code class="language-proto">service UserService {
-    rpc GetUser(GetUserRequest)
-        returns (GetUserResponse);
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kd">service</span><span class="w"> </span><span class="n">UserService</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">rpc</span><span class="w"> </span><span class="n">GetUser</span><span class="p">(</span><span class="n">GetUserRequest</span><span class="p">)</span>
+<span class="w">        </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">GetUserResponse</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
 <h3 id="_2">生成类</h3>
-<pre><code class="language-python">class UserServiceServicer:
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">UserServiceServicer</span><span class="p">:</span>
 
-    def GetUser(self, request, context):
-        raise NotImplementedError()
-</code></pre>
+    <span class="k">def</span><span class="w"> </span><span class="nf">GetUser</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+</code></pre></div>
 <h3 id="python_1">Python实现</h3>
-<pre><code class="language-python">class UserServiceImpl(
-        UserServiceServicer):
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">UserServiceImpl</span><span class="p">(</span>
+        <span class="n">UserServiceServicer</span><span class="p">):</span>
 
-    def GetUser(self, request, context):
-        ...
-</code></pre>
+    <span class="k">def</span><span class="w"> </span><span class="nf">GetUser</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+        <span class="o">...</span>
+</code></pre></div>
 <blockquote>
 <p><strong>属于：<code>继承 + 重写方法</code></strong></p>
 </blockquote>
 <h2 id="java">Java：继承抽象基类</h2>
 <h3 id="proto_1">Proto生成类</h3>
-<pre><code class="language-Java">public abstract class UserServiceImplBase {
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">abstract</span><span class="w"> </span><span class="kd">class</span> <span class="nc">UserServiceImplBase</span><span class="w"> </span><span class="p">{</span>
 
-    public void getUser(
-        GetUserRequest request,
-        StreamObserver&lt;GetUserResponse&gt; responseObserver
-    ) {
-        ...
-    }
-}
-</code></pre>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">getUser</span><span class="p">(</span>
+<span class="w">        </span><span class="n">GetUserRequest</span><span class="w"> </span><span class="n">request</span><span class="p">,</span>
+<span class="w">        </span><span class="n">StreamObserver</span><span class="o">&lt;</span><span class="n">GetUserResponse</span><span class="o">&gt;</span><span class="w"> </span><span class="n">responseObserver</span>
+<span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="p">...</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <h3 id="java_1">Java实现</h3>
-<pre><code class="language-Java">public class UserServiceImpl
-    extends UserServiceGrpc.UserServiceImplBase {
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">UserServiceImpl</span>
+<span class="w">    </span><span class="kd">extends</span><span class="w"> </span><span class="n">UserServiceGrpc</span><span class="p">.</span><span class="na">UserServiceImplBase</span><span class="w"> </span><span class="p">{</span>
 
-    @Override
-    public void getUser(
-        GetUserRequest request,
-        StreamObserver&lt;GetUserResponse&gt; responseObserver
-    ) {
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">getUser</span><span class="p">(</span>
+<span class="w">        </span><span class="n">GetUserRequest</span><span class="w"> </span><span class="n">request</span><span class="p">,</span>
+<span class="w">        </span><span class="n">StreamObserver</span><span class="o">&lt;</span><span class="n">GetUserResponse</span><span class="o">&gt;</span><span class="w"> </span><span class="n">responseObserver</span>
+<span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-        ...
-    }
-}
-</code></pre>
+<span class="w">        </span><span class="p">...</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <blockquote>
 <p><strong>属于：<code>继承 + 重写方法</code></strong></p>
 </blockquote>
 <h2 id="go">Go：实现接口（最典型）</h2>
 <h3 id="proto_2">Proto生成</h3>
-<pre><code class="language-Go">type UserServiceServer interface {
+<div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">UserServiceServer</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="p">{</span>
 
-    GetUser(
-        context.Context,
-        *GetUserRequest,
-    ) (*GetUserResponse, error)
-}
-</code></pre>
+<span class="w">    </span><span class="nx">GetUser</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span>
+<span class="w">        </span><span class="o">*</span><span class="nx">GetUserRequest</span><span class="p">,</span>
+<span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">GetUserResponse</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
 <h3 id="go_1">go实现</h3>
-<pre><code class="language-Go">type UserServiceImpl struct {
-}
+<div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">UserServiceImpl</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="p">}</span>
 
-func (s *UserServiceImpl) GetUser(
-    ctx context.Context,
-    req *GetUserRequest,
-) (*GetUserResponse, error) {
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">UserServiceImpl</span><span class="p">)</span><span class="w"> </span><span class="nx">GetUser</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">req</span><span class="w"> </span><span class="o">*</span><span class="nx">GetUserRequest</span><span class="p">,</span>
+<span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">GetUserResponse</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-    ...
-}
-</code></pre>
+<span class="w">    </span><span class="o">...</span>
+<span class="p">}</span>
+</code></pre></div>
 <h3 id="_3">注册：</h3>
-<pre><code class="language-Go">pb.RegisterUserServiceServer(
-    grpcServer,
-    &amp;UserServiceImpl{},
-)
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nx">pb</span><span class="p">.</span><span class="nx">RegisterUserServiceServer</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">grpcServer</span><span class="p">,</span>
+<span class="w">    </span><span class="o">&amp;</span><span class="nx">UserServiceImpl</span><span class="p">{},</span>
+<span class="p">)</span>
+</code></pre></div>
 <blockquote>
 <p><strong>这里没有继承。属于：<code>接口实现</code></strong></p>
 </blockquote>
 <h2 id="c">C</h2>
 <h3 id="proto_3">Proto生成</h3>
-<pre><code class="language-C#">public abstract class UserServiceBase
-{
-    public virtual Task&lt;GetUserResponse&gt;
-        GetUser(
-            GetUserRequest request,
-            ServerCallContext context)
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">abstract</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">UserServiceBase</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">Task</span><span class="o">&lt;</span><span class="n">GetUserResponse</span><span class="o">&gt;</span>
+<span class="w">        </span><span class="n">GetUser</span><span class="p">(</span>
+<span class="w">            </span><span class="n">GetUserRequest</span><span class="w"> </span><span class="n">request</span><span class="p">,</span>
+<span class="w">            </span><span class="n">ServerCallContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
 <h3 id="c_1">C#实现</h3>
-<pre><code class="language-C#">public class UserServiceImpl
-    : UserService.UserServiceBase
-{
-    public override Task&lt;GetUserResponse&gt;
-        GetUser(...)
-    {
-        ...
-    }
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">UserServiceImpl</span>
+<span class="w">    </span><span class="p">:</span><span class="w"> </span><span class="n">UserService</span><span class="p">.</span><span class="n">UserServiceBase</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="n">Task</span><span class="o">&lt;</span><span class="n">GetUserResponse</span><span class="o">&gt;</span>
+<span class="w">        </span><span class="n">GetUser</span><span class="p">(...)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="p">...</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <blockquote>
 <p><strong>属于：<code>继承 + 重写方法</code></strong></p>
 </blockquote>
 <h2 id="nodejs">Node.js</h2>
 <p>Node 更灵活。</p>
 <h3 id="proto-service-definition">Proto生成 Service Definition</h3>
-<pre><code class="language-JavaScript">{
-  GetUser: {
-     path: &quot;/user.UserService/GetUser&quot;
-  }
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nx">GetUser</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">     </span><span class="nx">path</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/user.UserService/GetUser&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <h3 id="node">Node实现</h3>
-<pre><code class="language-JavaScript">function getUser(call, callback) {
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">getUser</span><span class="p">(</span><span class="nx">call</span><span class="p">,</span><span class="w"> </span><span class="nx">callback</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-    callback(null, {
-        name: &quot;Tom&quot;
-    });
-}
-</code></pre>
+<span class="w">    </span><span class="nx">callback</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Tom&quot;</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div>
 <h3 id="_4">注册</h3>
-<pre><code class="language-JavaScript">server.addService(
-    UserService.service,
-    {
-        GetUser: getUser
-    }
-)
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nx">server</span><span class="p">.</span><span class="nx">addService</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">UserService</span><span class="p">.</span><span class="nx">service</span><span class="p">,</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">GetUser</span><span class="o">:</span><span class="w"> </span><span class="nx">getUser</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">)</span>
+</code></pre></div>
 <blockquote>
 <p><strong>属于：<code>函数注册</code> 没有继承</strong></p>
 </blockquote>
 <h2 id="rusttonic">Rust（Tonic）</h2>
 <h3 id="proto-trait">Proto生成 Trait：</h3>
-<pre><code class="language-Rust">#[tonic::async_trait]
-pub trait UserService {
+<div class="highlight"><pre><span></span><code><span class="cp">#[tonic::async_trait]</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">trait</span><span class="w"> </span><span class="n">UserService</span><span class="w"> </span><span class="p">{</span>
 
-    async fn get_user(
-        &amp;self,
-        request: Request&lt;GetUserRequest&gt;,
-    ) -&gt; Result&lt;Response&lt;GetUserResponse&gt;&gt;;
-}
-</code></pre>
+<span class="w">    </span><span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">get_user</span><span class="p">(</span>
+<span class="w">        </span><span class="o">&amp;</span><span class="bp">self</span><span class="p">,</span>
+<span class="w">        </span><span class="n">request</span><span class="p">:</span><span class="w"> </span><span class="nc">Request</span><span class="o">&lt;</span><span class="n">GetUserRequest</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="n">Response</span><span class="o">&lt;</span><span class="n">GetUserResponse</span><span class="o">&gt;&gt;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <h3 id="rust">Rust实现</h3>
-<pre><code class="language-Rust">impl UserService for UserServiceImpl {
+<div class="highlight"><pre><span></span><code><span class="k">impl</span><span class="w"> </span><span class="n">UserService</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">UserServiceImpl</span><span class="w"> </span><span class="p">{</span>
 
-    async fn get_user(...) {
+<span class="w">    </span><span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">get_user</span><span class="p">(</span><span class="o">..</span><span class="p">.)</span><span class="w"> </span><span class="p">{</span>
 
-    }
-}
-</code></pre>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <blockquote>
 <p><strong>属于：<code>Trait</code> 实现</strong></p>
 </blockquote>
 <h2 id="_5">总结</h2>
-<p>可以把 gRPC 的服务实现理解成：</p>
-<pre><code class="language-text">gRPC定义接口
+<p>可以把 gRPC 的服务实现理解成：
+<div class="highlight"><pre><span></span><code>gRPC定义接口
         ↓
 各语言生成服务骨架
         ↓
 开发者实现骨架
         ↓
 注册到Server
-</code></pre>
+</code></pre></div></p>
 <p>不同语言只是"骨架"的表现形式不同：</p>
 <table style="border-collapse: collapse;">
   <thead>
@@ -1940,6 +1940,8 @@ pub trait UserService {
       <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@11/dist/mermaid.min.js"></script>
       
     
   </body>

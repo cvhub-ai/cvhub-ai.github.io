@@ -567,7 +567,7 @@
   <span class="md-ellipsis">
     
   
-    llm
+    LLM
   
 
     
@@ -583,7 +583,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    llm
+    LLM
   
 
           </label>
@@ -896,6 +896,17 @@
     <span class="md-ellipsis">
       
         2. RAG 的完整生命周期
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flowchart-td-ragrag-system-subgraph-ingestioningestion-pipeline-direction-td-kknowledge-source-lloader-pparser-nnormalize-cleaning-cchunking-eembedding-iindexing-kbknowledge-base-k-l-l-p-p-n-n-c-c-e-e-i-i-kb-end-subgraph-queryquery-pipeline-direction-td-qquery-qpquery-processing-rretrieval-ffusion-rrreranking-cbcontext-building-llmllm-agent-aanswer-q-qp-qp-r-r-f-f-rr-rr-cb-cb-llm-llm-a-end-rag-ingestion-rag-query" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        flowchart TD RAG[RAG System] subgraph INGESTION[Ingestion Pipeline] direction TD K[Knowledge Source] L[Loader] P[Parser] N[Normalize / Cleaning] C[Chunking] E[Embedding] I[Indexing] KB[Knowledge Base] K --&gt; L L --&gt; P P --&gt; N N --&gt; C C --&gt; E E --&gt; I I --&gt; KB end subgraph QUERY[Query Pipeline] direction TD Q[Query] QP[Query Processing] R[Retrieval] F[Fusion] RR[Reranking] CB[Context Building] LLM[LLM / Agent] A[Answer] Q --&gt; QP QP --&gt; R R --&gt; F F --&gt; RR RR --&gt; CB CB --&gt; LLM LLM --&gt; A end RAG --&gt; INGESTION RAG --&gt; QUERY
       
     </span>
   </a>
@@ -1419,6 +1430,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#flowchart-td-ragrag-system-subgraph-ingestioningestion-pipeline-direction-td-kknowledge-source-lloader-pparser-nnormalize-cleaning-cchunking-eembedding-iindexing-kbknowledge-base-k-l-l-p-p-n-n-c-c-e-e-i-i-kb-end-subgraph-queryquery-pipeline-direction-td-qquery-qpquery-processing-rretrieval-ffusion-rrreranking-cbcontext-building-llmllm-agent-aanswer-q-qp-qp-r-r-f-f-rr-rr-cb-cb-llm-llm-a-end-rag-ingestion-rag-query" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        flowchart TD RAG[RAG System] subgraph INGESTION[Ingestion Pipeline] direction TD K[Knowledge Source] L[Loader] P[Parser] N[Normalize / Cleaning] C[Chunking] E[Embedding] I[Indexing] KB[Knowledge Base] K --&gt; L L --&gt; P P --&gt; N N --&gt; C C --&gt; E E --&gt; I I --&gt; KB end subgraph QUERY[Query Pipeline] direction TD Q[Query] QP[Query Processing] R[Retrieval] F[Fusion] RR[Reranking] CB[Context Building] LLM[LLM / Agent] A[Answer] Q --&gt; QP QP --&gt; R R --&gt; F F --&gt; RR RR --&gt; CB CB --&gt; LLM LLM --&gt; A end RAG --&gt; INGESTION RAG --&gt; QUERY
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#3-rag" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1743,7 +1765,7 @@
 <h2 id="1-rag">1. RAG 是什么</h2>
 <p><strong>RAG = Retrieval-Augmented Generation，检索增强生成。</strong></p>
 <p>核心思想：</p>
-<pre><code class="language-mermaid">flowchart LR
+<pre class="mermaid"><code>flowchart LR
 
    A[用户问题]
    B[从外部知识库检索相关信息]
@@ -1752,8 +1774,7 @@
 
    A --&gt; B
    B --&gt; C
-   C --&gt; D
-</code></pre>
+   C --&gt; D</code></pre>
 <p>RAG 的主要价值包括：</p>
 <ul>
 <li>让 LLM 使用私有知识或领域知识</li>
@@ -1768,7 +1789,7 @@
 <hr />
 <h2 id="2-rag">2. RAG 的完整生命周期</h2>
 <p>一个完整 RAG 系统可以分成两条主链：</p>
-<pre><code class="language-mermaid">flowchart TD
+<h2 id="flowchart-td-ragrag-system-subgraph-ingestioningestion-pipeline-direction-td-kknowledge-source-lloader-pparser-nnormalize-cleaning-cchunking-eembedding-iindexing-kbknowledge-base-k-l-l-p-p-n-n-c-c-e-e-i-i-kb-end-subgraph-queryquery-pipeline-direction-td-qquery-qpquery-processing-rretrieval-ffusion-rrreranking-cbcontext-building-llmllm-agent-aanswer-q-qp-qp-r-r-f-f-rr-rr-cb-cb-llm-llm-a-end-rag-ingestion-rag-query"><pre class="mermaid"><code>flowchart TD
    RAG[RAG System]
 
    subgraph INGESTION[Ingestion Pipeline]
@@ -1812,9 +1833,7 @@
    end
 
    RAG --&gt; INGESTION
-   RAG --&gt; QUERY
-</code></pre>
-<hr />
+   RAG --&gt; QUERY</code></pre></h2>
 <h2 id="3-rag">3. RAG 的核心数据对象</h2>
 <h3 id="document">Document</h3>
 <p>表示一个完整知识来源，例如：</p>
@@ -1828,7 +1847,7 @@
 <li>API 数据</li>
 </ul>
 <p>典型信息：</p>
-<pre><code class="language-mermaid">flowchart LR
+<pre class="mermaid"><code>flowchart LR
     T((TextDocument))
     D[document_id]
     S[source]
@@ -1850,12 +1869,11 @@
     style V fill:#FF8A76,color:#fff
     style L fill:#B97ADB,color:#fff
     style M fill:#FFD166,color:#fff
-    style C fill:#9AD0EC,color:#fff
-</code></pre>
+    style C fill:#9AD0EC,color:#fff</code></pre>
 <h3 id="structureddocument">StructuredDocument</h3>
 <p>Parser 处理后的结构化文档。</p>
 <p>例如：</p>
-<pre><code class="language-text">StructuredDocument
+<div class="highlight"><pre><span></span><code>StructuredDocument
 ├── Title
 ├── Section
 │   ├── Heading
@@ -1864,33 +1882,33 @@
 └── Section
     ├── Paragraph
     └── Figure
-</code></pre>
+</code></pre></div>
 <h3 id="chunk">Chunk</h3>
 <p>Chunk 是 Retrieval 的基本知识单元。</p>
-<pre><code class="language-text">Chunk
+<div class="highlight"><pre><span></span><code>Chunk
 ├── chunk_id
 ├── document_id
 ├── text
 ├── metadata
 └── source reference
-</code></pre>
+</code></pre></div>
 <h3 id="embedding">Embedding</h3>
 <p>Embedding 是 Chunk 或 Query 的向量表示：</p>
-<pre><code class="language-text">Text
+<div class="highlight"><pre><span></span><code>Text
  ↓
 Embedding Model
  ↓
 [0.13, -0.72, 0.44, ...]
-</code></pre>
+</code></pre></div>
 <h3 id="retrievalresult">RetrievalResult</h3>
 <p>Retriever 返回的候选结果可以抽象为：</p>
-<pre><code class="language-text">RetrievalResult
+<div class="highlight"><pre><span></span><code>RetrievalResult
 ├── chunk
 ├── score
 ├── source
 ├── metadata
 └── retrieval_method
-</code></pre>
+</code></pre></div>
 <hr />
 <h2 id="4">4. 核心组件</h2>
 <h3 id="document-loader">Document Loader</h3>
@@ -1970,10 +1988,10 @@ Embedding Model
 <p>将多个 Retriever 的结果组合成统一候选集。</p>
 </blockquote>
 <p>例如：</p>
-<pre><code class="language-text">Vector Retriever ─┐
+<div class="highlight"><pre><span></span><code>Vector Retriever ─┐
                   ├→ Fusion
 BM25 Retriever ───┘
-</code></pre>
+</code></pre></div>
 <h3 id="reranker">Reranker</h3>
 <p>职责：</p>
 <blockquote>
@@ -1986,38 +2004,38 @@ BM25 Retriever ───┘
 </blockquote>
 <h3 id="generator-agent">Generator / Agent</h3>
 <p>在传统 RAG 中：</p>
-<pre><code class="language-text">Context
+<div class="highlight"><pre><span></span><code>Context
  ↓
 Prompt Builder
  ↓
 LLM
  ↓
 Answer
-</code></pre>
+</code></pre></div>
 <p>在 Agent 架构中也可以：</p>
-<pre><code class="language-text">RAG
+<div class="highlight"><pre><span></span><code>RAG
  ↓
 Retrieval Context
  ↓
 Agent
  ↓
 LLM / Tools
-</code></pre>
+</code></pre></div>
 <p>因此 RAG 与 Generation 是否属于同一个服务，是系统架构选择，不是 RAG 概念上的硬性要求。</p>
 <hr />
 <h2 id="5-densesparse-hybrid-retrieval">5. Dense、Sparse 与 Hybrid Retrieval</h2>
 <h3 id="dense-retrieval">Dense Retrieval</h3>
-<pre><code class="language-text">Query
+<div class="highlight"><pre><span></span><code>Query
  ↓
 Embedding
  ↓
 Vector Search
-</code></pre>
+</code></pre></div>
 <p>主要解决语义相似问题。</p>
 <h3 id="sparse-retrieval">Sparse Retrieval</h3>
 <p>典型方法：</p>
-<pre><code class="language-text">BM25
-</code></pre>
+<div class="highlight"><pre><span></span><code>BM25
+</code></pre></div>
 <p>擅长：</p>
 <ul>
 <li>精确关键词</li>
@@ -2027,12 +2045,12 @@ Vector Search
 <li>特殊缩写</li>
 </ul>
 <h3 id="hybrid-retrieval">Hybrid Retrieval</h3>
-<pre><code class="language-text">Dense Retrieval
+<div class="highlight"><pre><span></span><code>Dense Retrieval
        +
 Sparse Retrieval
        ↓
      Fusion
-</code></pre>
+</code></pre></div>
 <p>目的：</p>
 <blockquote>
 <p>同时利用语义相似和关键词匹配能力。</p>
@@ -2041,7 +2059,7 @@ Sparse Retrieval
 <h2 id="6-metadata">6. Metadata 的作用</h2>
 <p>Chunk 不应该只有 Text。</p>
 <p>典型 Metadata：</p>
-<pre><code class="language-text">document_id
+<div class="highlight"><pre><span></span><code>document_id
 document_version
 page
 section
@@ -2051,7 +2069,7 @@ language
 source
 bbox
 created_at
-</code></pre>
+</code></pre></div>
 <p>Metadata 可以用于：</p>
 <ul>
 <li>Retrieval Filter</li>
@@ -2064,7 +2082,7 @@ created_at
 <hr />
 <h2 id="7-rag">7. RAG 的质量链</h2>
 <p>最终效果不是由某一个模型决定的。</p>
-<pre><code class="language-text">Source Quality
+<div class="highlight"><pre><span></span><code>Source Quality
       ↓
 Parsing Quality
       ↓
@@ -2079,7 +2097,7 @@ Reranking Quality
 Context Quality
       ↓
 Generation Quality
-</code></pre>
+</code></pre></div>
 <p>任何一层出现问题，都可能导致最终回答失败。</p>
 <p>因此：</p>
 <blockquote>
@@ -2088,7 +2106,7 @@ Generation Quality
 <hr />
 <h2 id="8-rag">8. RAG 的主要能力层</h2>
 <p>可以将整个体系理解为：</p>
-<pre><code class="language-text">RAG
+<div class="highlight"><pre><span></span><code>RAG
 │
 ├── Knowledge Ingestion
 │   ├── Loading
@@ -2121,10 +2139,10 @@ Generation Quality
     ├── Lifecycle
     ├── Performance
     └── Security
-</code></pre>
+</code></pre></div>
 <hr />
 <h2 id="9">9. 最终记忆框架</h2>
-<pre><code class="language-text">Knowledge
+<div class="highlight"><pre><span></span><code>Knowledge
    ↓
 Parse
    ↓
@@ -2149,7 +2167,7 @@ Build Context
 LLM / Agent
    ↓
 Answer
-</code></pre>
+</code></pre></div>
 <p>最重要的原则：</p>
 <blockquote>
 <p><strong>RAG 的核心不是 Vector Database，而是把正确的知识在正确的时候检索出来，并以可靠、可追踪的形式提供给后续 LLM 或 Agent。</strong></p>
@@ -2209,6 +2227,8 @@ Answer
       <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@11/dist/mermaid.min.js"></script>
       
     
   </body>

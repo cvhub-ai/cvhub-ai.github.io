@@ -569,7 +569,7 @@
   <span class="md-ellipsis">
     
   
-    llm
+    LLM
   
 
     
@@ -585,7 +585,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    llm
+    LLM
   
 
           </label>
@@ -1427,14 +1427,14 @@
 <p>FP8 是 <strong>8-bit Floating Point</strong>。</p>
 <p>FP8 首先描述的是一种低精度浮点表示 / 计算体系，而 AWQ、GPTQ 更接近具体的量化方法，因此它们并不完全处于同一个技术层次。</p>
 <p>典型关系可以简单理解为：</p>
-<pre><code class="language-text">Modern GPU
+<div class="highlight"><pre><span></span><code>Modern GPU
     ↓
 FP8 Weight / Computation
     ↓
 Tensor Core / GPU Optimization
     ↓
 Higher Throughput + Lower Resource Usage
-</code></pre>
+</code></pre></div>
 <p>FP8 更常见于支持相应低精度计算能力的现代 GPU 和数据中心部署环境，经常与以下技术栈一起出现：</p>
 <ul>
 <li>vLLM</li>
@@ -1447,12 +1447,12 @@ Higher Throughput + Lower Resource Usage
 <p><strong>使用更低精度表示模型参数，从而减少模型大小、显存 / 内存占用，并在适合的硬件和推理框架上提高推理效率。</strong></p>
 </blockquote>
 <p>一般趋势：</p>
-<pre><code class="language-text">压缩程度提高
+<div class="highlight"><pre><span></span><code>压缩程度提高
       ↓
 资源占用降低
       ↓
 潜在模型能力损失风险提高
-</code></pre>
+</code></pre></div>
 <p>实际效果并不是简单线性关系，还取决于：</p>
 <ul>
 <li>模型本身</li>
@@ -1484,12 +1484,12 @@ Higher Throughput + Lower Resource Usage
 <li>Q8_0</li>
 </ul>
 <p>因此下面这些概念不能简单理解成同一种分类：</p>
-<pre><code class="language-text">FP8     → Precision / Data Type
+<div class="highlight"><pre><span></span><code>FP8     → Precision / Data Type
 AWQ     → Quantization Method
 GPTQ    → Quantization Method
 Q4_K_M  → Quantization Scheme / Type
 GGUF    → File Format
-</code></pre>
+</code></pre></div>
 <h2 id="4-k-quants">4. K-quants</h2>
 <p>K-quants 是 llama.cpp / GGUF 生态中常见的一类量化体系。</p>
 <p>常见类型包括：</p>
@@ -1502,15 +1502,15 @@ GGUF    → File Format
 <li>Q8_0</li>
 </ul>
 <p>其中可以粗略理解：</p>
-<pre><code class="language-text">Q4 → 主要为约 4-bit
+<div class="highlight"><pre><span></span><code>Q4 → 主要为约 4-bit
 Q5 → 主要为约 5-bit
 Q6 → 主要为约 6-bit
 Q8 → 主要为约 8-bit
-</code></pre>
+</code></pre></div>
 <p><code>S</code> 和 <code>M</code> 常见于：</p>
-<pre><code class="language-text">S = Small
+<div class="highlight"><pre><span></span><code>S = Small
 M = Medium
-</code></pre>
+</code></pre></div>
 <p>可以粗略理解为不同的混合量化策略。不同 Tensor 可以使用不同精度，在 Model Size 与 Model Quality 之间取得平衡。</p>
 <table>
 <thead>
@@ -1551,7 +1551,7 @@ M = Medium
 <p><strong>Activation-aware Weight Quantization</strong></p>
 <p>它属于权重量化方法。核心思想之一是利用 activation 信息判断哪些权重更加重要，从而尽量降低低 bit 权重量化造成的能力损失。</p>
 <p>典型流程：</p>
-<pre><code class="language-text">Original Transformer Model
+<div class="highlight"><pre><span></span><code>Original Transformer Model
         ↓
        AWQ
         ↓
@@ -1560,7 +1560,7 @@ Quantized Weights
 GPU Inference Engine
         ↓
 vLLM / SGLang / ...
-</code></pre>
+</code></pre></div>
 <p>AWQ 常见于：</p>
 <ul>
 <li>NVIDIA GPU</li>
@@ -1572,14 +1572,14 @@ vLLM / SGLang / ...
 <h2 id="6-gptq">6. GPTQ</h2>
 <p>GPTQ 是经典的 <strong>Post-Training Quantization</strong>，即在模型训练完成以后进行量化。</p>
 <p>基本流程：</p>
-<pre><code class="language-text">Trained Model
+<div class="highlight"><pre><span></span><code>Trained Model
       ↓
      GPTQ
       ↓
 Low-bit Quantized Weights
       ↓
 GPU Inference
-</code></pre>
+</code></pre></div>
 <p>GPTQ 长期以来被广泛用于 Transformer 模型的低 bit 推理，相关生态包括：</p>
 <ul>
 <li>GPTQModel</li>
@@ -1605,7 +1605,7 @@ GPU Inference
 <li>Deployment Scenario</li>
 </ul>
 <p>可以先用下面的关系进行粗略理解：</p>
-<pre><code class="language-text">消费级电脑 / CPU / 混合推理
+<div class="highlight"><pre><span></span><code>消费级电脑 / CPU / 混合推理
         ↓
 GGUF + Q4/Q5/Q6
         ↓
@@ -1622,7 +1622,7 @@ vLLM / SGLang / ExLlamaV2
 BF16 / FP8
         ↓
 vLLM / SGLang / TensorRT-LLM
-</code></pre>
+</code></pre></div>
 <p>实际支持情况应以具体模型、硬件和 Runtime 的当前版本为准。</p>
 
 
@@ -1679,6 +1679,8 @@ vLLM / SGLang / TensorRT-LLM
       <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@11/dist/mermaid.min.js"></script>
       
     
   </body>

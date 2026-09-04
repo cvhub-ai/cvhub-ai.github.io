@@ -821,7 +821,7 @@
   <span class="md-ellipsis">
     
   
-    llm
+    LLM
   
 
     
@@ -837,7 +837,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    llm
+    LLM
   
 
           </label>
@@ -1510,172 +1510,172 @@
 </ul>
 <h2 id="protobuf3">Protobuf3 数据类型详解</h2>
 <h3 id="_1">基本语法</h3>
-<pre><code class="language-proto">syntax = &quot;proto3&quot;;
-</code></pre>
-<p>每个字段都有编号：</p>
-<pre><code class="language-proto">message User {
-    int64 id = 1;
-    string name = 2;
-}
-</code></pre>
-<p>字段编号就是参数占位，一旦上线尽量不要修改。</p>
+<div class="highlight"><pre><span></span><code><span class="k">syntax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;proto3&quot;</span><span class="p">;</span>
+</code></pre></div>
+<p>每个字段都有编号：
+<div class="highlight"><pre><span></span><code><span class="kd">message</span><span class="w"> </span><span class="nc">User</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int64</span><span class="w"> </span><span class="na">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">string</span><span class="w"> </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+字段编号就是参数占位，一旦上线尽量不要修改。</p>
 <h3 id="_2">基本类型</h3>
 <h4 id="_3">整数</h4>
-<pre><code class="language-proto">int32 age = 1;
-int64 user_id = 2;
-uint32 count = 3;
-uint64 total = 4;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kt">int32</span><span class="w"> </span><span class="na">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="kt">int64</span><span class="w"> </span><span class="na">user_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="kt">uint32</span><span class="w"> </span><span class="na">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="kt">uint64</span><span class="w"> </span><span class="na">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+</code></pre></div>
 <h4 id="_4">浮点数</h4>
-<pre><code class="language-proto">float score = 1;
-double price = 2;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kt">float</span><span class="w"> </span><span class="na">score</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="kt">double</span><span class="w"> </span><span class="na">price</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+</code></pre></div>
 <h4 id="_5">布尔</h4>
-<pre><code class="language-proto">bool enabled = 1;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="na">enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+</code></pre></div>
 <h4 id="_6">字符串</h4>
-<pre><code class="language-proto">string name = 1;
-</code></pre>
-<p>二进制</p>
-<pre><code class="language-proto">bytes content = 1;
-</code></pre>
-<p>适合：
+<div class="highlight"><pre><span></span><code><span class="kt">string</span><span class="w"> </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+</code></pre></div>
+<p>二进制
+<div class="highlight"><pre><span></span><code><span class="kt">bytes</span><span class="w"> </span><span class="na">content</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+</code></pre></div>
+适合：
 - 图片
 - 文件
 - 加密数据</p>
 <h3 id="message">Message（对象类型）</h3>
-<p>Message 相当于一个类。</p>
-<pre><code class="language-proto">message User {
-    int64 id = 1;
-    string name = 2;
-}
-</code></pre>
+<p>Message 相当于一个类。
+<div class="highlight"><pre><span></span><code><span class="kd">message</span><span class="w"> </span><span class="nc">User</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int64</span><span class="w"> </span><span class="na">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">string</span><span class="w"> </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></p>
 <h4 id="message_1">嵌套 Message</h4>
-<pre><code class="language-proto">message Address {
-    string city = 1;
-    string street = 2;
-}
+<div class="highlight"><pre><span></span><code><span class="kd">message</span><span class="w"> </span><span class="nc">Address</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">string</span><span class="w"> </span><span class="na">city</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">string</span><span class="w"> </span><span class="na">street</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="p">}</span>
 
-message User {
-    int64 id = 1;
-    Address address = 2;
-}
-</code></pre>
-<p>也可以直接嵌套定义：</p>
-<pre><code class="language-proto">message User {
-    message Address {
-        string city = 1;
-    }
-    Address address = 1;
-}
-</code></pre>
+<span class="kd">message</span><span class="w"> </span><span class="nc">User</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int64</span><span class="w"> </span><span class="na">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Address</span><span class="w"> </span><span class="na">address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>也可以直接嵌套定义：
+<div class="highlight"><pre><span></span><code><span class="kd">message</span><span class="w"> </span><span class="nc">User</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">message</span><span class="w"> </span><span class="nc">Address</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">string</span><span class="w"> </span><span class="na">city</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">Address</span><span class="w"> </span><span class="na">address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></p>
 <h3 id="repeated">repeated（集合）</h3>
-<p>表示数组或列表。</p>
-<pre><code class="language-proto">message User {
-    repeated string tags = 1;
-}
-</code></pre>
-<p>对应：list[str]</p>
-<p>对象集合：</p>
-<pre><code class="language-proto">message User {
-    repeated Address addresses = 1;
-}
-</code></pre>
-<p>对应：list[Address]</p>
+<p>表示数组或列表。
+<div class="highlight"><pre><span></span><code><span class="kd">message</span><span class="w"> </span><span class="nc">User</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">repeated</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="na">tags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+对应：list[str]</p>
+<p>对象集合：
+<div class="highlight"><pre><span></span><code><span class="kd">message</span><span class="w"> </span><span class="nc">User</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">repeated</span><span class="w"> </span><span class="n">Address</span><span class="w"> </span><span class="na">addresses</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+对应：list[Address]</p>
 <h3 id="enum">Enum（枚举）</h3>
-<pre><code class="language-proto">enum UserStatus {
-    UNKNOWN = 0;
-    ACTIVE = 1;
-    DISABLED = 2;
-}
-</code></pre>
-<p>使用：</p>
-<pre><code class="language-proto">message User {
-    UserStatus status = 1;
-}
-</code></pre>
-<p>注意：
+<div class="highlight"><pre><span></span><code><span class="kd">enum</span><span class="w"> </span><span class="n">UserStatus</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="na">UNKNOWN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="na">ACTIVE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="na">DISABLED</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>使用：
+<div class="highlight"><pre><span></span><code><span class="kd">message</span><span class="w"> </span><span class="nc">User</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">UserStatus</span><span class="w"> </span><span class="na">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+注意：
 - 建议始终保留第一个枚举值为 0 -&gt; UNKNOWN = 0</p>
 <h3 id="map">Map（映射）</h3>
-<pre><code class="language-proto">map&lt;string,string&gt; labels = 1;
-map&lt;int64, User&gt; users = 2;
-</code></pre>
-<p>Key支持类型：</p>
-<pre><code class="language-proto">bool
-string
+<div class="highlight"><pre><span></span><code><span class="n">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="kt">string</span><span class="p">&gt;</span><span class="w"> </span><span class="na">labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="n">map</span><span class="p">&lt;</span><span class="kt">int64</span><span class="p">,</span><span class="w"> </span><span class="n">User</span><span class="p">&gt;</span><span class="w"> </span><span class="na">users</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+</code></pre></div>
+<p>Key支持类型：
+<div class="highlight"><pre><span></span><code><span class="kt">bool</span>
+<span class="kt">string</span>
 
-int32
-int64
+<span class="kt">int32</span>
+<span class="kt">int64</span>
 
-uint32
-uint64
+<span class="kt">uint32</span>
+<span class="kt">uint64</span>
 
-sint32
-sint64
+<span class="kt">sint32</span>
+<span class="kt">sint64</span>
 
-fixed32
-fixed64
+<span class="kt">fixed32</span>
+<span class="kt">fixed64</span>
 
-sfixed32
-sfixed64
-</code></pre>
-<p>Key不支持：</p>
-<pre><code class="language-proto">map&lt;float, User&gt;     // ❌
+<span class="kt">sfixed32</span>
+<span class="kt">sfixed64</span>
+</code></pre></div></p>
+<p>Key不支持：
+<div class="highlight"><pre><span></span><code><span class="n">map</span><span class="p">&lt;</span><span class="kt">float</span><span class="p">,</span><span class="w"> </span><span class="n">User</span><span class="p">&gt;</span><span class="w">     </span><span class="c1">// ❌</span>
 
-map&lt;double, User&gt;    // ❌
+<span class="n">map</span><span class="p">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="n">User</span><span class="p">&gt;</span><span class="w">    </span><span class="c1">// ❌</span>
 
-map&lt;bytes, User&gt;     // ❌
+<span class="n">map</span><span class="p">&lt;</span><span class="kt">bytes</span><span class="p">,</span><span class="w"> </span><span class="n">User</span><span class="p">&gt;</span><span class="w">     </span><span class="c1">// ❌</span>
 
-map&lt;MyEnum, User&gt;    // ❌
+<span class="n">map</span><span class="p">&lt;</span><span class="n">MyEnum</span><span class="p">,</span><span class="w"> </span><span class="n">User</span><span class="p">&gt;</span><span class="w">    </span><span class="c1">// ❌</span>
 
-map&lt;MyMessage, User&gt; // ❌
-</code></pre>
+<span class="n">map</span><span class="p">&lt;</span><span class="n">MyMessage</span><span class="p">,</span><span class="w"> </span><span class="n">User</span><span class="p">&gt;</span><span class="w"> </span><span class="c1">// ❌</span>
+</code></pre></div></p>
 <h3 id="oneof">Oneof（互斥字段）</h3>
-<p>同一时刻只能有一个字段生效。</p>
-<pre><code class="language-proto">message SearchRequest {
-    oneof condition {
-        string name = 1;
-        int64 user_id = 2;
-    }
-}
-</code></pre>
-<p>合法：<code>name</code> 或者 <code>user_id</code>, 但这两个参数不会同时存在</p>
+<p>同一时刻只能有一个字段生效。
+<div class="highlight"><pre><span></span><code><span class="kd">message</span><span class="w"> </span><span class="nc">SearchRequest</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">oneof</span><span class="w"> </span><span class="n">condition</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">string</span><span class="w"> </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">        </span><span class="kt">int64</span><span class="w"> </span><span class="na">user_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+合法：<code>name</code> 或者 <code>user_id</code>, 但这两个参数不会同时存在</p>
 <h3 id="import">Import（文件引用）</h3>
-<p>公共结构通常会抽到单独 proto。</p>
-<pre><code class="language-proto">// common.proto
-message PageRequest {
-    int32 page = 1;
-    int32 size = 2;
-}
+<p>公共结构通常会抽到单独 proto。
+<div class="highlight"><pre><span></span><code><span class="c1">// common.proto</span>
+<span class="kd">message</span><span class="w"> </span><span class="nc">PageRequest</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int32</span><span class="w"> </span><span class="na">page</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int32</span><span class="w"> </span><span class="na">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="p">}</span>
 
-//user.proto
-import &quot;common.proto&quot;;
-message UserQuery {
-    PageRequest page = 1;
-}
-</code></pre>
+<span class="c1">//user.proto</span>
+<span class="k">import</span><span class="w"> </span><span class="s">&quot;common.proto&quot;</span><span class="p">;</span>
+<span class="kd">message</span><span class="w"> </span><span class="nc">UserQuery</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">PageRequest</span><span class="w"> </span><span class="na">page</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></p>
 <h3 id="package">Package</h3>
-<p>用于命名空间管理。</p>
-<pre><code class="language-proto">package user;
-</code></pre>
-<p>避免大型项目中的名称冲突。</p>
+<p>用于命名空间管理。
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nn">user</span><span class="p">;</span>
+</code></pre></div>
+避免大型项目中的名称冲突。</p>
 <h3 id="service">Service</h3>
-<p>定义服务接口。</p>
-<pre><code class="language-proto">service UserService {
-    rpc GetUser(
-        GetUserRequest
-    ) returns (
-        GetUserResponse
-    );
+<p>定义服务接口。
+<div class="highlight"><pre><span></span><code><span class="kd">service</span><span class="w"> </span><span class="n">UserService</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">rpc</span><span class="w"> </span><span class="n">GetUser</span><span class="p">(</span>
+<span class="w">        </span><span class="n">GetUserRequest</span>
+<span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span>
+<span class="w">        </span><span class="n">GetUserResponse</span>
+<span class="w">    </span><span class="p">);</span>
 
-    rpc CreateUser(
-        CreateUserRequest
-    ) returns (
-        CreateUserResponse
-    );
-}
-</code></pre>
-<p>Service 会生成对应语言的</p>
+<span class="w">    </span><span class="k">rpc</span><span class="w"> </span><span class="n">CreateUser</span><span class="p">(</span>
+<span class="w">        </span><span class="n">CreateUserRequest</span>
+<span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span>
+<span class="w">        </span><span class="n">CreateUserResponse</span>
+<span class="w">    </span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+Service 会生成对应语言的</p>
 <ul>
 <li>Client Stub</li>
 <li>Server Base Class</li>
@@ -1735,6 +1735,8 @@ message UserQuery {
       <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@11/dist/mermaid.min.js"></script>
       
     
   </body>

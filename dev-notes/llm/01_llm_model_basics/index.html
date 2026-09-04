@@ -569,7 +569,7 @@
   <span class="md-ellipsis">
     
   
-    llm
+    LLM
   
 
     
@@ -585,7 +585,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    llm
+    LLM
   
 
           </label>
@@ -1453,19 +1453,19 @@
 <p><strong>我们使用的是哪个模型或模型家族？</strong></p>
 </blockquote>
 <p>例如 <code>Qwen3-8B</code> 可以简单拆成：</p>
-<pre><code class="language-text">Qwen3  → 模型家族 / 模型系列
+<div class="highlight"><pre><span></span><code>Qwen3  → 模型家族 / 模型系列
 8B     → 参数规模
-</code></pre>
+</code></pre></div>
 <p>模型名称本身和模型的精度、量化方式、文件格式以及推理框架是不同层次的概念。</p>
 <h2 id="2">2. 模型内容</h2>
 <p>一个可以实际加载和运行的 LLM，通常至少涉及：</p>
-<pre><code class="language-text">LLM Model
+<div class="highlight"><pre><span></span><code>LLM Model
 │
 ├── Model Architecture
 ├── Model Weights
 ├── Tokenizer
 └── Configuration
-</code></pre>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1518,7 +1518,7 @@
 </ul>
 <h3 id="23-tokenizer">2.3 Tokenizer</h3>
 <p>LLM 并不是直接读取字符串，而是处理 Token。Tokenizer 负责文本与 Token ID 之间的转换：</p>
-<pre><code class="language-text">Text
+<div class="highlight"><pre><span></span><code>Text
  ↓
 Tokenizer
  ↓
@@ -1527,15 +1527,15 @@ Token
 Token ID
  ↓
 LLM
-</code></pre>
+</code></pre></div>
 <p>例如 <code>Hello world</code> 经过 Tokenizer 后，会被转换成模型能够处理的一组 Token ID。</p>
 <p>模型生成结果时则执行相反过程：</p>
-<pre><code class="language-text">Token ID
+<div class="highlight"><pre><span></span><code>Token ID
  ↓
 Tokenizer
  ↓
 Text
-</code></pre>
+</code></pre></div>
 <p>因此 Tokenizer 是模型的重要组成部分，并且通常需要与对应模型匹配。</p>
 <h3 id="24-configuration">2.4 Configuration</h3>
 <p>Configuration 用来描述模型的一些结构和配置参数，例如：</p>
@@ -1586,14 +1586,14 @@ Text
 </table>
 <h3 id="31">3.1 参数量意味着什么</h3>
 <p>参数量是描述模型规模的重要指标。一般情况下，参数规模增加通常意味着：</p>
-<pre><code class="language-text">更多参数
+<div class="highlight"><pre><span></span><code>更多参数
    ↓
 更大的模型权重
    ↓
 更高的内存 / 显存需求
    ↓
 更多的推理计算量
-</code></pre>
+</code></pre></div>
 <p>但是：</p>
 <blockquote>
 <p><strong>参数越多，并不意味着模型一定越好。</strong></p>
@@ -1650,9 +1650,9 @@ Text
 </tbody>
 </table>
 <p>因此，同样都是 <code>8B Model</code>，实际模型权重大小可能完全不同。例如：</p>
-<pre><code class="language-text">8B BF16  ≈ 16 GB 权重
+<div class="highlight"><pre><span></span><code>8B BF16  ≈ 16 GB 权重
 8B 4-bit ≈  4 GB 权重
-</code></pre>
+</code></pre></div>
 <p>这里只是模型权重的粗略理论计算。</p>
 <p>实际运行时还需要额外资源，例如：</p>
 <ul>
@@ -1685,10 +1685,10 @@ Text
 <p><strong>Mixture of Experts</strong></p>
 <p>MoE 模型通常包含多个 Expert，但每次处理 Token 时只激活其中一部分。</p>
 <p>因此经常会看到：</p>
-<pre><code class="language-text">Total Parameters
+<div class="highlight"><pre><span></span><code>Total Parameters
         ≠
 Activated Parameters
-</code></pre>
+</code></pre></div>
 <p>例如一个 MoE 模型可能拥有非常大的总参数量，但单次推理只激活其中部分参数。</p>
 <p>所以比较 MoE 模型时，需要同时关注：</p>
 <ul>
@@ -1708,9 +1708,9 @@ Activated Parameters
 </ul>
 <p>这里的 <code>K</code> 表示千级 Token 数量。</p>
 <p>Context Length 与模型参数量是两个不同概念：</p>
-<pre><code class="language-text">Parameter Count → 模型有多少参数
+<div class="highlight"><pre><span></span><code>Parameter Count → 模型有多少参数
 Context Length  → 一次可以处理多少上下文 Token
-</code></pre>
+</code></pre></div>
 <p>更大的 Context Window 可以让模型一次处理更长的：</p>
 <ul>
 <li>Conversation</li>
@@ -1838,6 +1838,8 @@ Context Length  → 一次可以处理多少上下文 Token
       <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@11/dist/mermaid.min.js"></script>
       
     
   </body>

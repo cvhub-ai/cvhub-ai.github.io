@@ -660,7 +660,7 @@
   <span class="md-ellipsis">
     
   
-    llm
+    LLM
   
 
     
@@ -676,7 +676,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    llm
+    LLM
   
 
           </label>
@@ -1183,40 +1183,40 @@
 <li>避免在每个 RPC 方法中重复编写相同代码。</li>
 </ul>
 <h2 id="_1">示例</h2>
-<p>假设有一个用户服务：</p>
-<pre><code class="language-proto">service UserService {
-    rpc GetUser(...)
-        returns (...);
+<p>假设有一个用户服务：
+<div class="highlight"><pre><span></span><code><span class="kd">service</span><span class="w"> </span><span class="n">UserService</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">rpc</span><span class="w"> </span><span class="n">GetUser</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="w">        </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="o">...</span><span class="p">);</span>
 
-    rpc CreateUser(...)
-        returns (...);
+<span class="w">    </span><span class="k">rpc</span><span class="w"> </span><span class="n">CreateUser</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="w">        </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="o">...</span><span class="p">);</span>
 
-    rpc DeleteUser(...)
-        returns (...);
-}
-</code></pre>
-<p>如果不使用拦截器，python代码如下：</p>
-<pre><code class="language-python">def GetUser(...):
-    verify_token()
-    log_request()
-    trace_request()
-    ...
+<span class="w">    </span><span class="k">rpc</span><span class="w"> </span><span class="n">DeleteUser</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="w">        </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="o">...</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+如果不使用拦截器，python代码如下：
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">GetUser</span><span class="p">(</span><span class="o">...</span><span class="p">):</span>
+    <span class="n">verify_token</span><span class="p">()</span>
+    <span class="n">log_request</span><span class="p">()</span>
+    <span class="n">trace_request</span><span class="p">()</span>
+    <span class="o">...</span>
 
-def CreateUser(...):
-    verify_token()
-    log_request()
-    trace_request()
-    ...
+<span class="k">def</span><span class="w"> </span><span class="nf">CreateUser</span><span class="p">(</span><span class="o">...</span><span class="p">):</span>
+    <span class="n">verify_token</span><span class="p">()</span>
+    <span class="n">log_request</span><span class="p">()</span>
+    <span class="n">trace_request</span><span class="p">()</span>
+    <span class="o">...</span>
 
-def DeleteUser(...):
-    verify_token()
-    log_request()
-    trace_request()
-    ...
-</code></pre>
-<p>会出现大量重复代码。</p>
-<p>使用 Interceptor 后：</p>
-<pre><code class="language-text">请求
+<span class="k">def</span><span class="w"> </span><span class="nf">DeleteUser</span><span class="p">(</span><span class="o">...</span><span class="p">):</span>
+    <span class="n">verify_token</span><span class="p">()</span>
+    <span class="n">log_request</span><span class="p">()</span>
+    <span class="n">trace_request</span><span class="p">()</span>
+    <span class="o">...</span>
+</code></pre></div>
+会出现大量重复代码。</p>
+<p>使用 Interceptor 后：
+<div class="highlight"><pre><span></span><code>请求
   │
   ▼
 AuthInterceptor
@@ -1229,11 +1229,11 @@ TraceInterceptor
   │
   ▼
 业务代码
-</code></pre>
-<p>业务代码只关注业务逻辑。</p>
+</code></pre></div>
+业务代码只关注业务逻辑。</p>
 <h2 id="interceptor">Interceptor 的执行流程</h2>
-<p>服务端：</p>
-<pre><code class="language-text">Client
+<p>服务端：
+<div class="highlight"><pre><span></span><code>Client
    │
    ▼
 Interceptor #1
@@ -1246,9 +1246,9 @@ Interceptor #3
    │
    ▼
 RPC Method
-</code></pre>
-<p>返回时：</p>
-<pre><code class="language-text">RPC Method
+</code></pre></div></p>
+<p>返回时：
+<div class="highlight"><pre><span></span><code>RPC Method
    │
    ▲
 Interceptor #3
@@ -1261,8 +1261,8 @@ Interceptor #1
    │
    ▲
 Client
-</code></pre>
-<p>类似责任链模式（Chain Of Responsibility）。</p>
+</code></pre></div>
+类似责任链模式（Chain Of Responsibility）。</p>
 <h2 id="server-interceptor">服务端拦截器（Server Interceptor）</h2>
 <p>常见用途：</p>
 <ul>
@@ -1339,6 +1339,8 @@ Client
       <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@11/dist/mermaid.min.js"></script>
       
     
   </body>
