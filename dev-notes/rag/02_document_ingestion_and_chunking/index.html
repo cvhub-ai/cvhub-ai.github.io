@@ -1,0 +1,2615 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../01_rag_overview/">
+      
+      
+        <link rel="next" href="../03_embedding_and_indexing/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Document Ingestion & Chunking - CvHub Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#rag-chunking" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="CvHub Docs" class="md-header__button md-logo" aria-label="CvHub Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CvHub Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Document Ingestion & Chunking
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="CvHub Docs" class="md-nav__button md-logo" aria-label="CvHub Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    CvHub Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Architecture
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dev Notes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Dev Notes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    gRPC
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    gRPC
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gRPC/gRPC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gRPC/gRPC_proto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Proto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gRPC/gRPC_patterns/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Patterns
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gRPC/gRPC_service_impl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Service Impl
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gRPC/gRPC_Interceptor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interceptor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    llm
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    llm
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm/01_llm_model_basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm/02_llm_precision_and_quantization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Precision and Quantization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm/03_llm_model_formats/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model Format
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm/04_llm_inference_engines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inference Engine
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm/05_llm_serving/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Serving
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm/06_llm_applications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Application
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RAG System
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RAG System
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_rag_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Document Ingestion & Chunking
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Document Ingestion & Chunking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 总体目标
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-document-loading-parsing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Document Loading 与 Parsing 的区别
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Document Loading 与 Parsing 的区别">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#loader" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Loader
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parser" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parser
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 主要输入场景
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 主要输入场景">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-pdf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        场景 A：有可靠文本层的 PDF
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-pdf-image-pdf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        场景 B：扫描 PDF / Image PDF
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cmixed-pdf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        场景 C：Mixed PDF
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        场景 D：有完整结构的文本
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        场景 E：无可靠结构的纯文本
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-structured-document" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Structured Document
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-normalization-cleaning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Normalization / Cleaning
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-chunk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Chunk 是什么
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-chunking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 常见 Chunking 方法
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. 常见 Chunking 方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fixed-size-chunking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixed-size Chunking
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recursive-chunking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recursive Chunking
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#structure-aware-chunking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Structure-aware Chunking
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#semantic-chunking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Semantic Chunking
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#llm-based-chunking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LLM-based Chunking
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-hierarchical-chunking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 推荐的 Hierarchical Chunking
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. 推荐的 Hierarchical Chunking">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#too-big" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Too Big
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#too-small" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Too Small
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-chunk-overlap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Chunk Overlap
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-block" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. 特殊 Block
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. 特殊 Block">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Table
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#figure-diagram-chart" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Figure / Diagram / Chart
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formula" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Formula
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Code
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. 跨页内容
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Metadata
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Metadata">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#document-level-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Document-level Metadata
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chunk-level-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chunk-level Metadata
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-parent-child-hierarchical-chunk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Parent-Child / Hierarchical Chunk
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. 多语言
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. 文档版本
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-parsing-chunking-evaluation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. Parsing / Chunking Evaluation
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_embedding_and_indexing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Embedding & Indexing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_retrieval_pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Retrieval Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05_context_generation_and_grounding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Context Generation & Grounding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_rag_evaluation_operations_security/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evaluation, Operations & Security
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 总体目标
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-document-loading-parsing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Document Loading 与 Parsing 的区别
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Document Loading 与 Parsing 的区别">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#loader" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Loader
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parser" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parser
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 主要输入场景
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 主要输入场景">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-pdf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        场景 A：有可靠文本层的 PDF
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-pdf-image-pdf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        场景 B：扫描 PDF / Image PDF
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cmixed-pdf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        场景 C：Mixed PDF
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        场景 D：有完整结构的文本
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        场景 E：无可靠结构的纯文本
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-structured-document" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Structured Document
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-normalization-cleaning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Normalization / Cleaning
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-chunk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Chunk 是什么
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-chunking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 常见 Chunking 方法
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. 常见 Chunking 方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fixed-size-chunking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixed-size Chunking
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recursive-chunking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recursive Chunking
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#structure-aware-chunking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Structure-aware Chunking
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#semantic-chunking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Semantic Chunking
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#llm-based-chunking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LLM-based Chunking
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-hierarchical-chunking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 推荐的 Hierarchical Chunking
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. 推荐的 Hierarchical Chunking">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#too-big" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Too Big
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#too-small" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Too Small
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-chunk-overlap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Chunk Overlap
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-block" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. 特殊 Block
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. 特殊 Block">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Table
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#figure-diagram-chart" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Figure / Diagram / Chart
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formula" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Formula
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Code
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. 跨页内容
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Metadata
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Metadata">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#document-level-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Document-level Metadata
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chunk-level-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chunk-level Metadata
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-parent-child-hierarchical-chunk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Parent-Child / Hierarchical Chunk
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. 多语言
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. 文档版本
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-parsing-chunking-evaluation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. Parsing / Chunking Evaluation
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="rag-chunking">RAG 文档解析、清洗与 Chunking</h1>
+<h2 id="1">1. 总体目标</h2>
+<p>Ingestion 的目标不是简单地“把文件切成固定长度文本”，而是：</p>
+<blockquote>
+<p>尽可能恢复原始知识的结构，并生成适合 Retrieval 的知识单元。</p>
+</blockquote>
+<p>推荐链路：</p>
+<pre><code class="language-text">Raw Input
+   ↓
+Document Loading
+   ↓
+Document Parsing
+   ↓
+Structured Document
+   ↓
+Normalization / Cleaning
+   ↓
+Hierarchical Chunking
+   ↓
+Chunks + Metadata
+</code></pre>
+<hr />
+<h2 id="2-document-loading-parsing">2. Document Loading 与 Parsing 的区别</h2>
+<h3 id="loader">Loader</h3>
+<p>Loader 负责：</p>
+<blockquote>
+<p>获取原始内容。</p>
+</blockquote>
+<p>例如：</p>
+<pre><code class="language-text">PDF Loader
+Markdown Loader
+HTML Loader
+XML Loader
+Database Loader
+API Loader
+</code></pre>
+<h3 id="parser">Parser</h3>
+<p>Parser 负责：</p>
+<blockquote>
+<p>理解内容结构并转换成统一 StructuredDocument。</p>
+</blockquote>
+<p>因此：</p>
+<pre><code class="language-text">Loader
+=
+Read / Fetch
+
+Parser
+=
+Understand / Structure
+</code></pre>
+<p>并不是所有输入都需要复杂 Parser。</p>
+<p>Markdown、HTML、XML 本身已经包含较强结构，可以直接利用。</p>
+<hr />
+<h2 id="3">3. 主要输入场景</h2>
+<h3 id="a-pdf">场景 A：有可靠文本层的 PDF</h3>
+<p>特点：</p>
+<ul>
+<li>可以直接提取 Native Text</li>
+<li>通常可以获得 Page、Position、Bounding Box 等信息</li>
+<li>页面仍然包含字体、空白、多栏、表格、图片等视觉布局</li>
+</ul>
+<p>核心任务：</p>
+<ul>
+<li>恢复标题和 Section</li>
+<li>恢复 Paragraph</li>
+<li>Table / Figure / Caption 识别</li>
+<li>Reading Order</li>
+<li>多栏结构</li>
+</ul>
+<p>原则：</p>
+<blockquote>
+<p>能利用可靠 Native Text 时优先保留 Native Text，而不是为了识别文字重新 OCR。</p>
+</blockquote>
+<p>可选工具：</p>
+<ul>
+<li>Docling</li>
+<li>Document VLM</li>
+<li>其他 PDF Parser</li>
+</ul>
+<hr />
+<h3 id="b-pdf-image-pdf">场景 B：扫描 PDF / Image PDF</h3>
+<p>特点：</p>
+<ul>
+<li>页面本质是图片</li>
+<li>没有可靠 Native Text</li>
+</ul>
+<p>需要恢复：</p>
+<pre><code class="language-text">Text
+Layout
+Reading Order
+Table
+Heading
+Paragraph
+Figure
+Caption
+</code></pre>
+<p>可以使用：</p>
+<ul>
+<li>OCR + Layout Analysis</li>
+<li>Document VLM / OCR-VL</li>
+<li>支持视觉文档理解的 Document Parser</li>
+</ul>
+<p>对于 CvHub 这类希望降低自维护复杂度的系统，可以优先评估统一 Document Parser / Document VLM，但这属于工程策略，不是所有 RAG 系统的强制选择。</p>
+<hr />
+<h3 id="cmixed-pdf">场景 C：Mixed PDF</h3>
+<p>例如：</p>
+<pre><code class="language-text">Page 1 → Native Text
+Page 2 → Native Text
+Page 3 → Scan
+Page 4 → Scan
+Page 5 → Native Text
+</code></pre>
+<p>不能简单将整个 PDF 二分为：</p>
+<pre><code class="language-text">Text PDF
+or
+Scan PDF
+</code></pre>
+<p>更合理的是支持：</p>
+<pre><code class="language-text">Page-level
+or
+Block-level
+</code></pre>
+<p>判断和 fallback。</p>
+<p>最终所有页面统一输出：</p>
+<pre><code class="language-text">StructuredDocument
+</code></pre>
+<hr />
+<h3 id="d">场景 D：有完整结构的文本</h3>
+<p>例如：</p>
+<ul>
+<li>Markdown</li>
+<li>HTML</li>
+<li>XML</li>
+<li>已经结构化的文本</li>
+</ul>
+<p>原则：</p>
+<blockquote>
+<p>已有可靠结构时优先使用现有结构，不需要模型重新猜测。</p>
+</blockquote>
+<p>可以直接使用：</p>
+<ul>
+<li>Heading Split</li>
+<li>Section Split</li>
+<li>Paragraph Split</li>
+<li>HTML Structure Split</li>
+<li>XML Structure Split</li>
+</ul>
+<hr />
+<h3 id="e">场景 E：无可靠结构的纯文本</h3>
+<p>特点：</p>
+<pre><code class="language-text">只有连续文本
+没有 Heading
+没有 Section
+视觉信息已经丢失
+</code></pre>
+<p>这时才需要更多语义方法：</p>
+<ul>
+<li>Sentence Splitting</li>
+<li>Semantic Segmentation</li>
+<li>Embedding-based Segmentation</li>
+<li>LLM Segmentation</li>
+<li>Topic Segmentation</li>
+</ul>
+<hr />
+<h2 id="4-structured-document">4. Structured Document</h2>
+<p>Parser 的目标输出应该尽可能统一。</p>
+<p>例如：</p>
+<pre><code class="language-text">Document
+├── Title
+├── Section
+│   ├── Heading
+│   ├── Paragraph
+│   ├── Paragraph
+│   └── Table
+└── Section
+    ├── Paragraph
+    ├── Figure
+    └── Caption
+</code></pre>
+<p>典型 Block 类型：</p>
+<pre><code class="language-text">Title
+Heading
+Paragraph
+List
+Table
+Figure
+Caption
+Formula
+Code
+</code></pre>
+<p>典型结构信息：</p>
+<pre><code class="language-text">page
+bbox
+reading_order
+parent
+section
+heading_path
+</code></pre>
+<hr />
+<h2 id="5-normalization-cleaning">5. Normalization / Cleaning</h2>
+<p>Parser 输出后不建议直接进入 Chunker。</p>
+<p>完整流程：</p>
+<pre><code class="language-text">Parser
+ ↓
+Raw Structured Document
+ ↓
+Normalization / Cleaning
+ ↓
+Clean Structured Document
+ ↓
+Chunker
+</code></pre>
+<p>这一层主要处理：</p>
+<ul>
+<li>Header / Footer 去除</li>
+<li>Page Number 去除</li>
+<li>Watermark 过滤</li>
+<li>重复内容去除</li>
+<li>空白清理</li>
+<li>异常字符清理</li>
+<li>Encoding 修复</li>
+<li>Reading Order 修复</li>
+<li>跨页 Paragraph 合并</li>
+<li>Block Continuity</li>
+<li>Metadata 统一</li>
+</ul>
+<p>这部分优先使用确定性规则。</p>
+<hr />
+<h2 id="6-chunk">6. Chunk 是什么</h2>
+<p>Chunk 是 Retrieval 的基本文本单元。</p>
+<pre><code class="language-text">Document
+   ↓
+Chunk 1
+Chunk 2
+Chunk 3
+...
+</code></pre>
+<p>Chunking 的目标不是单纯控制长度，而是同时考虑：</p>
+<pre><code class="language-text">Semantic Completeness
++
+Retrieval Precision
++
+Context Completeness
++
+Token Cost
+</code></pre>
+<hr />
+<h2 id="7-chunking">7. 常见 Chunking 方法</h2>
+<h3 id="fixed-size-chunking">Fixed-size Chunking</h3>
+<p>按照：</p>
+<ul>
+<li>Token 数量</li>
+<li>Character 数量</li>
+</ul>
+<p>切分。</p>
+<p>优点：</p>
+<ul>
+<li>简单</li>
+<li>快</li>
+<li>稳定</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>容易破坏语义结构</li>
+</ul>
+<p>适合：</p>
+<ul>
+<li>fallback</li>
+<li>结构非常弱的数据</li>
+<li>最终 size control</li>
+</ul>
+<hr />
+<h3 id="recursive-chunking">Recursive Chunking</h3>
+<p>按照一组优先级逐级切分：</p>
+<pre><code class="language-text">Section
+ ↓
+Paragraph
+ ↓
+Sentence
+ ↓
+Token
+</code></pre>
+<p>直到满足 Size Limit。</p>
+<p>比纯 Fixed-size 更合理。</p>
+<hr />
+<h3 id="structure-aware-chunking">Structure-aware Chunking</h3>
+<p>利用：</p>
+<ul>
+<li>Heading</li>
+<li>Section</li>
+<li>Paragraph</li>
+<li>List</li>
+<li>Table</li>
+<li>Document Block</li>
+</ul>
+<p>进行切分。</p>
+<p>对于结构化文档通常应该优先采用。</p>
+<hr />
+<h3 id="semantic-chunking">Semantic Chunking</h3>
+<p>根据语义变化寻找 Chunk Boundary。</p>
+<p>典型流程：</p>
+<pre><code class="language-text">Text
+ ↓
+Sentence Split
+ ↓
+Sentence Embedding
+ ↓
+Compare Adjacent Semantics
+ ↓
+Detect Topic Change
+ ↓
+Segment
+</code></pre>
+<p>适用于：</p>
+<ul>
+<li>长 Section</li>
+<li>连续文本</li>
+<li>缺少可靠子结构</li>
+</ul>
+<hr />
+<h3 id="llm-based-chunking">LLM-based Chunking</h3>
+<p>使用 LLM 判断：</p>
+<ul>
+<li>Topic Boundary</li>
+<li>Logic Boundary</li>
+<li>Content Transition</li>
+</ul>
+<p>优点：</p>
+<ul>
+<li>语义理解强</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>成本高</li>
+<li>延迟高</li>
+<li>输出不完全确定</li>
+<li>需要验证</li>
+</ul>
+<p>因此更适合作为：</p>
+<blockquote>
+<p>Conditional Step / Fallback</p>
+</blockquote>
+<p>而不是默认处理所有文档。</p>
+<hr />
+<h2 id="8-hierarchical-chunking">8. 推荐的 Hierarchical Chunking</h2>
+<p>更合理的策略不是选择一种 Chunker，而是：</p>
+<pre><code class="language-text">Structured Content
+       ↓
+Structure First
+       ↓
+Section / Paragraph / Table
+       ↓
+Size Check
+   ┌───────┼────────┐
+   │       │        │
+ Too Big  Good    Too Small
+   │                │
+Split Further      Merge
+   │                │
+   └────────┬───────┘
+            ↓
+       Final Chunk
+</code></pre>
+<h3 id="too-big">Too Big</h3>
+<p>例如：</p>
+<pre><code class="language-text">Section = 5000 tokens
+</code></pre>
+<p>继续：</p>
+<ul>
+<li>Paragraph Split</li>
+<li>Semantic Split</li>
+<li>Sentence Split</li>
+<li>Token Limit Split</li>
+</ul>
+<h3 id="too-small">Too Small</h3>
+<p>例如：</p>
+<pre><code class="language-text">Heading + 30 token paragraph
+</code></pre>
+<p>可以：</p>
+<ul>
+<li>与 Parent Heading 合并</li>
+<li>与相邻 Paragraph 合并</li>
+<li>添加 Section Context</li>
+</ul>
+<hr />
+<h2 id="9-chunk-overlap">9. Chunk Overlap</h2>
+<p>固定 Chunking 中常见：</p>
+<pre><code class="language-text">Chunk 1: token 0-500
+Chunk 2: token 450-950
+</code></pre>
+<p>Overlap 可以减少边界导致的上下文丢失。</p>
+<p>但 Overlap 过大会造成：</p>
+<ul>
+<li>重复索引</li>
+<li>Retrieval Duplicate</li>
+<li>Storage 增加</li>
+<li>Context 重复</li>
+</ul>
+<p>因此：</p>
+<blockquote>
+<p>Overlap 是补偿边界问题的工具，不应该替代良好的结构化 Chunking。</p>
+</blockquote>
+<hr />
+<h2 id="10-block">10. 特殊 Block</h2>
+<h3 id="table">Table</h3>
+<p>表格不能简单转换成无结构连续文本。</p>
+<p>需要尽量保留：</p>
+<pre><code class="language-text">Header
+Row
+Column
+Cell Relation
+Caption
+</code></pre>
+<p>可以使用：</p>
+<ul>
+<li>Markdown Table</li>
+<li>Structured JSON</li>
+<li>Table-specific representation</li>
+</ul>
+<p>Table 应被视为特殊 Block。</p>
+<h3 id="figure-diagram-chart">Figure / Diagram / Chart</h3>
+<p>部分信息只存在视觉内容中。</p>
+<p>可考虑：</p>
+<ul>
+<li>保留 Figure Block</li>
+<li>保留 Caption</li>
+<li>VLM 生成 Description</li>
+<li>Multimodal Retrieval</li>
+</ul>
+<p>基础 Text RAG 可以先将重要视觉内容转换为结构化文字描述。</p>
+<h3 id="formula">Formula</h3>
+<p>应尽量：</p>
+<ul>
+<li>保持 Formula Block 完整</li>
+<li>与相关 Paragraph / Caption 保持关联</li>
+</ul>
+<h3 id="code">Code</h3>
+<p>代码不适合普通 Sentence Split。</p>
+<p>应：</p>
+<ul>
+<li>保留 Code Block</li>
+<li>对超长代码使用 Code-aware Split</li>
+</ul>
+<hr />
+<h2 id="11">11. 跨页内容</h2>
+<p>常见：</p>
+<ul>
+<li>Paragraph 跨页</li>
+<li>Table 跨页</li>
+<li>List 跨页</li>
+<li>Caption 跨页</li>
+</ul>
+<p>因此：</p>
+<pre><code class="language-text">Page Boundary
+≠
+Semantic Boundary
+</code></pre>
+<p>Chunking 前应该进行：</p>
+<pre><code class="language-text">Block Continuity Detection
++
+Cross-page Merge
+</code></pre>
+<hr />
+<h2 id="12-metadata">12. Metadata</h2>
+<p>Chunk 建议保留：</p>
+<pre><code class="language-text">chunk_id
+document_id
+document_version
+page
+section
+heading_path
+chunk_type
+language
+source
+bbox
+created_at
+</code></pre>
+<p>可以进一步区分：</p>
+<h3 id="document-level-metadata">Document-level Metadata</h3>
+<p>例如：</p>
+<pre><code class="language-text">document_id
+version
+source
+language
+created_at
+permissions
+</code></pre>
+<h3 id="chunk-level-metadata">Chunk-level Metadata</h3>
+<p>例如：</p>
+<pre><code class="language-text">chunk_id
+page
+heading_path
+chunk_type
+bbox
+parent_chunk_id
+</code></pre>
+<p>Metadata 用于：</p>
+<ul>
+<li>Filter</li>
+<li>Citation</li>
+<li>Debugging</li>
+<li>Versioning</li>
+<li>Access Control</li>
+<li>Evaluation</li>
+</ul>
+<hr />
+<h2 id="13-parent-child-hierarchical-chunk">13. Parent-Child / Hierarchical Chunk</h2>
+<p>可以同时维护不同粒度：</p>
+<pre><code class="language-text">Document
+ ↓
+Section
+ ↓
+Paragraph Chunk
+</code></pre>
+<p>例如：</p>
+<blockquote>
+<p>使用较小 Chunk 做精确 Retrieval，但最终返回它所属的较大 Parent Section。</p>
+</blockquote>
+<p>这类方法通常称为：</p>
+<pre><code class="language-text">Parent-Child Retrieval
+Small-to-Big Retrieval
+</code></pre>
+<p>核心思想：</p>
+<pre><code class="language-text">Small Chunk
+=
+Retrieval Precision
+
+Large Parent
+=
+Context Completeness
+</code></pre>
+<hr />
+<h2 id="14">14. 多语言</h2>
+<p>语言会影响：</p>
+<ul>
+<li>Sentence Splitting</li>
+<li>Tokenization</li>
+<li>Semantic Segmentation</li>
+<li>Embedding</li>
+</ul>
+<p>建议保留：</p>
+<pre><code class="language-text">language metadata
+</code></pre>
+<p>并使用：</p>
+<ul>
+<li>Multilingual Sentence Splitter</li>
+<li>Multilingual Embedding Model</li>
+</ul>
+<p>最终效果应使用真实 Query / Document Evaluation。</p>
+<hr />
+<h2 id="15">15. 文档版本</h2>
+<p>Knowledge Base 可能存在：</p>
+<pre><code class="language-text">Document v1
+Document v2
+Document v3
+</code></pre>
+<p>应考虑：</p>
+<pre><code class="language-text">document_id
+version
+active / inactive
+updated_at
+</code></pre>
+<p>更新时需要：</p>
+<pre><code class="language-text">Delete / Deactivate Old Chunks
+ ↓
+Parse New Version
+ ↓
+Re-chunk
+ ↓
+Re-embed
+ ↓
+Re-index
+</code></pre>
+<hr />
+<h2 id="16-parsing-chunking-evaluation">16. Parsing / Chunking Evaluation</h2>
+<p>不能只根据感觉选择：</p>
+<pre><code class="language-text">500 tokens
+1000 tokens
+Semantic Chunking
+Docling
+Document VLM
+</code></pre>
+<p>应该通过真实 Query 测试：</p>
+<pre><code class="language-text">Parsing Strategy
+      +
+Chunk Strategy
+      ↓
+Retrieval
+      ↓
+Evaluation
+</code></pre>
+<p>常见 Retrieval 指标：</p>
+<ul>
+<li>Recall@K</li>
+<li>Precision@K</li>
+<li>Hit Rate</li>
+<li>MRR</li>
+<li>nDCG</li>
+</ul>
+<p>最终原则：</p>
+<blockquote>
+<p><strong>Chunk 的质量应该通过 Retrieval 效果判断，而不是仅通过 Chunk 本身是否“看起来完整”。</strong></p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

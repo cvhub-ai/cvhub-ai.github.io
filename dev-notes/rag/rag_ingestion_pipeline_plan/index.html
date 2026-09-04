@@ -9,10 +9,6 @@
       
       
       
-        <link rel="prev" href="../gRPC_patterns/">
-      
-      
-        <link rel="next" href="../gRPC_Interceptor/">
       
       
         
@@ -23,7 +19,7 @@
     
     
       
-        <title>Service Impl - CvHub Docs</title>
+        <title>RAG Ingestion Pipeline 规划 - CvHub Docs</title>
       
     
     
@@ -64,7 +60,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#grpc-code-generation-service-implementation" class="md-skip">
+        <a href="#rag-ingestion-pipeline" class="md-skip">
           Skip to content
         </a>
       
@@ -100,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Service Impl
+              RAG Ingestion Pipeline 规划
             
           </span>
         </div>
@@ -302,20 +298,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -336,7 +330,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -351,20 +345,18 @@
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
         
           
           <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
@@ -385,7 +377,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -403,7 +395,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gRPC/" class="md-nav__link">
+      <a href="../../gRPC/gRPC/" class="md-nav__link">
         
   
   
@@ -431,7 +423,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gRPC_proto/" class="md-nav__link">
+      <a href="../../gRPC/gRPC_proto/" class="md-nav__link">
         
   
   
@@ -459,7 +451,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gRPC_patterns/" class="md-nav__link">
+      <a href="../../gRPC/gRPC_patterns/" class="md-nav__link">
         
   
   
@@ -484,37 +476,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Service Impl
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../gRPC/gRPC_service_impl/" class="md-nav__link">
         
   
   
@@ -530,315 +495,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        核心思想
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#python" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Python：继承基类
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Python：继承基类">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#proto" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Proto文件
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        生成类
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#python_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Python实现
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#java" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Java：继承抽象基类
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Java：继承抽象基类">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#proto_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Proto生成类
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#java_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Java实现
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#go" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Go：实现接口（最典型）
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Go：实现接口（最典型）">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#proto_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Proto生成
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#go_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        go实现
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        注册：
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#c" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        C
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="C">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#proto_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Proto生成
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#c_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        C#实现
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#nodejs" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Node.js
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Node.js">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#proto-service-definition" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Proto生成 Service Definition
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#node" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Node实现
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        注册
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#rusttonic" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Rust（Tonic）
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Rust（Tonic）">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#proto-trait" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Proto生成 Trait：
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#rust" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Rust实现
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        总结
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -851,7 +507,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gRPC_Interceptor/" class="md-nav__link">
+      <a href="../../gRPC/gRPC_Interceptor/" class="md-nav__link">
         
   
   
@@ -1157,7 +813,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../rag/01_rag_overview/" class="md-nav__link">
+      <a href="../01_rag_overview/" class="md-nav__link">
         
   
   
@@ -1185,7 +841,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../rag/02_document_ingestion_and_chunking/" class="md-nav__link">
+      <a href="../02_document_ingestion_and_chunking/" class="md-nav__link">
         
   
   
@@ -1213,7 +869,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../rag/03_embedding_and_indexing/" class="md-nav__link">
+      <a href="../03_embedding_and_indexing/" class="md-nav__link">
         
   
   
@@ -1241,7 +897,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../rag/04_retrieval_pipeline/" class="md-nav__link">
+      <a href="../04_retrieval_pipeline/" class="md-nav__link">
         
   
   
@@ -1269,7 +925,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../rag/05_context_generation_and_grounding/" class="md-nav__link">
+      <a href="../05_context_generation_and_grounding/" class="md-nav__link">
         
   
   
@@ -1297,7 +953,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../rag/06_rag_evaluation_operations_security/" class="md-nav__link">
+      <a href="../06_rag_evaluation_operations_security/" class="md-nav__link">
         
   
   
@@ -1360,10 +1016,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        核心思想
+        1. 设计目标
       
     </span>
   </a>
@@ -1371,22 +1027,320 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#python" class="md-nav__link">
+  <a href="#2-pipeline" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Python：继承基类
+        2. 总体 Pipeline
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Python：继承基类">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-parser" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Parser 层
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 输入处理策略
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-structureddocument" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. StructuredDocument
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-normalization-cleaning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Normalization / Cleaning
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-chunking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Chunking 总体策略
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 第一层：规则结构分割
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-size-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. 第二层：Size Control
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-semantic-segmentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. 第三层：Semantic Segmentation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. 第三层：Semantic Segmentation">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#proto" class="md-nav__link">
+  <a href="#aembedding-based" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Proto文件
+        可选方案 A：Embedding-based
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bllm-based" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        可选方案 B：LLM-based
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-small-chunk-merge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Small Chunk Merge
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-block" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. 特殊 Block 策略
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. 特殊 Block 策略">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Table
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formula" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Formula
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#figure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Figure
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-final-chunk-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Final Chunk Schema
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-embedding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Embedding 层
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-vector-store" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Vector Store
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. Pipeline 类
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17. 推荐模块结构
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18. 第一版实际技术策略
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        19. 核心设计原则
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="19. 核心设计原则">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parser" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parser 单一化
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        规则优先
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#llm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LLM 兜底
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chunking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chunking 分层化
       
     </span>
   </a>
@@ -1397,18 +1351,7 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        生成类
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#python_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Python实现
+        组件解耦
       
     </span>
   </a>
@@ -1421,227 +1364,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#java" class="md-nav__link">
+  <a href="#20" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Java：继承抽象基类
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Java：继承抽象基类">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#proto_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Proto生成类
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#java_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Java实现
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#go" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Go：实现接口（最典型）
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Go：实现接口（最典型）">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#proto_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Proto生成
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#go_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        go实现
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        注册：
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#c" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        C
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="C">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#proto_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Proto生成
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#c_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        C#实现
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#nodejs" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Node.js
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Node.js">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#proto-service-definition" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Proto生成 Service Definition
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#node" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Node实现
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        注册
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#rusttonic" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Rust（Tonic）
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Rust（Tonic）">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#proto-trait" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Proto生成 Trait：
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#rust" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Rust实现
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        总结
+        20. 最终规划图
       
     </span>
   </a>
@@ -1665,226 +1391,567 @@
 
 
 
-<h1 id="grpc-code-generation-service-implementation">gRPC Code Generation &amp; Service Implementation</h1>
-<h2 id="_1">核心思想</h2>
-<pre><code class="language-text">.proto
-   ↓
-生成服务接口骨架
-   ↓
-实现这个接口
-   ↓
-注册到 gRPC Server
+<h1 id="rag-ingestion-pipeline">RAG Ingestion Pipeline 规划</h1>
+<h2 id="1">1. 设计目标</h2>
+<p>计划中的 Pipeline 不追求引入大量不同模型，而是保持组件少、职责清晰、容易替换和评估。</p>
+<p>核心设计原则：</p>
+<blockquote>
+<p><strong>一个统一 Document Parser + 规则优先的结构处理 + 条件式语义分割 + 分层 Chunking</strong></p>
+</blockquote>
+<p>模型只用于真正需要模型理解的部分。</p>
+<hr />
+<h2 id="2-pipeline">2. 总体 Pipeline</h2>
+<pre><code class="language-text">Input
+  ↓
+Document / Text Detection
+  ↓
+Parser / Segmenter
+  ↓
+Structured Content
+  ↓
+Normalization / Cleaning
+  ↓
+Hierarchical Chunker
+  ↓
+Final Chunks
+  ↓
+Embedding
+  ↓
+Vector Store
 </code></pre>
-<p>对于服务的具体实现，不同的语言需要选择不同的语言特性</p>
-<h2 id="python">Python：继承基类</h2>
-<h3 id="proto">Proto文件</h3>
-<pre><code class="language-proto">service UserService {
-    rpc GetUser(GetUserRequest)
-        returns (GetUserResponse);
-}
+<hr />
+<h2 id="3-parser">3. Parser 层</h2>
+<p>文档类输入只选择一个主要 Document Parser：</p>
+<pre><code class="language-text">Docling
+   OR
+PaddleOCR-VL
 </code></pre>
-<h3 id="_2">生成类</h3>
-<pre><code class="language-python">class UserServiceServicer:
-
-    def GetUser(self, request, context):
-        raise NotImplementedError()
-</code></pre>
-<h3 id="python_1">Python实现</h3>
-<pre><code class="language-python">class UserServiceImpl(
-        UserServiceServicer):
-
-    def GetUser(self, request, context):
+<p>不同时维护多套主要解析系统。</p>
+<p>统一接口：</p>
+<pre><code class="language-python">class DocumentParser:
+    def parse(self, source) -&gt; StructuredDocument:
         ...
 </code></pre>
-<blockquote>
-<p><strong>属于：<code>继承 + 重写方法</code></strong></p>
-</blockquote>
-<h2 id="java">Java：继承抽象基类</h2>
-<h3 id="proto_1">Proto生成类</h3>
-<pre><code class="language-Java">public abstract class UserServiceImplBase {
-
-    public void getUser(
-        GetUserRequest request,
-        StreamObserver&lt;GetUserResponse&gt; responseObserver
-    ) {
+<p>底层实现可以是：</p>
+<pre><code class="language-text">DoclingParser
+</code></pre>
+<p>或者：</p>
+<pre><code class="language-text">PaddleOCRVLParser
+</code></pre>
+<p>上层逻辑不关心具体实现。</p>
+<p>这样未来可以替换 parser，而不影响：</p>
+<pre><code class="language-text">Normalization
+Chunking
+Embedding
+Vector Store
+</code></pre>
+<hr />
+<h2 id="4">4. 输入处理策略</h2>
+<pre><code class="language-text">Input
+│
+├── PDF / Image / Document
+│      ↓
+│   Unified Document Parser
+│      ↓
+│   StructuredDocument
+│
+└── Plain Text
+       ↓
+   Text Structure Detection
+       ↓
+   Structured / Unstructured
+</code></pre>
+<p>对于 PDF：</p>
+<ul>
+<li>有 Native Text</li>
+<li>扫描 PDF</li>
+<li>混合 PDF</li>
+</ul>
+<p>尽量交给选定的 Document Parser 自己统一处理。</p>
+<p>项目本身不开发复杂的：</p>
+<pre><code class="language-text">OCR
+ ↓
+Layout Detection
+ ↓
+Fusion
+ ↓
+Structure Reconstruction
+</code></pre>
+<p>Pipeline。</p>
+<hr />
+<h2 id="5-structureddocument">5. StructuredDocument</h2>
+<p>Parser 输出统一的数据结构，例如：</p>
+<pre><code class="language-text">StructuredDocument
+├── metadata
+├── pages
+└── blocks
+    ├── Heading
+    ├── Paragraph
+    ├── List
+    ├── Table
+    ├── Figure
+    ├── Formula
+    └── Code
+</code></pre>
+<p>每个 Block 尽量包含：</p>
+<pre><code class="language-text">text
+type
+page
+bbox
+heading_path
+parent
+metadata
+</code></pre>
+<p>这一层是 Parser 和 Chunker 之间的统一边界。</p>
+<hr />
+<h2 id="6-normalization-cleaning">6. Normalization / Cleaning</h2>
+<p>解析完成后先执行确定性清理：</p>
+<pre><code class="language-text">StructuredDocument
+       ↓
+Normalizer
+       ↓
+CleanStructuredDocument
+</code></pre>
+<p>主要职责：</p>
+<ul>
+<li>删除 Header / Footer / Page Number</li>
+<li>删除重复文本</li>
+<li>清理空白和异常字符</li>
+<li>合并跨页 Paragraph</li>
+<li>修复明显 Reading Order 问题</li>
+<li>合并破碎 Block</li>
+<li>统一 Metadata</li>
+<li>保留特殊 Block</li>
+</ul>
+<p>尽量使用规则代码，不使用 LLM。</p>
+<p>接口：</p>
+<pre><code class="language-python">class DocumentNormalizer:
+    def normalize(
+        self,
+        document: StructuredDocument
+    ) -&gt; StructuredDocument:
         ...
-    }
-}
 </code></pre>
-<h3 id="java_1">Java实现</h3>
-<pre><code class="language-Java">public class UserServiceImpl
-    extends UserServiceGrpc.UserServiceImplBase {
-
-    @Override
-    public void getUser(
-        GetUserRequest request,
-        StreamObserver&lt;GetUserResponse&gt; responseObserver
-    ) {
-
-        ...
-    }
-}
-</code></pre>
-<blockquote>
-<p><strong>属于：<code>继承 + 重写方法</code></strong></p>
-</blockquote>
-<h2 id="go">Go：实现接口（最典型）</h2>
-<h3 id="proto_2">Proto生成</h3>
-<pre><code class="language-Go">type UserServiceServer interface {
-
-    GetUser(
-        context.Context,
-        *GetUserRequest,
-    ) (*GetUserResponse, error)
-}
-</code></pre>
-<h3 id="go_1">go实现</h3>
-<pre><code class="language-Go">type UserServiceImpl struct {
-}
-
-func (s *UserServiceImpl) GetUser(
-    ctx context.Context,
-    req *GetUserRequest,
-) (*GetUserResponse, error) {
-
-    ...
-}
-</code></pre>
-<h3 id="_3">注册：</h3>
-<pre><code class="language-Go">pb.RegisterUserServiceServer(
-    grpcServer,
-    &amp;UserServiceImpl{},
-)
-</code></pre>
-<blockquote>
-<p><strong>这里没有继承。属于：<code>接口实现</code></strong></p>
-</blockquote>
-<h2 id="c">C</h2>
-<h3 id="proto_3">Proto生成</h3>
-<pre><code class="language-C#">public abstract class UserServiceBase
-{
-    public virtual Task&lt;GetUserResponse&gt;
-        GetUser(
-            GetUserRequest request,
-            ServerCallContext context)
-}
-</code></pre>
-<h3 id="c_1">C#实现</h3>
-<pre><code class="language-C#">public class UserServiceImpl
-    : UserService.UserServiceBase
-{
-    public override Task&lt;GetUserResponse&gt;
-        GetUser(...)
-    {
-        ...
-    }
-}
-</code></pre>
-<blockquote>
-<p><strong>属于：<code>继承 + 重写方法</code></strong></p>
-</blockquote>
-<h2 id="nodejs">Node.js</h2>
-<p>Node 更灵活。</p>
-<h3 id="proto-service-definition">Proto生成 Service Definition</h3>
-<pre><code class="language-JavaScript">{
-  GetUser: {
-     path: &quot;/user.UserService/GetUser&quot;
-  }
-}
-</code></pre>
-<h3 id="node">Node实现</h3>
-<pre><code class="language-JavaScript">function getUser(call, callback) {
-
-    callback(null, {
-        name: &quot;Tom&quot;
-    });
-}
-</code></pre>
-<h3 id="_4">注册</h3>
-<pre><code class="language-JavaScript">server.addService(
-    UserService.service,
-    {
-        GetUser: getUser
-    }
-)
-</code></pre>
-<blockquote>
-<p><strong>属于：<code>函数注册</code> 没有继承</strong></p>
-</blockquote>
-<h2 id="rusttonic">Rust（Tonic）</h2>
-<h3 id="proto-trait">Proto生成 Trait：</h3>
-<pre><code class="language-Rust">#[tonic::async_trait]
-pub trait UserService {
-
-    async fn get_user(
-        &amp;self,
-        request: Request&lt;GetUserRequest&gt;,
-    ) -&gt; Result&lt;Response&lt;GetUserResponse&gt;&gt;;
-}
-</code></pre>
-<h3 id="rust">Rust实现</h3>
-<pre><code class="language-Rust">impl UserService for UserServiceImpl {
-
-    async fn get_user(...) {
-
-    }
-}
-</code></pre>
-<blockquote>
-<p><strong>属于：<code>Trait</code> 实现</strong></p>
-</blockquote>
-<h2 id="_5">总结</h2>
-<p>可以把 gRPC 的服务实现理解成：</p>
-<pre><code class="language-text">gRPC定义接口
+<hr />
+<h2 id="7-chunking">7. Chunking 总体策略</h2>
+<p>Chunking 使用分层策略：</p>
+<pre><code class="language-text">Structured Content
         ↓
-各语言生成服务骨架
+Structure-aware Split
         ↓
-开发者实现骨架
-        ↓
-注册到Server
+Size Check
+   ┌───────┼────────┐
+   │       │        │
+ Too Big  Good    Too Small
+   │                │
+Semantic Split     Merge
+   │                │
+   └────────┬───────┘
+            ↓
+       Final Chunks
 </code></pre>
-<p>不同语言只是"骨架"的表现形式不同：</p>
-<table style="border-collapse: collapse;">
-  <thead>
-    <tr>
-      <th style="border: 1px solid; padding: 8px;">语言</th>
-      <th style="border: 1px solid; padding: 8px;">生成内容</th>
-      <th style="border: 1px solid; padding: 8px;">实现方式</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="border: 1px solid; padding: 8px;">Python</td>
-      <td style="border: 1px solid; padding: 8px;">Servicer 基类</td>
-      <td style="border: 1px solid; padding: 8px;">继承</td>
-    </tr>
-    <tr>
-      <td style="border: 1px solid; padding: 8px;">Java</td>
-      <td style="border: 1px solid; padding: 8px;">ImplBase 抽象类</td>
-      <td style="border: 1px solid; padding: 8px;">继承</td>
-    </tr>
-    <tr>
-      <td style="border: 1px solid; padding: 8px;">C#</td>
-      <td style="border: 1px solid; padding: 8px;">Base 抽象类</td>
-      <td style="border: 1px solid; padding: 8px;">继承</td>
-    </tr>
-    <tr>
-      <td style="border: 1px solid; padding: 8px;">Go</td>
-      <td style="border: 1px solid; padding: 8px;">Interface</td>
-      <td style="border: 1px solid; padding: 8px;">实现接口</td>
-    </tr>
-    <tr>
-      <td style="border: 1px solid; padding: 8px;">Rust</td>
-      <td style="border: 1px solid; padding: 8px;">Trait</td>
-      <td style="border: 1px solid; padding: 8px;">实现 Trait</td>
-    </tr>
-    <tr>
-      <td style="border: 1px solid; padding: 8px;">Node</td>
-      <td style="border: 1px solid; padding: 8px;">Service Definition</td>
-      <td style="border: 1px solid; padding: 8px;">注册函数</td>
-    </tr>
-  </tbody>
-</table>
+<hr />
+<h2 id="8">8. 第一层：规则结构分割</h2>
+<p>只要存在可靠结构，就优先使用代码规则。</p>
+<p>规则处理：</p>
+<ul>
+<li>Heading</li>
+<li>Section</li>
+<li>Paragraph</li>
+<li>List</li>
+<li>Table</li>
+<li>Code Block</li>
+<li>Formula</li>
+<li>Figure / Caption</li>
+</ul>
+<p>典型逻辑：</p>
+<pre><code class="language-text">Heading
+  ↓
+收集属于该 Heading 的 Blocks
+  ↓
+形成逻辑 Section
+</code></pre>
+<p>接口：</p>
+<pre><code class="language-python">class StructureChunker:
+    def split(
+        self,
+        document: StructuredDocument
+    ) -&gt; list[ChunkCandidate]:
+        ...
+</code></pre>
+<hr />
+<h2 id="9-size-control">9. 第二层：Size Control</h2>
+<p>每个候选 Chunk 做长度判断：</p>
+<pre><code class="language-text">ChunkCandidate
+      ↓
+Token Count
+      ↓
+┌────────────┬─────────────┬─────────────┐
+│            │             │
+Too Large   Suitable      Too Small
+│            │             │
+Split        Keep          Merge
+</code></pre>
+<p>配置：</p>
+<pre><code class="language-text">max_tokens
+target_tokens
+min_tokens
+overlap
+</code></pre>
+<hr />
+<h2 id="10-semantic-segmentation">10. 第三层：Semantic Segmentation</h2>
+<p>只有以下情况才调用：</p>
+<ul>
+<li>长 Section 没有进一步结构</li>
+<li>连续纯文本明显包含多个主题</li>
+<li>Rule-based split 无法得到合理 Chunk</li>
+</ul>
+<p>默认不让所有内容经过模型。</p>
+<h3 id="aembedding-based">可选方案 A：Embedding-based</h3>
+<pre><code class="language-text">Long Text
+   ↓
+Sentence Split
+   ↓
+Embedding
+   ↓
+Similarity Change
+   ↓
+Semantic Boundaries
+</code></pre>
+<h3 id="bllm-based">可选方案 B：LLM-based</h3>
+<p>项目规划中可以重点考虑：</p>
+<pre><code class="language-text">Large Unstructured Segment
+          ↓
+         LLM
+          ↓
+Semantic Boundaries
+          ↓
+Sub-segments
+</code></pre>
+<p>LLM 定位：</p>
+<blockquote>
+<p><strong>fallback / conditional semantic segmenter</strong></p>
+</blockquote>
+<p>而不是默认 Chunker。</p>
+<p>统一接口：</p>
+<pre><code class="language-python">class SemanticSegmenter:
+    def split(self, text: str) -&gt; list[str]:
+        ...
+</code></pre>
+<p>底层以后可以替换：</p>
+<pre><code class="language-text">EmbeddingSemanticSegmenter
+LLMSemanticSegmenter
+</code></pre>
+<hr />
+<h2 id="11-small-chunk-merge">11. Small Chunk Merge</h2>
+<p>过小 Chunk 不直接进入 Embedding。</p>
+<p>可以按照规则：</p>
+<pre><code class="language-text">Small Chunk
+    ↓
+是否有 Parent Heading？
+    ↓
+与 Parent Context / Neighbor 合并
+</code></pre>
+<p>优先考虑：</p>
+<ol>
+<li>同一 Section 内相邻 Chunk</li>
+<li>相同 Heading Path</li>
+<li>不跨越明显 Topic Boundary</li>
+</ol>
+<p>接口：</p>
+<pre><code class="language-python">class ChunkMerger:
+    def merge(
+        self,
+        chunks: list[ChunkCandidate]
+    ) -&gt; list[Chunk]:
+        ...
+</code></pre>
+<hr />
+<h2 id="12-block">12. 特殊 Block 策略</h2>
+<h3 id="table">Table</h3>
+<ul>
+<li>尽量保持完整</li>
+<li>保留 Caption / Header</li>
+<li>超长表格按 Row group 拆分</li>
+<li>每个 Chunk 继承 Table Header</li>
+</ul>
+<h3 id="code">Code</h3>
+<ul>
+<li>保持 Code Block</li>
+<li>不按普通句子规则切</li>
+<li>超长时使用 code-aware split</li>
+</ul>
+<h3 id="formula">Formula</h3>
+<ul>
+<li>保持公式完整</li>
+<li>与解释它的 Paragraph 保持上下文关系</li>
+</ul>
+<h3 id="figure">Figure</h3>
+<p>基础版本：</p>
+<ul>
+<li>保留 Caption</li>
+<li>如果 Parser / VLM 可以生成描述，则保存 description</li>
+<li>以后再考虑 Multimodal Retrieval</li>
+</ul>
+<hr />
+<h2 id="13-final-chunk-schema">13. Final Chunk Schema</h2>
+<p>最终进入 Embedding 的 Chunk 建议包含：</p>
+<pre><code class="language-text">Chunk
+├── id
+├── document_id
+├── text
+├── chunk_type
+├── heading_path
+├── page_start
+├── page_end
+├── source
+├── language
+└── metadata
+</code></pre>
+<p>必要时还可以保存：</p>
+<pre><code class="language-text">parent_chunk_id
+bbox
+parser_version
+chunker_version
+</code></pre>
+<hr />
+<h2 id="14-embedding">14. Embedding 层</h2>
+<p>统一接口：</p>
+<pre><code class="language-python">class Embedder:
+    def embed(
+        self,
+        texts: list[str]
+    ) -&gt; list[Vector]:
+        ...
+</code></pre>
+<p>流程：</p>
+<pre><code class="language-text">Final Chunks
+     ↓
+Embedder
+     ↓
+Vectors
+</code></pre>
+<p>Chunking 和 Embedding 解耦。</p>
+<hr />
+<h2 id="15-vector-store">15. Vector Store</h2>
+<p>统一接口：</p>
+<pre><code class="language-python">class VectorStore:
+    def upsert(
+        self,
+        chunks: list[Chunk],
+        vectors: list[Vector]
+    ):
+        ...
+</code></pre>
+<p>保存：</p>
+<pre><code class="language-text">Chunk Text
++
+Embedding
++
+Metadata
+</code></pre>
+<p>具体实现以后可以是：</p>
+<pre><code class="language-text">PostgreSQL + pgvector
+Qdrant
+Milvus
+...
+</code></pre>
+<p>但不影响 ingestion 主流程。</p>
+<hr />
+<h2 id="16-pipeline">16. Pipeline 类</h2>
+<p>整体可以有：</p>
+<pre><code class="language-python">class IngestionPipeline:
+
+    def ingest(self, source):
+
+        document = parser.parse(source)
+
+        document = normalizer.normalize(document)
+
+        candidates = structure_chunker.split(document)
+
+        chunks = hierarchical_chunker.process(candidates)
+
+        vectors = embedder.embed(
+            [chunk.text for chunk in chunks]
+        )
+
+        vector_store.upsert(
+            chunks,
+            vectors
+        )
+</code></pre>
+<p>其中：</p>
+<pre><code class="language-text">hierarchical_chunker
+</code></pre>
+<p>内部负责：</p>
+<pre><code class="language-text">Size Check
++
+Semantic Split
++
+Small Chunk Merge
+</code></pre>
+<hr />
+<h2 id="17">17. 推荐模块结构</h2>
+<pre><code class="language-text">rag/
+│
+├── parsing/
+│   ├── base.py
+│   ├── docling_parser.py
+│   └── paddleocrvl_parser.py
+│
+├── normalization/
+│   └── document_normalizer.py
+│
+├── chunking/
+│   ├── structure_chunker.py
+│   ├── semantic_segmenter.py
+│   ├── chunk_merger.py
+│   └── hierarchical_chunker.py
+│
+├── embedding/
+│   └── embedder.py
+│
+├── storage/
+│   └── vector_store.py
+│
+├── models/
+│   ├── structured_document.py
+│   └── chunk.py
+│
+└── ingestion_pipeline.py
+</code></pre>
+<p>项目初期不一定需要真的拆这么多文件，但职责可以按照这个思路设计。</p>
+<hr />
+<h2 id="18">18. 第一版实际技术策略</h2>
+<p>建议第一版保持简单：</p>
+<pre><code class="language-text">Document Parser
+    ↓
+Docling OR PaddleOCR-VL
+
+Normalization
+    ↓
+Rule-based Python Code
+
+Structure Split
+    ↓
+Rule-based Python Code
+
+Too Large?
+    ↓
+No → Keep
+Yes → Semantic Segmentation
+
+Semantic Segmentation
+    ↓
+优先测试 LLM
+
+Too Small?
+    ↓
+Rule-based Merge
+
+Final Chunks
+    ↓
+Embedding
+    ↓
+Vector Store
+</code></pre>
+<hr />
+<h2 id="19">19. 核心设计原则</h2>
+<h3 id="parser">Parser 单一化</h3>
+<p>项目中选择一个主 Document Parser 即可：</p>
+<pre><code class="language-text">Docling
+OR
+PaddleOCR-VL
+</code></pre>
+<p>避免维护多个并行 Pipeline。</p>
+<hr />
+<h3 id="_1">规则优先</h3>
+<p>能通过：</p>
+<pre><code class="language-text">Heading
+Paragraph
+Token Count
+Block Type
+</code></pre>
+<p>解决的问题，直接使用代码。</p>
+<hr />
+<h3 id="llm">LLM 兜底</h3>
+<p>LLM 只负责：</p>
+<blockquote>
+<p>无法通过已有结构和确定性规则正确判断的语义边界。</p>
+</blockquote>
+<hr />
+<h3 id="chunking">Chunking 分层化</h3>
+<p>不是：</p>
+<pre><code class="language-text">选择一种 Chunking Algorithm
+</code></pre>
+<p>而是：</p>
+<pre><code class="language-text">Structure
+   ↓
+Size
+   ↓
+Semantic
+   ↓
+Merge
+</code></pre>
+<hr />
+<h3 id="_2">组件解耦</h3>
+<pre><code class="language-text">Parser
+ ↓
+Normalizer
+ ↓
+Chunker
+ ↓
+Embedder
+ ↓
+VectorStore
+</code></pre>
+<p>每层有统一接口。</p>
+<p>以后替换任何一个实现时，不应该影响其他层。</p>
+<hr />
+<h2 id="20">20. 最终规划图</h2>
+<pre><code class="language-text">                         Input
+                           │
+                 Document / Plain Text
+                           │
+                           ▼
+                  Unified Parser Layer
+                           │
+               Docling OR PaddleOCR-VL
+                           │
+                           ▼
+                 Structured Document
+                           │
+                           ▼
+                Normalization / Cleaning
+                           │
+                           ▼
+                Rule-based Structure Split
+                           │
+                           ▼
+                      Size Check
+                    /      |       \
+                   /       |        \
+             Too Large   Good    Too Small
+                 │         │          │
+                 ▼         │          ▼
+          Semantic Split   │     Rule-based Merge
+          LLM / Embedding  │          │
+                 │         │          │
+                 └─────────┼──────────┘
+                           ▼
+                      Final Chunks
+                           │
+                           ▼
+                        Embedding
+                           │
+                           ▼
+                      Vector Store
+</code></pre>
+<p>这套 Pipeline 的核心是：</p>
+<blockquote>
+<p><strong>Parser 单一化、规则优先、LLM 条件式参与、Chunking 分层化、组件之间保持解耦。</strong></p>
+</blockquote>
 
 
 

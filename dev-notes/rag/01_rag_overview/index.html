@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../gRPC_patterns/">
+        <link rel="prev" href="../../llm/06_llm_applications/">
       
       
-        <link rel="next" href="../gRPC_Interceptor/">
+        <link rel="next" href="../02_document_ingestion_and_chunking/">
       
       
         
@@ -23,7 +23,7 @@
     
     
       
-        <title>Service Impl - CvHub Docs</title>
+        <title>Overview - CvHub Docs</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#grpc-code-generation-service-implementation" class="md-skip">
+        <a href="#rag" class="md-skip">
           Skip to content
         </a>
       
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Service Impl
+              Overview
             
           </span>
         </div>
@@ -351,20 +351,18 @@
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
         
           
           <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
@@ -385,7 +383,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -403,7 +401,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gRPC/" class="md-nav__link">
+      <a href="../../gRPC/gRPC/" class="md-nav__link">
         
   
   
@@ -431,7 +429,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gRPC_proto/" class="md-nav__link">
+      <a href="../../gRPC/gRPC_proto/" class="md-nav__link">
         
   
   
@@ -459,7 +457,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gRPC_patterns/" class="md-nav__link">
+      <a href="../../gRPC/gRPC_patterns/" class="md-nav__link">
         
   
   
@@ -484,37 +482,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Service Impl
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../gRPC/gRPC_service_impl/" class="md-nav__link">
         
   
   
@@ -530,315 +501,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        核心思想
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#python" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Python：继承基类
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Python：继承基类">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#proto" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Proto文件
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        生成类
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#python_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Python实现
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#java" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Java：继承抽象基类
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Java：继承抽象基类">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#proto_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Proto生成类
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#java_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Java实现
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#go" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Go：实现接口（最典型）
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Go：实现接口（最典型）">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#proto_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Proto生成
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#go_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        go实现
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        注册：
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#c" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        C
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="C">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#proto_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Proto生成
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#c_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        C#实现
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#nodejs" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Node.js
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Node.js">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#proto-service-definition" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Proto生成 Service Definition
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#node" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Node实现
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        注册
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#rusttonic" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Rust（Tonic）
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Rust（Tonic）">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#proto-trait" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Proto生成 Trait：
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#rust" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Rust实现
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        总结
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -851,7 +513,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gRPC_Interceptor/" class="md-nav__link">
+      <a href="../../gRPC/gRPC_Interceptor/" class="md-nav__link">
         
   
   
@@ -1107,18 +769,20 @@
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
@@ -1139,7 +803,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1154,10 +818,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../rag/01_rag_overview/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1173,6 +864,352 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. RAG 是什么
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. RAG 的完整生命周期
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. RAG 的核心数据对象
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. RAG 的核心数据对象">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#document" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Document
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#structureddocument" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        StructuredDocument
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chunk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chunk
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#embedding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Embedding
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retrievalresult" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RetrievalResult
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 核心组件
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 核心组件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#document-loader" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Document Loader
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#document-parser" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Document Parser
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#normalizer-cleaner" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Normalizer / Cleaner
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chunker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chunker
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#embedder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Embedder
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vector-store-index" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vector Store / Index
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retriever" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Retriever
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fusion
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reranker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reranker
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#context-builder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Context Builder
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generator-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Generator / Agent
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-densesparse-hybrid-retrieval" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Dense、Sparse 与 Hybrid Retrieval
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Dense、Sparse 与 Hybrid Retrieval">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dense-retrieval" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dense Retrieval
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sparse-retrieval" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sparse Retrieval
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hybrid-retrieval" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hybrid Retrieval
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Metadata 的作用
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. RAG 的质量链
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. RAG 的主要能力层
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. 最终记忆框架
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1185,7 +1222,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../rag/02_document_ingestion_and_chunking/" class="md-nav__link">
+      <a href="../02_document_ingestion_and_chunking/" class="md-nav__link">
         
   
   
@@ -1213,7 +1250,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../rag/03_embedding_and_indexing/" class="md-nav__link">
+      <a href="../03_embedding_and_indexing/" class="md-nav__link">
         
   
   
@@ -1241,7 +1278,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../rag/04_retrieval_pipeline/" class="md-nav__link">
+      <a href="../04_retrieval_pipeline/" class="md-nav__link">
         
   
   
@@ -1269,7 +1306,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../rag/05_context_generation_and_grounding/" class="md-nav__link">
+      <a href="../05_context_generation_and_grounding/" class="md-nav__link">
         
   
   
@@ -1297,7 +1334,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../rag/06_rag_evaluation_operations_security/" class="md-nav__link">
+      <a href="../06_rag_evaluation_operations_security/" class="md-nav__link">
         
   
   
@@ -1360,10 +1397,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#1-rag" class="md-nav__link">
     <span class="md-ellipsis">
       
-        核心思想
+        1. RAG 是什么
       
     </span>
   </a>
@@ -1371,22 +1408,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#python" class="md-nav__link">
+  <a href="#2-rag" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Python：继承基类
+        2. RAG 的完整生命周期
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Python：继承基类">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. RAG 的核心数据对象
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. RAG 的核心数据对象">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#proto" class="md-nav__link">
+  <a href="#document" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Proto文件
+        Document
       
     </span>
   </a>
@@ -1394,10 +1442,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#structureddocument" class="md-nav__link">
     <span class="md-ellipsis">
       
-        生成类
+        StructuredDocument
       
     </span>
   </a>
@@ -1405,10 +1453,32 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#python_1" class="md-nav__link">
+  <a href="#chunk" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Python实现
+        Chunk
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#embedding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Embedding
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retrievalresult" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RetrievalResult
       
     </span>
   </a>
@@ -1421,22 +1491,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#java" class="md-nav__link">
+  <a href="#4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Java：继承抽象基类
+        4. 核心组件
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Java：继承抽象基类">
+    <nav class="md-nav" aria-label="4. 核心组件">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#proto_1" class="md-nav__link">
+  <a href="#document-loader" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Proto生成类
+        Document Loader
       
     </span>
   </a>
@@ -1444,10 +1514,109 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#java_1" class="md-nav__link">
+  <a href="#document-parser" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Java实现
+        Document Parser
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#normalizer-cleaner" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Normalizer / Cleaner
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chunker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chunker
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#embedder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Embedder
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vector-store-index" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vector Store / Index
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retriever" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Retriever
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fusion
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reranker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reranker
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#context-builder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Context Builder
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generator-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Generator / Agent
       
     </span>
   </a>
@@ -1460,22 +1629,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#go" class="md-nav__link">
+  <a href="#5-densesparse-hybrid-retrieval" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Go：实现接口（最典型）
+        5. Dense、Sparse 与 Hybrid Retrieval
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Go：实现接口（最典型）">
+    <nav class="md-nav" aria-label="5. Dense、Sparse 与 Hybrid Retrieval">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#proto_2" class="md-nav__link">
+  <a href="#dense-retrieval" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Proto生成
+        Dense Retrieval
       
     </span>
   </a>
@@ -1483,10 +1652,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#go_1" class="md-nav__link">
+  <a href="#sparse-retrieval" class="md-nav__link">
     <span class="md-ellipsis">
       
-        go实现
+        Sparse Retrieval
       
     </span>
   </a>
@@ -1494,10 +1663,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#hybrid-retrieval" class="md-nav__link">
     <span class="md-ellipsis">
       
-        注册：
+        Hybrid Retrieval
       
     </span>
   </a>
@@ -1510,138 +1679,43 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#c" class="md-nav__link">
+  <a href="#6-metadata" class="md-nav__link">
     <span class="md-ellipsis">
       
-        C
+        6. Metadata 的作用
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="C">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#proto_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Proto生成
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#c_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        C#实现
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#nodejs" class="md-nav__link">
+  <a href="#7-rag" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Node.js
+        7. RAG 的质量链
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Node.js">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#proto-service-definition" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Proto生成 Service Definition
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#node" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Node实现
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        注册
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#rusttonic" class="md-nav__link">
+  <a href="#8-rag" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Rust（Tonic）
+        8. RAG 的主要能力层
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Rust（Tonic）">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#proto-trait" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Proto生成 Trait：
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#rust" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Rust实现
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#9" class="md-nav__link">
     <span class="md-ellipsis">
       
-        总结
+        9. 最终记忆框架
       
     </span>
   </a>
@@ -1665,226 +1739,421 @@
 
 
 
-<h1 id="grpc-code-generation-service-implementation">gRPC Code Generation &amp; Service Implementation</h1>
-<h2 id="_1">核心思想</h2>
-<pre><code class="language-text">.proto
+<h1 id="rag">RAG 总体体系与架构</h1>
+<h2 id="1-rag">1. RAG 是什么</h2>
+<p><strong>RAG = Retrieval-Augmented Generation，检索增强生成。</strong></p>
+<p>核心思想：</p>
+<pre><code class="language-mermaid">flowchart LR
+
+   A[用户问题]
+   B[从外部知识库检索相关信息]
+   C[构建可供 LLM 使用的 Context]
+   D[LLM / Agent 基于这些信息完成回答或决策]
+
+   A --&gt; B
+   B --&gt; C
+   C --&gt; D
+</code></pre>
+<p>RAG 的主要价值包括：</p>
+<ul>
+<li>让 LLM 使用私有知识或领域知识</li>
+<li>让知识可以独立于 LLM 参数进行更新</li>
+<li>为回答提供可追踪的来源</li>
+<li>通过可靠外部知识降低幻觉风险</li>
+</ul>
+<p>需要注意：</p>
+<blockquote>
+<p>RAG 可以降低幻觉，但不能保证完全消除幻觉。知识库质量、Retrieval 质量和生成阶段都会影响最终结果。</p>
+</blockquote>
+<hr />
+<h2 id="2-rag">2. RAG 的完整生命周期</h2>
+<p>一个完整 RAG 系统可以分成两条主链：</p>
+<pre><code class="language-mermaid">flowchart TD
+   RAG[RAG System]
+
+   subgraph INGESTION[Ingestion Pipeline]
+      direction TD
+      K[Knowledge Source]
+      L[Loader]
+      P[Parser]
+      N[Normalize / Cleaning]
+      C[Chunking]
+      E[Embedding]
+      I[Indexing]
+      KB[Knowledge Base]
+
+      K --&gt; L
+      L --&gt; P
+      P --&gt; N
+      N --&gt; C
+      C --&gt; E
+      E --&gt; I
+      I --&gt; KB
+   end
+
+   subgraph QUERY[Query Pipeline]
+      direction TD
+      Q[Query]
+      QP[Query Processing]
+      R[Retrieval]
+      F[Fusion]
+      RR[Reranking]
+      CB[Context Building]
+      LLM[LLM / Agent]
+      A[Answer]
+
+      Q --&gt; QP
+      QP --&gt; R
+      R --&gt; F
+      F --&gt; RR
+      RR --&gt; CB
+      CB --&gt; LLM
+      LLM --&gt; A
+   end
+
+   RAG --&gt; INGESTION
+   RAG --&gt; QUERY
+</code></pre>
+<hr />
+<h2 id="3-rag">3. RAG 的核心数据对象</h2>
+<h3 id="document">Document</h3>
+<p>表示一个完整知识来源，例如：</p>
+<ul>
+<li>PDF</li>
+<li>Markdown</li>
+<li>HTML</li>
+<li>XML</li>
+<li>Word</li>
+<li>数据库记录</li>
+<li>API 数据</li>
+</ul>
+<p>典型信息：</p>
+<pre><code class="language-mermaid">flowchart LR
+    T((TextDocument))
+    D[document_id]
+    S[source]
+    V[version]
+    L[language]
+    M[metadata]
+    C[content / blocks]
+
+    T --- D
+    T --- S
+    T --- V
+    T --- L
+    T --- M
+    T --- C
+
+    style T fill:#355C8C,color:#fff
+    style D fill:#7EDC8A,color:#fff
+    style S fill:#5BC0DE,color:#fff
+    style V fill:#FF8A76,color:#fff
+    style L fill:#B97ADB,color:#fff
+    style M fill:#FFD166,color:#fff
+    style C fill:#9AD0EC,color:#fff
+</code></pre>
+<h3 id="structureddocument">StructuredDocument</h3>
+<p>Parser 处理后的结构化文档。</p>
+<p>例如：</p>
+<pre><code class="language-text">StructuredDocument
+├── Title
+├── Section
+│   ├── Heading
+│   ├── Paragraph
+│   └── Table
+└── Section
+    ├── Paragraph
+    └── Figure
+</code></pre>
+<h3 id="chunk">Chunk</h3>
+<p>Chunk 是 Retrieval 的基本知识单元。</p>
+<pre><code class="language-text">Chunk
+├── chunk_id
+├── document_id
+├── text
+├── metadata
+└── source reference
+</code></pre>
+<h3 id="embedding">Embedding</h3>
+<p>Embedding 是 Chunk 或 Query 的向量表示：</p>
+<pre><code class="language-text">Text
+ ↓
+Embedding Model
+ ↓
+[0.13, -0.72, 0.44, ...]
+</code></pre>
+<h3 id="retrievalresult">RetrievalResult</h3>
+<p>Retriever 返回的候选结果可以抽象为：</p>
+<pre><code class="language-text">RetrievalResult
+├── chunk
+├── score
+├── source
+├── metadata
+└── retrieval_method
+</code></pre>
+<hr />
+<h2 id="4">4. 核心组件</h2>
+<h3 id="document-loader">Document Loader</h3>
+<p>职责：</p>
+<blockquote>
+<p>获取原始数据。</p>
+</blockquote>
+<p>来源可以是：</p>
+<ul>
+<li>文件</li>
+<li>Object Storage</li>
+<li>Database</li>
+<li>Web</li>
+<li>API</li>
+</ul>
+<p>Loader 重点解决“如何读取”，而不是复杂的文档理解。</p>
+<h3 id="document-parser">Document Parser</h3>
+<p>职责：</p>
+<blockquote>
+<p>将原始内容恢复为统一的结构化文档。</p>
+</blockquote>
+<p>主要关注：</p>
+<ul>
+<li>Title</li>
+<li>Heading</li>
+<li>Paragraph</li>
+<li>Table</li>
+<li>Figure</li>
+<li>Caption</li>
+<li>Reading Order</li>
+<li>Page</li>
+<li>Bounding Box</li>
+</ul>
+<h3 id="normalizer-cleaner">Normalizer / Cleaner</h3>
+<p>职责：</p>
+<blockquote>
+<p>清理 Parser 输出并统一数据结构。</p>
+</blockquote>
+<p>例如：</p>
+<ul>
+<li>Header / Footer Removal</li>
+<li>Deduplication</li>
+<li>Encoding Cleaning</li>
+<li>Cross-page Merge</li>
+<li>Metadata Normalization</li>
+</ul>
+<h3 id="chunker">Chunker</h3>
+<p>职责：</p>
+<blockquote>
+<p>将 StructuredDocument 转换成适合 Retrieval 的知识单元。</p>
+</blockquote>
+<h3 id="embedder">Embedder</h3>
+<p>职责：</p>
+<blockquote>
+<p>Text → Embedding Vector。</p>
+</blockquote>
+<h3 id="vector-store-index">Vector Store / Index</h3>
+<p>职责：</p>
+<blockquote>
+<p>保存向量及其与 Chunk 的映射，并支持高效相似度搜索。</p>
+</blockquote>
+<h3 id="retriever">Retriever</h3>
+<p>职责：</p>
+<blockquote>
+<p>根据 Query 找到相关知识。</p>
+</blockquote>
+<p>常见方法：</p>
+<ul>
+<li>Dense Retrieval</li>
+<li>BM25 / Sparse Retrieval</li>
+<li>Metadata Filtering</li>
+<li>Hybrid Retrieval</li>
+</ul>
+<h3 id="fusion">Fusion</h3>
+<p>职责：</p>
+<blockquote>
+<p>将多个 Retriever 的结果组合成统一候选集。</p>
+</blockquote>
+<p>例如：</p>
+<pre><code class="language-text">Vector Retriever ─┐
+                  ├→ Fusion
+BM25 Retriever ───┘
+</code></pre>
+<h3 id="reranker">Reranker</h3>
+<p>职责：</p>
+<blockquote>
+<p>使用更精确的方法重新判断候选结果与 Query 的相关性。</p>
+</blockquote>
+<h3 id="context-builder">Context Builder</h3>
+<p>职责：</p>
+<blockquote>
+<p>从最终 Retrieval Results 构建真正交给 LLM / Agent 的 Context。</p>
+</blockquote>
+<h3 id="generator-agent">Generator / Agent</h3>
+<p>在传统 RAG 中：</p>
+<pre><code class="language-text">Context
+ ↓
+Prompt Builder
+ ↓
+LLM
+ ↓
+Answer
+</code></pre>
+<p>在 Agent 架构中也可以：</p>
+<pre><code class="language-text">RAG
+ ↓
+Retrieval Context
+ ↓
+Agent
+ ↓
+LLM / Tools
+</code></pre>
+<p>因此 RAG 与 Generation 是否属于同一个服务，是系统架构选择，不是 RAG 概念上的硬性要求。</p>
+<hr />
+<h2 id="5-densesparse-hybrid-retrieval">5. Dense、Sparse 与 Hybrid Retrieval</h2>
+<h3 id="dense-retrieval">Dense Retrieval</h3>
+<pre><code class="language-text">Query
+ ↓
+Embedding
+ ↓
+Vector Search
+</code></pre>
+<p>主要解决语义相似问题。</p>
+<h3 id="sparse-retrieval">Sparse Retrieval</h3>
+<p>典型方法：</p>
+<pre><code class="language-text">BM25
+</code></pre>
+<p>擅长：</p>
+<ul>
+<li>精确关键词</li>
+<li>产品编号</li>
+<li>错误代码</li>
+<li>专有名词</li>
+<li>特殊缩写</li>
+</ul>
+<h3 id="hybrid-retrieval">Hybrid Retrieval</h3>
+<pre><code class="language-text">Dense Retrieval
+       +
+Sparse Retrieval
+       ↓
+     Fusion
+</code></pre>
+<p>目的：</p>
+<blockquote>
+<p>同时利用语义相似和关键词匹配能力。</p>
+</blockquote>
+<hr />
+<h2 id="6-metadata">6. Metadata 的作用</h2>
+<p>Chunk 不应该只有 Text。</p>
+<p>典型 Metadata：</p>
+<pre><code class="language-text">document_id
+document_version
+page
+section
+heading_path
+chunk_type
+language
+source
+bbox
+created_at
+</code></pre>
+<p>Metadata 可以用于：</p>
+<ul>
+<li>Retrieval Filter</li>
+<li>Citation</li>
+<li>Debugging</li>
+<li>Version Management</li>
+<li>Access Control</li>
+<li>Evaluation</li>
+</ul>
+<hr />
+<h2 id="7-rag">7. RAG 的质量链</h2>
+<p>最终效果不是由某一个模型决定的。</p>
+<pre><code class="language-text">Source Quality
+      ↓
+Parsing Quality
+      ↓
+Chunk Quality
+      ↓
+Embedding Quality
+      ↓
+Retrieval Quality
+      ↓
+Reranking Quality
+      ↓
+Context Quality
+      ↓
+Generation Quality
+</code></pre>
+<p>任何一层出现问题，都可能导致最终回答失败。</p>
+<p>因此：</p>
+<blockquote>
+<p>RAG 的优化应该基于 Evaluation，而不是只根据某一个模块的输出是否“看起来合理”。</p>
+</blockquote>
+<hr />
+<h2 id="8-rag">8. RAG 的主要能力层</h2>
+<p>可以将整个体系理解为：</p>
+<pre><code class="language-text">RAG
+│
+├── Knowledge Ingestion
+│   ├── Loading
+│   ├── Parsing
+│   ├── Cleaning
+│   └── Chunking
+│
+├── Knowledge Representation
+│   ├── Embedding
+│   ├── Metadata
+│   ├── Vector Store
+│   └── Index
+│
+├── Retrieval
+│   ├── Query Processing
+│   ├── Dense Retrieval
+│   ├── Sparse Retrieval
+│   ├── Filtering
+│   ├── Fusion
+│   └── Reranking
+│
+├── Context / Grounding
+│   ├── Context Building
+│   ├── Source Tracking
+│   └── Citation
+│
+└── System Quality
+    ├── Evaluation
+    ├── Observability
+    ├── Lifecycle
+    ├── Performance
+    └── Security
+</code></pre>
+<hr />
+<h2 id="9">9. 最终记忆框架</h2>
+<pre><code class="language-text">Knowledge
    ↓
-生成服务接口骨架
+Parse
    ↓
-实现这个接口
+Chunk
    ↓
-注册到 gRPC Server
+Embed
+   ↓
+Index
+=====================
+Query
+   ↓
+Process
+   ↓
+Retrieve
+   ↓
+Fuse
+   ↓
+Rerank
+   ↓
+Build Context
+   ↓
+LLM / Agent
+   ↓
+Answer
 </code></pre>
-<p>对于服务的具体实现，不同的语言需要选择不同的语言特性</p>
-<h2 id="python">Python：继承基类</h2>
-<h3 id="proto">Proto文件</h3>
-<pre><code class="language-proto">service UserService {
-    rpc GetUser(GetUserRequest)
-        returns (GetUserResponse);
-}
-</code></pre>
-<h3 id="_2">生成类</h3>
-<pre><code class="language-python">class UserServiceServicer:
-
-    def GetUser(self, request, context):
-        raise NotImplementedError()
-</code></pre>
-<h3 id="python_1">Python实现</h3>
-<pre><code class="language-python">class UserServiceImpl(
-        UserServiceServicer):
-
-    def GetUser(self, request, context):
-        ...
-</code></pre>
+<p>最重要的原则：</p>
 <blockquote>
-<p><strong>属于：<code>继承 + 重写方法</code></strong></p>
+<p><strong>RAG 的核心不是 Vector Database，而是把正确的知识在正确的时候检索出来，并以可靠、可追踪的形式提供给后续 LLM 或 Agent。</strong></p>
 </blockquote>
-<h2 id="java">Java：继承抽象基类</h2>
-<h3 id="proto_1">Proto生成类</h3>
-<pre><code class="language-Java">public abstract class UserServiceImplBase {
-
-    public void getUser(
-        GetUserRequest request,
-        StreamObserver&lt;GetUserResponse&gt; responseObserver
-    ) {
-        ...
-    }
-}
-</code></pre>
-<h3 id="java_1">Java实现</h3>
-<pre><code class="language-Java">public class UserServiceImpl
-    extends UserServiceGrpc.UserServiceImplBase {
-
-    @Override
-    public void getUser(
-        GetUserRequest request,
-        StreamObserver&lt;GetUserResponse&gt; responseObserver
-    ) {
-
-        ...
-    }
-}
-</code></pre>
-<blockquote>
-<p><strong>属于：<code>继承 + 重写方法</code></strong></p>
-</blockquote>
-<h2 id="go">Go：实现接口（最典型）</h2>
-<h3 id="proto_2">Proto生成</h3>
-<pre><code class="language-Go">type UserServiceServer interface {
-
-    GetUser(
-        context.Context,
-        *GetUserRequest,
-    ) (*GetUserResponse, error)
-}
-</code></pre>
-<h3 id="go_1">go实现</h3>
-<pre><code class="language-Go">type UserServiceImpl struct {
-}
-
-func (s *UserServiceImpl) GetUser(
-    ctx context.Context,
-    req *GetUserRequest,
-) (*GetUserResponse, error) {
-
-    ...
-}
-</code></pre>
-<h3 id="_3">注册：</h3>
-<pre><code class="language-Go">pb.RegisterUserServiceServer(
-    grpcServer,
-    &amp;UserServiceImpl{},
-)
-</code></pre>
-<blockquote>
-<p><strong>这里没有继承。属于：<code>接口实现</code></strong></p>
-</blockquote>
-<h2 id="c">C</h2>
-<h3 id="proto_3">Proto生成</h3>
-<pre><code class="language-C#">public abstract class UserServiceBase
-{
-    public virtual Task&lt;GetUserResponse&gt;
-        GetUser(
-            GetUserRequest request,
-            ServerCallContext context)
-}
-</code></pre>
-<h3 id="c_1">C#实现</h3>
-<pre><code class="language-C#">public class UserServiceImpl
-    : UserService.UserServiceBase
-{
-    public override Task&lt;GetUserResponse&gt;
-        GetUser(...)
-    {
-        ...
-    }
-}
-</code></pre>
-<blockquote>
-<p><strong>属于：<code>继承 + 重写方法</code></strong></p>
-</blockquote>
-<h2 id="nodejs">Node.js</h2>
-<p>Node 更灵活。</p>
-<h3 id="proto-service-definition">Proto生成 Service Definition</h3>
-<pre><code class="language-JavaScript">{
-  GetUser: {
-     path: &quot;/user.UserService/GetUser&quot;
-  }
-}
-</code></pre>
-<h3 id="node">Node实现</h3>
-<pre><code class="language-JavaScript">function getUser(call, callback) {
-
-    callback(null, {
-        name: &quot;Tom&quot;
-    });
-}
-</code></pre>
-<h3 id="_4">注册</h3>
-<pre><code class="language-JavaScript">server.addService(
-    UserService.service,
-    {
-        GetUser: getUser
-    }
-)
-</code></pre>
-<blockquote>
-<p><strong>属于：<code>函数注册</code> 没有继承</strong></p>
-</blockquote>
-<h2 id="rusttonic">Rust（Tonic）</h2>
-<h3 id="proto-trait">Proto生成 Trait：</h3>
-<pre><code class="language-Rust">#[tonic::async_trait]
-pub trait UserService {
-
-    async fn get_user(
-        &amp;self,
-        request: Request&lt;GetUserRequest&gt;,
-    ) -&gt; Result&lt;Response&lt;GetUserResponse&gt;&gt;;
-}
-</code></pre>
-<h3 id="rust">Rust实现</h3>
-<pre><code class="language-Rust">impl UserService for UserServiceImpl {
-
-    async fn get_user(...) {
-
-    }
-}
-</code></pre>
-<blockquote>
-<p><strong>属于：<code>Trait</code> 实现</strong></p>
-</blockquote>
-<h2 id="_5">总结</h2>
-<p>可以把 gRPC 的服务实现理解成：</p>
-<pre><code class="language-text">gRPC定义接口
-        ↓
-各语言生成服务骨架
-        ↓
-开发者实现骨架
-        ↓
-注册到Server
-</code></pre>
-<p>不同语言只是"骨架"的表现形式不同：</p>
-<table style="border-collapse: collapse;">
-  <thead>
-    <tr>
-      <th style="border: 1px solid; padding: 8px;">语言</th>
-      <th style="border: 1px solid; padding: 8px;">生成内容</th>
-      <th style="border: 1px solid; padding: 8px;">实现方式</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="border: 1px solid; padding: 8px;">Python</td>
-      <td style="border: 1px solid; padding: 8px;">Servicer 基类</td>
-      <td style="border: 1px solid; padding: 8px;">继承</td>
-    </tr>
-    <tr>
-      <td style="border: 1px solid; padding: 8px;">Java</td>
-      <td style="border: 1px solid; padding: 8px;">ImplBase 抽象类</td>
-      <td style="border: 1px solid; padding: 8px;">继承</td>
-    </tr>
-    <tr>
-      <td style="border: 1px solid; padding: 8px;">C#</td>
-      <td style="border: 1px solid; padding: 8px;">Base 抽象类</td>
-      <td style="border: 1px solid; padding: 8px;">继承</td>
-    </tr>
-    <tr>
-      <td style="border: 1px solid; padding: 8px;">Go</td>
-      <td style="border: 1px solid; padding: 8px;">Interface</td>
-      <td style="border: 1px solid; padding: 8px;">实现接口</td>
-    </tr>
-    <tr>
-      <td style="border: 1px solid; padding: 8px;">Rust</td>
-      <td style="border: 1px solid; padding: 8px;">Trait</td>
-      <td style="border: 1px solid; padding: 8px;">实现 Trait</td>
-    </tr>
-    <tr>
-      <td style="border: 1px solid; padding: 8px;">Node</td>
-      <td style="border: 1px solid; padding: 8px;">Service Definition</td>
-      <td style="border: 1px solid; padding: 8px;">注册函数</td>
-    </tr>
-  </tbody>
-</table>
 
 
 

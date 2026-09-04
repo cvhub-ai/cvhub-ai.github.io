@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../04_llm_inference_engines/">
+        <link rel="prev" href="../04_retrieval_pipeline/">
       
       
-        <link rel="next" href="../06_llm_applications/">
+        <link rel="next" href="../06_rag_evaluation_operations_security/">
       
       
         
@@ -23,7 +23,7 @@
     
     
       
-        <title>Serving - CvHub Docs</title>
+        <title>Context Generation & Grounding - CvHub Docs</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#llmllm-serving" class="md-skip">
+        <a href="#rag-context-buildinggeneration-grounding" class="md-skip">
           Skip to content
         </a>
       
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Serving
+              Context Generation & Grounding
             
           </span>
         </div>
@@ -546,20 +546,18 @@
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
         
           
           <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
@@ -580,7 +578,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -598,7 +596,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../01_llm_model_basics/" class="md-nav__link">
+      <a href="../../llm/01_llm_model_basics/" class="md-nav__link">
         
   
   
@@ -626,7 +624,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../02_llm_precision_and_quantization/" class="md-nav__link">
+      <a href="../../llm/02_llm_precision_and_quantization/" class="md-nav__link">
         
   
   
@@ -654,7 +652,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../03_llm_model_formats/" class="md-nav__link">
+      <a href="../../llm/03_llm_model_formats/" class="md-nav__link">
         
   
   
@@ -682,7 +680,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../04_llm_inference_engines/" class="md-nav__link">
+      <a href="../../llm/04_llm_inference_engines/" class="md-nav__link">
         
   
   
@@ -690,6 +688,231 @@
     
   
     Inference Engine
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm/05_llm_serving/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Serving
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm/06_llm_applications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Application
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RAG System
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RAG System
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_rag_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_document_ingestion_and_chunking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Document Ingestion & Chunking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_embedding_and_indexing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Embedding & Indexing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_retrieval_pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Retrieval Pipeline
   
 
     
@@ -726,7 +949,7 @@
   <span class="md-ellipsis">
     
   
-    Serving
+    Context Generation & Grounding
   
 
     
@@ -744,7 +967,7 @@
   <span class="md-ellipsis">
     
   
-    Serving
+    Context Generation & Grounding
   
 
     
@@ -770,10 +993,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-serving" class="md-nav__link">
+  <a href="#1-context-building" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. 什么是 Serving
+        1. Context Building 的位置
       
     </span>
   </a>
@@ -781,43 +1004,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-api" class="md-nav__link">
+  <a href="#2-context-builder" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. 常见 API 形式
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-openai-compatible-api" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. OpenAI-compatible API
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-serving" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. Serving 与高并发推理
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-serving-application" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5. Serving 与 Application 的关系
+        2. 为什么需要 Context Builder
       
     </span>
   </a>
@@ -840,230 +1030,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../06_llm_applications/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Application
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    RAG System
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_3">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    RAG System
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../rag/01_rag_overview/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Overview
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../rag/02_document_ingestion_and_chunking/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Document Ingestion & Chunking
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../rag/03_embedding_and_indexing/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Embedding & Indexing
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../rag/04_retrieval_pipeline/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Retrieval Pipeline
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../rag/05_context_generation_and_grounding/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Context Generation & Grounding
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../rag/06_rag_evaluation_operations_security/" class="md-nav__link">
+      <a href="../06_rag_evaluation_operations_security/" class="md-nav__link">
         
   
   
@@ -1126,10 +1093,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-serving" class="md-nav__link">
+  <a href="#1-context-building" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. 什么是 Serving
+        1. Context Building 的位置
       
     </span>
   </a>
@@ -1137,43 +1104,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-api" class="md-nav__link">
+  <a href="#2-context-builder" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. 常见 API 形式
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-openai-compatible-api" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. OpenAI-compatible API
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-serving" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. Serving 与高并发推理
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-serving-application" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5. Serving 与 Application 的关系
+        2. 为什么需要 Context Builder
       
     </span>
   </a>
@@ -1197,108 +1131,518 @@
 
 
 
-<h1 id="llmllm-serving">本地 LLM：LLM Serving</h1>
+<h1 id="rag-context-buildinggeneration-grounding">RAG Context Building、Generation 与 Grounding</h1>
+<h2 id="1-context-building">1. Context Building 的位置</h2>
+<p>Retrieval 并不是 RAG Query Pipeline 的终点。</p>
+<pre><code class="language-text">Query
+ ↓
+Retrieval
+ ↓
+Fusion
+ ↓
+Reranking
+ ↓
+Retrieved Chunks
+ ↓
+Context Building
+ ↓
+LLM / Agent
+</code></pre>
+<p>Context Builder 的职责：</p>
 <blockquote>
-<p>本文讨论模型已经能够通过推理引擎运行以后，如何将模型能力以服务的形式提供给其他程序。</p>
+<p>将检索到的知识转换成适合后续 LLM / Agent 使用的上下文。</p>
 </blockquote>
-<h2 id="1-serving">1. 什么是 Serving</h2>
-<p>推理引擎负责：</p>
+<p>不能简单理解为：</p>
+<pre><code class="language-text">Top-K Chunks
+ ↓
+全部拼接
+ ↓
+LLM
+</code></pre>
+<hr />
+<h2 id="2-context-builder">2. 为什么需要 Context Builder</h2>
+<p>Retrieval Results 可能存在：</p>
+<ul>
+<li>Duplicate Chunks</li>
+<li>Overlapping Chunks</li>
+<li>相邻 Chunk</li>
+<li>不同 Document</li>
+<li>不同 Score</li>
+<li>不同 Parent Section</li>
+<li>超过 Context Window</li>
+<li>顺序混乱</li>
+</ul>
+<p>因此需要：</p>
+<pre><code class="language-text">Retrieved Results
+       ↓
+Deduplicate
+       ↓
+Merge / Expand
+       ↓
+Order
+       ↓
+Budget
+       ↓
+Format
+       ↓
+Final Context
+</code></pre>
+<hr />
+<h1 id="3-deduplication">3. Deduplication</h1>
+<p>Chunk Overlap、Hybrid Retrieval 和 Multi-query 都可能产生重复结果。</p>
+<p>例如：</p>
+<pre><code class="language-text">Chunk A
+Chunk A'
+Chunk A''
+</code></pre>
+<p>内容高度重叠。</p>
+<p>如果全部进入 Context：</p>
+<ul>
+<li>浪费 Token</li>
+<li>放大某个 Source 权重</li>
+<li>降低 Context Diversity</li>
+</ul>
+<p>因此需要：</p>
+<pre><code class="language-text">Exact Deduplication
+Near-Duplicate Detection
+Overlap Deduplication
+</code></pre>
+<hr />
+<h1 id="4-adjacent-chunk-merge">4. Adjacent Chunk Merge</h1>
+<p>可能检索到：</p>
+<pre><code class="language-text">Section 3
+├── Chunk 10
+├── Chunk 11 ← retrieved
+├── Chunk 12 ← retrieved
+└── Chunk 13
+</code></pre>
+<p>如果 11 和 12 连续，可以考虑：</p>
+<pre><code class="language-text">Chunk 11 + Chunk 12
+</code></pre>
+<p>恢复更完整上下文。</p>
+<p>但不能无限 Merge，否则重新变成巨大 Chunk。</p>
+<hr />
+<h1 id="5-parent-context-expansion">5. Parent Context Expansion</h1>
+<p>如果检索的是 Child Chunk：</p>
+<pre><code class="language-text">Heading
+  ↓
+Paragraph
+  ↓
+Small Chunk ← matched
+</code></pre>
+<p>可以补充：</p>
+<ul>
+<li>Parent Heading</li>
+<li>Section Title</li>
+<li>Nearby Paragraph</li>
+<li>Parent Chunk</li>
+</ul>
+<p>这样：</p>
+<pre><code class="language-text">Retrieval Unit
+≠
+Final Context Unit
+</code></pre>
+<p>这是很重要的设计思想。</p>
+<hr />
+<h1 id="6-context-ordering">6. Context Ordering</h1>
+<p>最终 Context 的顺序会影响 LLM。</p>
+<p>可以考虑：</p>
+<ul>
+<li>Relevance Order</li>
+<li>Document Order</li>
+<li>Source Grouping</li>
+<li>Chronological Order</li>
+<li>Logical Structure</li>
+</ul>
+<p>例如同一文档的多个 Chunk，可以恢复原文顺序。</p>
+<hr />
+<h1 id="7-token-budget">7. Token Budget</h1>
+<p>LLM Context Window 有限制。</p>
+<p>假设：</p>
+<pre><code class="language-text">Model Context = 32k
+</code></pre>
+<p>不能全部用于 Retrieved Context。</p>
+<p>还需要：</p>
+<pre><code class="language-text">System Prompt
+User Query
+Conversation History
+Tool Results
+Output Tokens
+</code></pre>
+<p>因此需要 Context Budget：</p>
+<pre><code class="language-text">Available Context Tokens
+      ↓
+Select / Trim Retrieved Content
+</code></pre>
+<hr />
+<h1 id="8-context-compression">8. Context Compression</h1>
+<p>如果 Retrieved Chunk 太长，可以压缩。</p>
+<p>方法包括：</p>
+<h3 id="extractive-compression">Extractive Compression</h3>
+<p>只保留与 Query 最相关的句子 / 段落。</p>
+<h3 id="abstractive-compression">Abstractive Compression</h3>
+<p>使用模型总结 Retrieved Content。</p>
+<p>风险：</p>
 <blockquote>
-<p><strong>运行模型。</strong></p>
+<p>Abstractive Compression 本身可能引入信息变化或幻觉。</p>
 </blockquote>
-<p>Serving Layer 负责：</p>
+<p>因此需要根据场景谨慎使用。</p>
+<hr />
+<h1 id="9-diversity">9. Diversity</h1>
+<p>如果 Top-K 全来自一个非常相似的 Section：</p>
+<pre><code class="language-text">Chunk A1
+Chunk A2
+Chunk A3
+Chunk A4
+Chunk A5
+</code></pre>
+<p>可能遗漏其他重要 Source。</p>
+<p>可以考虑：</p>
+<pre><code class="language-text">Diversity-aware Selection
+</code></pre>
+<p>目标是在：</p>
+<pre><code class="language-text">Relevance
++
+Coverage
+</code></pre>
+<p>之间取得平衡。</p>
+<hr />
+<h1 id="10-lost-in-the-middle">10. Lost in the Middle</h1>
+<p>LLM 对长 Context 中不同位置的信息利用能力可能不完全一致。</p>
+<p>因此 Context Builder 不应只关注：</p>
+<pre><code class="language-text">Context 能不能塞进去
+</code></pre>
+<p>还应该关注：</p>
+<pre><code class="language-text">重要信息放在哪里
+Context 是否过长
+是否存在大量无关内容
+</code></pre>
+<p>高质量、精简 Context 往往比盲目增加 Top-K 更有效。</p>
+<hr />
+<h1 id="11-context-format">11. Context Format</h1>
+<p>Context 可以采用明确结构：</p>
+<pre><code class="language-text">[Source 1]
+Document: ...
+Page: ...
+Section: ...
+Content:
+...
+
+[Source 2]
+...
+</code></pre>
+<p>好处：</p>
+<ul>
+<li>LLM 更容易区分 Source</li>
+<li>Citation Mapping 更简单</li>
+<li>Debugging 更清楚</li>
+</ul>
+<hr />
+<h1 id="12-source-tracking">12. Source Tracking</h1>
+<p>从 Ingestion 开始就应该保持：</p>
+<pre><code class="language-text">Chunk
+ ↓
+Document
+ ↓
+Source
+</code></pre>
+<p>例如：</p>
+<pre><code class="language-text">chunk_id
+document_id
+document_version
+page
+section
+heading_path
+bbox
+source_uri
+</code></pre>
+<p>否则到了 Generation 阶段很难可靠生成 Citation。</p>
+<hr />
+<h1 id="13-citation">13. Citation</h1>
+<p>Citation 的目标：</p>
 <blockquote>
-<p><strong>让其他程序调用模型。</strong></p>
+<p>让最终回答能够追踪到实际 Knowledge Source。</p>
 </blockquote>
-<p>整体关系可以理解为：</p>
-<pre><code class="language-text">Application
-     ↓
-LLM API
-     ↓
-Serving
-     ↓
-Inference Engine
-     ↓
-Model
+<p>例如：</p>
+<pre><code class="language-text">Answer Claim
+ ↓
+Retrieved Chunk
+ ↓
+Document
+ ↓
+Page / Section
 </code></pre>
-<h2 id="2-api">2. 常见 API 形式</h2>
-<p>Serving Layer 常见的接口形式包括：</p>
+<p>Citation 不应该只记录文件名。</p>
+<p>更完整可以包含：</p>
+<pre><code class="language-text">document_id
+document_title
+page
+section
+bbox
+source
+version
+</code></pre>
+<hr />
+<h1 id="14-pdf-citation">14. PDF Citation</h1>
+<p>对于 PDF：</p>
+<pre><code class="language-text">Document
+ ↓
+Page
+ ↓
+Block / BBox
+</code></pre>
+<p>如果 Parser 保留 Bounding Box，可以进一步支持：</p>
+<blockquote>
+<p>在原 PDF 页面中定位对应证据。</p>
+</blockquote>
+<p>这也是为什么 Parsing 阶段保留结构 Metadata 很重要。</p>
+<hr />
+<h1 id="15-chunk-citation">15. 跨页 Chunk Citation</h1>
+<p>如果一个 Chunk 来自：</p>
+<pre><code class="language-text">Page 10
++
+Page 11
+</code></pre>
+<p>Metadata 不应该强制只有一个 page。</p>
+<p>可以表示：</p>
+<pre><code class="language-text">pages = [10, 11]
+</code></pre>
+<p>或：</p>
+<pre><code class="language-text">page_start
+page_end
+</code></pre>
+<hr />
+<h1 id="16-table-citation">16. Table Citation</h1>
+<p>Table 的 Citation 应尽量能够追踪：</p>
+<pre><code class="language-text">Document
+Page
+Table
+Row / Column
+</code></pre>
+<p>至少应保留 Table Block 身份，而不是完全丢失结构后只引用一段文本。</p>
+<hr />
+<h1 id="17-grounding">17. Grounding</h1>
+<p>Grounding：</p>
+<blockquote>
+<p>最终输出应尽量建立在 Retrieved Evidence 上。</p>
+</blockquote>
+<p>简单理解：</p>
+<pre><code class="language-text">Question
++
+Retrieved Evidence
+ ↓
+Answer
+</code></pre>
+<p>而不是：</p>
+<pre><code class="language-text">Question
+ ↓
+LLM Free Generation
+</code></pre>
+<hr />
+<h1 id="18-faithfulness">18. Faithfulness</h1>
+<p>Faithfulness 关注：</p>
+<blockquote>
+<p>回答中的 Claim 是否能够被 Context 支持。</p>
+</blockquote>
+<p>一个回答可能：</p>
 <ul>
-<li>HTTP API</li>
-<li>REST API</li>
-<li>OpenAI-compatible API</li>
-<li>gRPC</li>
+<li>语言很好</li>
+<li>看起来合理</li>
+<li>甚至事实正确</li>
 </ul>
-<p>它们的核心作用都是在 Application 和底层模型推理之间建立稳定的调用接口。</p>
-<h2 id="3-openai-compatible-api">3. OpenAI-compatible API</h2>
-<p>工程部署中经常会看到：</p>
-<pre><code class="language-text">Application
-     ↓
-OpenAI-compatible API
-     ↓
-LLM Serving
-     ↓
-Inference Engine
-     ↓
-Model
+<p>但如果它不是根据当前 Context 得出的，在严格 RAG Evaluation 中仍可能被视为 Grounding 不足。</p>
+<hr />
+<h1 id="19-answer-relevance-faithfulness">19. Answer Relevance 与 Faithfulness</h1>
+<p>两者不同。</p>
+<h3 id="answer-relevance">Answer Relevance</h3>
+<p>回答是否真正解决用户问题。</p>
+<h3 id="faithfulness">Faithfulness</h3>
+<p>回答是否受到 Retrieved Evidence 支持。</p>
+<p>理想状态：</p>
+<pre><code class="language-text">Relevant
++
+Faithful
 </code></pre>
-<p>OpenAI-compatible API 的价值在于统一上层调用方式。</p>
-<p>例如以下应用：</p>
+<hr />
+<h1 id="20-prompt-construction">20. Prompt Construction</h1>
+<p>传统 RAG：</p>
+<pre><code class="language-text">System Instruction
++
+Retrieved Context
++
+User Query
+ ↓
+Prompt
+ ↓
+LLM
+</code></pre>
+<p>Prompt 应明确告诉模型：</p>
 <ul>
-<li>Agent</li>
-<li>RAG</li>
-<li>Chat Backend</li>
-<li>Business Service</li>
+<li>Context 是参考资料</li>
+<li>优先依据 Context</li>
+<li>不知道时不要凭空补充</li>
+<li>Citation 的输出规则</li>
 </ul>
-<p>可以依赖统一 API，而不需要直接关心底层模型到底由哪个 Runtime 执行。</p>
-<h2 id="4-serving">4. Serving 与高并发推理</h2>
-<p>在模型 Serving 场景中，可能同时存在多个用户请求：</p>
-<pre><code class="language-text">User A ─┐
-User B ─┤
-User C ─┤
-User D ─┘
-         ↓
-     API Server
-         ↓
-Inference / Serving Engine
-         ↓
-       GPU
+<hr />
+<h1 id="21-retrieved-content-instruction">21. Retrieved Content 不是 Instruction</h1>
+<p>这是重要安全原则：</p>
+<pre><code class="language-text">Retrieved Document
+=
+Untrusted Data
 </code></pre>
-<p>因此高性能 Serving Engine 会重点关注：</p>
-<ul>
-<li>GPU 利用率</li>
-<li>Concurrent Requests</li>
-<li>Continuous Batching</li>
-<li>KV Cache Management</li>
-<li>Throughput</li>
-<li>Multi-GPU</li>
-</ul>
-<p>vLLM 和 SGLang 都属于这一类高性能 GPU LLM Serving / Runtime 生态。</p>
-<h2 id="5-serving-application">5. Serving 与 Application 的关系</h2>
-<p>Serving Layer 位于推理引擎与业务应用之间：</p>
-<pre><code class="language-text">Model
-  ↓
-Inference Runtime
-  ↓
-Serving / API
-  ↓
-Application
+<p>而不是：</p>
+<pre><code class="language-text">System Instruction
 </code></pre>
-<p>这样可以把模型运行方式与业务系统解耦。</p>
-<p>上层 Application 只需要知道：</p>
-<pre><code class="language-text">调用哪个 API
-发送什么 Request
-接收什么 Response
+<p>如果文档中出现：</p>
+<pre><code class="language-text">Ignore all previous instructions...
 </code></pre>
-<p>而不需要直接处理：</p>
-<ul>
-<li>模型文件加载</li>
-<li>GPU 推理</li>
-<li>KV Cache</li>
-<li>Token Sampling</li>
-<li>模型底层 Runtime</li>
-</ul>
-<p>因此 Serving 是从“模型能够运行”到“模型能够被业务系统使用”之间的重要一层。</p>
+<p>LLM 不应该把它当成系统指令。</p>
+<p>因此 Prompt / Agent 设计需要明确区分：</p>
+<pre><code class="language-text">Trusted Instructions
+vs
+Retrieved Content
+</code></pre>
+<hr />
+<h1 id="22-traditional-rag">22. Traditional RAG</h1>
+<p>传统问答系统可以：</p>
+<pre><code class="language-text">Query
+ ↓
+RAG Pipeline
+ ↓
+Context
+ ↓
+Prompt Builder
+ ↓
+LLM
+ ↓
+Answer
+</code></pre>
+<p>这里 Generator 可以属于 RAG 服务本身。</p>
+<hr />
+<h1 id="23-agentic-architecture">23. Agentic Architecture</h1>
+<p>在 Agent 系统中可以：</p>
+<pre><code class="language-text">User
+ ↓
+Agent
+ ↓
+RAG Retrieval
+ ↓
+Context
+ ↓
+Agent Reasoning
+ ↓
+LLM / Tools
+ ↓
+Answer
+</code></pre>
+<p>此时：</p>
+<pre><code class="language-text">RAG
+=
+Knowledge Retrieval Capability
+</code></pre>
+<p>而：</p>
+<pre><code class="language-text">Agent
+=
+Reasoning / Orchestration
+</code></pre>
+<p>两种设计都合理，取决于系统职责边界。</p>
+<hr />
+<h1 id="24-rag-tool-result">24. RAG 与 Tool Result</h1>
+<p>Agent 场景中最终 Context 可能来自：</p>
+<pre><code class="language-text">RAG Knowledge
++
+Tool Result
++
+Conversation Context
++
+User Input
+</code></pre>
+<p>因此 Agent 最终负责组合多个信息源。</p>
+<p>RAG 不应该把：</p>
+<pre><code class="language-text">Knowledge Retrieval
+</code></pre>
+<p>和：</p>
+<pre><code class="language-text">External Action Execution
+</code></pre>
+<p>混成同一职责。</p>
+<hr />
+<h1 id="25-context-builder">25. Context Builder 输出</h1>
+<p>一个结构化输出可以是：</p>
+<pre><code class="language-text">ContextResult
+├── query
+├── chunks
+│   ├── text
+│   ├── score
+│   ├── source
+│   └── metadata
+├── citations
+└── token_count
+</code></pre>
+<p>这样后续 Agent / Generator 不依赖某个特定 Vector DB。</p>
+<hr />
+<h1 id="26-context-quality">26. Context Quality</h1>
+<p>Context Builder 应追求：</p>
+<pre><code class="language-text">Relevant
+Complete
+Non-duplicate
+Traceable
+Within Token Budget
+Properly Ordered
+</code></pre>
+<p>而不是：</p>
+<pre><code class="language-text">More Chunks = Better
+</code></pre>
+<hr />
+<h1 id="27-context-evaluation">27. Context Evaluation</h1>
+<p>可以关注：</p>
+<pre><code class="language-text">Context Precision
+Context Recall
+</code></pre>
+<h3 id="context-precision">Context Precision</h3>
+<p>Retrieved Context 中有多少内容真正相关。</p>
+<h3 id="context-recall">Context Recall</h3>
+<p>回答问题所需的证据有多少被 Retrieved Context 覆盖。</p>
+<p>这两者反映：</p>
+<pre><code class="language-text">Too Much Noise
+vs
+Missing Evidence
+</code></pre>
+<hr />
+<h1 id="28-citation-evaluation">28. Citation Evaluation</h1>
+<p>Citation 需要评估：</p>
+<pre><code class="language-text">Citation Correctness
+Citation Completeness
+Citation Source Accuracy
+</code></pre>
+<p>不能仅仅检查“有没有 Citation”。</p>
+<hr />
+<h1 id="29">29. 最终框架</h1>
+<pre><code class="language-text">Retrieved Candidates
+        ↓
+     Reranker
+        ↓
+   Relevant Chunks
+        ↓
+   Context Builder
+   ├── Deduplicate
+   ├── Merge
+   ├── Expand Parent
+   ├── Order
+   ├── Budget
+   └── Format
+        ↓
+   Grounded Context
+        ↓
+   LLM / Agent
+        ↓
+      Answer
+        ↓
+     Citation
+</code></pre>
+<p>核心原则：</p>
+<blockquote>
+<p><strong>Retrieval 决定找到了什么，Context Building 决定真正给模型看什么，Grounding 决定最终回答是否可靠地建立在这些证据之上。</strong></p>
+</blockquote>
 
 
 
