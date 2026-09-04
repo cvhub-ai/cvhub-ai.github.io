@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../gRPC_patterns/">
+        <link rel="prev" href="../../gRPC/gRPC_Interceptor/">
       
       
-        <link rel="next" href="../gRPC_Interceptor/">
+        <link rel="next" href="../02_llm_precision_and_quantization/">
       
       
         
@@ -23,7 +23,7 @@
     
     
       
-        <title>Service Impl - CvHub Docs</title>
+        <title>Model Basics - CvHub Docs</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#grpc-code-generation-service-implementation" class="md-skip">
+        <a href="#llm" class="md-skip">
           Skip to content
         </a>
       
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Service Impl
+              Model Basics
             
           </span>
         </div>
@@ -351,20 +351,18 @@
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
         
           
           <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
@@ -385,7 +383,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -403,7 +401,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gRPC/" class="md-nav__link">
+      <a href="../../gRPC/gRPC/" class="md-nav__link">
         
   
   
@@ -431,7 +429,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gRPC_proto/" class="md-nav__link">
+      <a href="../../gRPC/gRPC_proto/" class="md-nav__link">
         
   
   
@@ -459,7 +457,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gRPC_patterns/" class="md-nav__link">
+      <a href="../../gRPC/gRPC_patterns/" class="md-nav__link">
         
   
   
@@ -484,37 +482,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Service Impl
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../gRPC/gRPC_service_impl/" class="md-nav__link">
         
   
   
@@ -530,315 +501,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        核心思想
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#python" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Python：继承基类
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Python：继承基类">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#proto" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Proto文件
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        生成类
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#python_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Python实现
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#java" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Java：继承抽象基类
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Java：继承抽象基类">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#proto_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Proto生成类
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#java_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Java实现
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#go" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Go：实现接口（最典型）
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Go：实现接口（最典型）">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#proto_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Proto生成
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#go_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        go实现
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        注册：
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#c" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        C
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="C">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#proto_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Proto生成
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#c_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        C#实现
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#nodejs" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Node.js
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Node.js">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#proto-service-definition" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Proto生成 Service Definition
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#node" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Node实现
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        注册
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#rusttonic" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Rust（Tonic）
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Rust（Tonic）">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#proto-trait" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Proto生成 Trait：
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#rust" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Rust实现
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        总结
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -851,7 +513,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gRPC_Interceptor/" class="md-nav__link">
+      <a href="../../gRPC/gRPC_Interceptor/" class="md-nav__link">
         
   
   
@@ -884,18 +546,20 @@
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
         
           
           <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
@@ -916,7 +580,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -931,10 +595,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../llm/01_llm_model_basics/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model Basics
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -950,6 +641,198 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-llm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 什么是 LLM 模型
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 模型内容
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 模型内容">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-model-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Model Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-model-weights" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Model Weights
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-tokenizer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Tokenizer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 模型参数量
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 模型参数量">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 参数量意味着什么
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 参数量与模型权重大小
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-dense-model-moe-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Dense Model 与 MoE Model
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Dense Model 与 MoE Model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-dense-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Dense Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-moe-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 MoE Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-context-length" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Context Length
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 常见模型家族
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -962,7 +845,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../llm/02_llm_precision_and_quantization/" class="md-nav__link">
+      <a href="../02_llm_precision_and_quantization/" class="md-nav__link">
         
   
   
@@ -990,7 +873,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../llm/03_llm_model_formats/" class="md-nav__link">
+      <a href="../03_llm_model_formats/" class="md-nav__link">
         
   
   
@@ -1018,7 +901,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../llm/04_llm_inference_engines/" class="md-nav__link">
+      <a href="../04_llm_inference_engines/" class="md-nav__link">
         
   
   
@@ -1046,7 +929,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../llm/05_llm_serving/" class="md-nav__link">
+      <a href="../05_llm_serving/" class="md-nav__link">
         
   
   
@@ -1074,7 +957,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../llm/06_llm_applications/" class="md-nav__link">
+      <a href="../06_llm_applications/" class="md-nav__link">
         
   
   
@@ -1137,10 +1020,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#1-llm" class="md-nav__link">
     <span class="md-ellipsis">
       
-        核心思想
+        1. 什么是 LLM 模型
       
     </span>
   </a>
@@ -1148,22 +1031,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#python" class="md-nav__link">
+  <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Python：继承基类
+        2. 模型内容
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Python：继承基类">
+    <nav class="md-nav" aria-label="2. 模型内容">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#proto" class="md-nav__link">
+  <a href="#21-model-architecture" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Proto文件
+        2.1 Model Architecture
       
     </span>
   </a>
@@ -1171,10 +1054,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#22-model-weights" class="md-nav__link">
     <span class="md-ellipsis">
       
-        生成类
+        2.2 Model Weights
       
     </span>
   </a>
@@ -1182,10 +1065,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#python_1" class="md-nav__link">
+  <a href="#23-tokenizer" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Python实现
+        2.3 Tokenizer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Configuration
       
     </span>
   </a>
@@ -1198,33 +1092,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#java" class="md-nav__link">
+  <a href="#3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Java：继承抽象基类
+        3. 模型参数量
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Java：继承抽象基类">
+    <nav class="md-nav" aria-label="3. 模型参数量">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#proto_1" class="md-nav__link">
+  <a href="#31" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Proto生成类
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#java_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Java实现
+        3.1 参数量意味着什么
       
     </span>
   </a>
@@ -1237,22 +1120,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#go" class="md-nav__link">
+  <a href="#4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Go：实现接口（最典型）
+        4. 参数量与模型权重大小
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Go：实现接口（最典型）">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-dense-model-moe-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Dense Model 与 MoE Model
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Dense Model 与 MoE Model">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#proto_2" class="md-nav__link">
+  <a href="#51-dense-model" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Proto生成
+        5.1 Dense Model
       
     </span>
   </a>
@@ -1260,21 +1154,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#go_1" class="md-nav__link">
+  <a href="#52-moe-model" class="md-nav__link">
     <span class="md-ellipsis">
       
-        go实现
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        注册：
+        5.2 MoE Model
       
     </span>
   </a>
@@ -1287,138 +1170,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#c" class="md-nav__link">
+  <a href="#6-context-length" class="md-nav__link">
     <span class="md-ellipsis">
       
-        C
+        6. Context Length
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="C">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#proto_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Proto生成
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#c_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        C#实现
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#nodejs" class="md-nav__link">
+  <a href="#7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Node.js
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Node.js">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#proto-service-definition" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Proto生成 Service Definition
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#node" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Node实现
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        注册
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#rusttonic" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Rust（Tonic）
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Rust（Tonic）">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#proto-trait" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Proto生成 Trait：
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#rust" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Rust实现
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        总结
+        7. 常见模型家族
       
     </span>
   </a>
@@ -1442,226 +1208,358 @@
 
 
 
-<h1 id="grpc-code-generation-service-implementation">gRPC Code Generation &amp; Service Implementation</h1>
-<h2 id="_1">核心思想</h2>
-<pre><code class="language-text">.proto
-   ↓
-生成服务接口骨架
-   ↓
-实现这个接口
-   ↓
-注册到 gRPC Server
-</code></pre>
-<p>对于服务的具体实现，不同的语言需要选择不同的语言特性</p>
-<h2 id="python">Python：继承基类</h2>
-<h3 id="proto">Proto文件</h3>
-<pre><code class="language-proto">service UserService {
-    rpc GetUser(GetUserRequest)
-        returns (GetUserResponse);
-}
-</code></pre>
-<h3 id="_2">生成类</h3>
-<pre><code class="language-python">class UserServiceServicer:
-
-    def GetUser(self, request, context):
-        raise NotImplementedError()
-</code></pre>
-<h3 id="python_1">Python实现</h3>
-<pre><code class="language-python">class UserServiceImpl(
-        UserServiceServicer):
-
-    def GetUser(self, request, context):
-        ...
-</code></pre>
+<h1 id="llm">本地 LLM：模型基础</h1>
 <blockquote>
-<p><strong>属于：<code>继承 + 重写方法</code></strong></p>
+<p>本文只讨论本地 LLM 体系中的“模型基础”部分，包括模型是什么、模型由什么组成、参数量代表什么，以及常见模型家族。</p>
 </blockquote>
-<h2 id="java">Java：继承抽象基类</h2>
-<h3 id="proto_1">Proto生成类</h3>
-<pre><code class="language-Java">public abstract class UserServiceImplBase {
-
-    public void getUser(
-        GetUserRequest request,
-        StreamObserver&lt;GetUserResponse&gt; responseObserver
-    ) {
-        ...
-    }
-}
-</code></pre>
-<h3 id="java_1">Java实现</h3>
-<pre><code class="language-Java">public class UserServiceImpl
-    extends UserServiceGrpc.UserServiceImplBase {
-
-    @Override
-    public void getUser(
-        GetUserRequest request,
-        StreamObserver&lt;GetUserResponse&gt; responseObserver
-    ) {
-
-        ...
-    }
-}
-</code></pre>
+<h2 id="1-llm">1. 什么是 LLM 模型</h2>
+<p>LLM（Large Language Model，大语言模型）本质上是一个经过大规模数据训练的神经网络模型。</p>
+<p>在本地部署场景中，经常会看到不同的模型家族，例如：</p>
+<ul>
+<li>Qwen</li>
+<li>Llama</li>
+<li>DeepSeek</li>
+<li>GLM</li>
+<li>Gemma</li>
+<li>Mistral</li>
+<li>Phi</li>
+<li>...</li>
+</ul>
+<p>这些名称首先回答的是：</p>
 <blockquote>
-<p><strong>属于：<code>继承 + 重写方法</code></strong></p>
+<p><strong>我们使用的是哪个模型或模型家族？</strong></p>
 </blockquote>
-<h2 id="go">Go：实现接口（最典型）</h2>
-<h3 id="proto_2">Proto生成</h3>
-<pre><code class="language-Go">type UserServiceServer interface {
-
-    GetUser(
-        context.Context,
-        *GetUserRequest,
-    ) (*GetUserResponse, error)
-}
+<p>例如 <code>Qwen3-8B</code> 可以简单拆成：</p>
+<pre><code class="language-text">Qwen3  → 模型家族 / 模型系列
+8B     → 参数规模
 </code></pre>
-<h3 id="go_1">go实现</h3>
-<pre><code class="language-Go">type UserServiceImpl struct {
-}
-
-func (s *UserServiceImpl) GetUser(
-    ctx context.Context,
-    req *GetUserRequest,
-) (*GetUserResponse, error) {
-
-    ...
-}
+<p>模型名称本身和模型的精度、量化方式、文件格式以及推理框架是不同层次的概念。</p>
+<h2 id="2">2. 模型内容</h2>
+<p>一个可以实际加载和运行的 LLM，通常至少涉及：</p>
+<pre><code class="language-text">LLM Model
+│
+├── Model Architecture
+├── Model Weights
+├── Tokenizer
+└── Configuration
 </code></pre>
-<h3 id="_3">注册：</h3>
-<pre><code class="language-Go">pb.RegisterUserServiceServer(
-    grpcServer,
-    &amp;UserServiceImpl{},
-)
-</code></pre>
-<blockquote>
-<p><strong>这里没有继承。属于：<code>接口实现</code></strong></p>
-</blockquote>
-<h2 id="c">C</h2>
-<h3 id="proto_3">Proto生成</h3>
-<pre><code class="language-C#">public abstract class UserServiceBase
-{
-    public virtual Task&lt;GetUserResponse&gt;
-        GetUser(
-            GetUserRequest request,
-            ServerCallContext context)
-}
-</code></pre>
-<h3 id="c_1">C#实现</h3>
-<pre><code class="language-C#">public class UserServiceImpl
-    : UserService.UserServiceBase
-{
-    public override Task&lt;GetUserResponse&gt;
-        GetUser(...)
-    {
-        ...
-    }
-}
-</code></pre>
-<blockquote>
-<p><strong>属于：<code>继承 + 重写方法</code></strong></p>
-</blockquote>
-<h2 id="nodejs">Node.js</h2>
-<p>Node 更灵活。</p>
-<h3 id="proto-service-definition">Proto生成 Service Definition</h3>
-<pre><code class="language-JavaScript">{
-  GetUser: {
-     path: &quot;/user.UserService/GetUser&quot;
-  }
-}
-</code></pre>
-<h3 id="node">Node实现</h3>
-<pre><code class="language-JavaScript">function getUser(call, callback) {
-
-    callback(null, {
-        name: &quot;Tom&quot;
-    });
-}
-</code></pre>
-<h3 id="_4">注册</h3>
-<pre><code class="language-JavaScript">server.addService(
-    UserService.service,
-    {
-        GetUser: getUser
-    }
-)
-</code></pre>
-<blockquote>
-<p><strong>属于：<code>函数注册</code> 没有继承</strong></p>
-</blockquote>
-<h2 id="rusttonic">Rust（Tonic）</h2>
-<h3 id="proto-trait">Proto生成 Trait：</h3>
-<pre><code class="language-Rust">#[tonic::async_trait]
-pub trait UserService {
-
-    async fn get_user(
-        &amp;self,
-        request: Request&lt;GetUserRequest&gt;,
-    ) -&gt; Result&lt;Response&lt;GetUserResponse&gt;&gt;;
-}
-</code></pre>
-<h3 id="rust">Rust实现</h3>
-<pre><code class="language-Rust">impl UserService for UserServiceImpl {
-
-    async fn get_user(...) {
-
-    }
-}
-</code></pre>
-<blockquote>
-<p><strong>属于：<code>Trait</code> 实现</strong></p>
-</blockquote>
-<h2 id="_5">总结</h2>
-<p>可以把 gRPC 的服务实现理解成：</p>
-<pre><code class="language-text">gRPC定义接口
-        ↓
-各语言生成服务骨架
-        ↓
-开发者实现骨架
-        ↓
-注册到Server
-</code></pre>
-<p>不同语言只是"骨架"的表现形式不同：</p>
-<table style="border-collapse: collapse;">
-  <thead>
-    <tr>
-      <th style="border: 1px solid; padding: 8px;">语言</th>
-      <th style="border: 1px solid; padding: 8px;">生成内容</th>
-      <th style="border: 1px solid; padding: 8px;">实现方式</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="border: 1px solid; padding: 8px;">Python</td>
-      <td style="border: 1px solid; padding: 8px;">Servicer 基类</td>
-      <td style="border: 1px solid; padding: 8px;">继承</td>
-    </tr>
-    <tr>
-      <td style="border: 1px solid; padding: 8px;">Java</td>
-      <td style="border: 1px solid; padding: 8px;">ImplBase 抽象类</td>
-      <td style="border: 1px solid; padding: 8px;">继承</td>
-    </tr>
-    <tr>
-      <td style="border: 1px solid; padding: 8px;">C#</td>
-      <td style="border: 1px solid; padding: 8px;">Base 抽象类</td>
-      <td style="border: 1px solid; padding: 8px;">继承</td>
-    </tr>
-    <tr>
-      <td style="border: 1px solid; padding: 8px;">Go</td>
-      <td style="border: 1px solid; padding: 8px;">Interface</td>
-      <td style="border: 1px solid; padding: 8px;">实现接口</td>
-    </tr>
-    <tr>
-      <td style="border: 1px solid; padding: 8px;">Rust</td>
-      <td style="border: 1px solid; padding: 8px;">Trait</td>
-      <td style="border: 1px solid; padding: 8px;">实现 Trait</td>
-    </tr>
-    <tr>
-      <td style="border: 1px solid; padding: 8px;">Node</td>
-      <td style="border: 1px solid; padding: 8px;">Service Definition</td>
-      <td style="border: 1px solid; padding: 8px;">注册函数</td>
-    </tr>
-  </tbody>
+<table>
+<thead>
+<tr>
+<th>组成</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Model Architecture</td>
+<td>定义模型的网络结构</td>
+</tr>
+<tr>
+<td>Model Weights</td>
+<td>模型训练得到的大量参数</td>
+</tr>
+<tr>
+<td>Tokenizer</td>
+<td>负责文本与 Token 之间的转换</td>
+</tr>
+<tr>
+<td>Configuration</td>
+<td>保存模型结构和运行相关配置</td>
+</tr>
+</tbody>
 </table>
+<h3 id="21-model-architecture">2.1 Model Architecture</h3>
+<p>Model Architecture 描述模型的网络结构。对于现代 LLM，核心通常基于 Transformer 架构。</p>
+<p>它决定了模型内部以下结构如何组织：</p>
+<ul>
+<li>Layer</li>
+<li>Attention</li>
+<li>Hidden Size</li>
+<li>Feed Forward Network</li>
+<li>Position Encoding</li>
+<li>...</li>
+</ul>
+<p>不同模型家族可能采用不同的 Transformer 设计和改进方案。</p>
+<blockquote>
+<p><strong>Architecture 可以简单理解为模型的结构设计。</strong></p>
+</blockquote>
+<h3 id="22-model-weights">2.2 Model Weights</h3>
+<p>Model Weights 是模型训练得到的参数。</p>
+<p>例如一个 <code>8B Model</code> 大约包含 <strong>80 亿个参数</strong>。这些参数保存了模型在训练过程中学习到的信息，模型文件中占用空间最大的部分通常就是 Model Weights。</p>
+<p>模型部署时主要涉及：</p>
+<ul>
+<li>Disk Storage</li>
+<li>RAM</li>
+<li>VRAM</li>
+</ul>
+<h3 id="23-tokenizer">2.3 Tokenizer</h3>
+<p>LLM 并不是直接读取字符串，而是处理 Token。Tokenizer 负责文本与 Token ID 之间的转换：</p>
+<pre><code class="language-text">Text
+ ↓
+Tokenizer
+ ↓
+Token
+ ↓
+Token ID
+ ↓
+LLM
+</code></pre>
+<p>例如 <code>Hello world</code> 经过 Tokenizer 后，会被转换成模型能够处理的一组 Token ID。</p>
+<p>模型生成结果时则执行相反过程：</p>
+<pre><code class="language-text">Token ID
+ ↓
+Tokenizer
+ ↓
+Text
+</code></pre>
+<p>因此 Tokenizer 是模型的重要组成部分，并且通常需要与对应模型匹配。</p>
+<h3 id="24-configuration">2.4 Configuration</h3>
+<p>Configuration 用来描述模型的一些结构和配置参数，例如：</p>
+<ul>
+<li>Model Type</li>
+<li>Hidden Size</li>
+<li>Number of Layers</li>
+<li>Attention Heads</li>
+<li>Vocabulary Size</li>
+<li>Context Length</li>
+<li>...</li>
+</ul>
+<p>这些信息帮助模型加载程序正确构建模型结构并加载对应权重。</p>
+<h2 id="3">3. 模型参数量</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">模型规模</th>
+<th style="text-align: right;">大约参数量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">4B</td>
+<td style="text-align: right;">40 亿</td>
+</tr>
+<tr>
+<td style="text-align: right;">7B</td>
+<td style="text-align: right;">70 亿</td>
+</tr>
+<tr>
+<td style="text-align: right;">8B</td>
+<td style="text-align: right;">80 亿</td>
+</tr>
+<tr>
+<td style="text-align: right;">14B</td>
+<td style="text-align: right;">140 亿</td>
+</tr>
+<tr>
+<td style="text-align: right;">32B</td>
+<td style="text-align: right;">320 亿</td>
+</tr>
+<tr>
+<td style="text-align: right;">70B</td>
+<td style="text-align: right;">700 亿</td>
+</tr>
+</tbody>
+</table>
+<h3 id="31">3.1 参数量意味着什么</h3>
+<p>参数量是描述模型规模的重要指标。一般情况下，参数规模增加通常意味着：</p>
+<pre><code class="language-text">更多参数
+   ↓
+更大的模型权重
+   ↓
+更高的内存 / 显存需求
+   ↓
+更多的推理计算量
+</code></pre>
+<p>但是：</p>
+<blockquote>
+<p><strong>参数越多，并不意味着模型一定越好。</strong></p>
+</blockquote>
+<p>模型实际能力还受到很多因素影响，例如：</p>
+<ul>
+<li>模型架构</li>
+<li>训练数据</li>
+<li>训练方法</li>
+<li>Post-training</li>
+<li>模型版本</li>
+<li>任务类型</li>
+<li>...</li>
+</ul>
+<blockquote>
+<p>所以参数量更适合用于描述 <strong>模型规模</strong>，而不能单独作为模型能力的判断标准。</p>
+</blockquote>
+<h2 id="4">4. 参数量与模型权重大小</h2>
+<p>参数量决定了模型有多少参数，但模型实际占用多少存储空间，还取决于每个参数使用什么数据类型保存。</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th style="text-align: right;">每参数理论占用</th>
+<th style="text-align: right;">8B 模型权重大小</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FP32</td>
+<td style="text-align: right;">4 Bytes</td>
+<td style="text-align: right;">~32 GB</td>
+</tr>
+<tr>
+<td>FP16 / BF16</td>
+<td style="text-align: right;">2 Bytes</td>
+<td style="text-align: right;">~16 GB</td>
+</tr>
+<tr>
+<td>FP8</td>
+<td style="text-align: right;">1 Byte</td>
+<td style="text-align: right;">~8 GB</td>
+</tr>
+<tr>
+<td>INT8</td>
+<td style="text-align: right;">1 Byte</td>
+<td style="text-align: right;">~8 GB</td>
+</tr>
+<tr>
+<td>INT4</td>
+<td style="text-align: right;">0.5 Byte</td>
+<td style="text-align: right;">~4 GB</td>
+</tr>
+</tbody>
+</table>
+<p>因此，同样都是 <code>8B Model</code>，实际模型权重大小可能完全不同。例如：</p>
+<pre><code class="language-text">8B BF16  ≈ 16 GB 权重
+8B 4-bit ≈  4 GB 权重
+</code></pre>
+<p>这里只是模型权重的粗略理论计算。</p>
+<p>实际运行时还需要额外资源，例如：</p>
+<ul>
+<li>Model Weights</li>
+<li>KV Cache</li>
+<li>Runtime</li>
+<li>Temporary Memory</li>
+<li>Other Overhead</li>
+</ul>
+<p>所以：</p>
+<blockquote>
+<p><strong>模型参数量不能直接等同于实际显存需求。</strong></p>
+</blockquote>
+<p>Precision、Data Type 和 Quantization 会在独立的“模型精度与量化”文档中进一步讨论。</p>
+<h2 id="5-dense-model-moe-model">5. Dense Model 与 MoE Model</h2>
+<p>仅仅看到参数总量，有时仍然不足以判断模型实际推理成本。</p>
+<p>现代 LLM 中常见两类结构：</p>
+<ul>
+<li><strong>Dense Model</strong></li>
+<li><strong>MoE Model</strong></li>
+</ul>
+<h3 id="51-dense-model">5.1 Dense Model</h3>
+<p>Dense Model 可以简单理解为：</p>
+<blockquote>
+<p>推理时模型的大部分参数都会参与计算。</p>
+</blockquote>
+<p>例如一个 <code>8B Dense Model</code>，可以粗略理解为模型拥有约 <strong>80 亿参数</strong>，并且推理过程中这些参数构成主要计算主体。</p>
+<h3 id="52-moe-model">5.2 MoE Model</h3>
+<p>MoE：</p>
+<p><strong>Mixture of Experts</strong></p>
+<p>MoE 模型通常包含多个 Expert，但每次处理 Token 时只激活其中一部分。</p>
+<p>因此经常会看到：</p>
+<pre><code class="language-text">Total Parameters
+        ≠
+Activated Parameters
+</code></pre>
+<p>例如一个 MoE 模型可能拥有非常大的总参数量，但单次推理只激活其中部分参数。</p>
+<p>所以比较 MoE 模型时，需要同时关注：</p>
+<ul>
+<li>Total Parameters</li>
+<li>Activated Parameters</li>
+</ul>
+<p>而不能只看模型名称中的总参数规模。</p>
+<h2 id="6-context-length">6. Context Length</h2>
+<p>除了参数量之外，另一个经常出现在模型信息中的指标是：</p>
+<p><strong>Context Length / Context Window</strong></p>
+<p>它表示模型一次能够处理的上下文 Token 范围，例如：</p>
+<ul>
+<li>32K</li>
+<li>64K</li>
+<li>128K</li>
+<li>...</li>
+</ul>
+<p>这里的 <code>K</code> 表示千级 Token 数量。</p>
+<p>Context Length 与模型参数量是两个不同概念：</p>
+<pre><code class="language-text">Parameter Count → 模型有多少参数
+Context Length  → 一次可以处理多少上下文 Token
+</code></pre>
+<p>更大的 Context Window 可以让模型一次处理更长的：</p>
+<ul>
+<li>Conversation</li>
+<li>Document</li>
+<li>Code</li>
+<li>Retrieved Context</li>
+<li>...</li>
+</ul>
+<p>但更长的上下文通常也会增加推理时的资源消耗，尤其会影响 KV Cache。</p>
+<h2 id="7">7. 常见模型家族</h2>
+<p>当前本地 LLM 生态中经常遇到的模型家族包括：</p>
+<table>
+<thead>
+<tr>
+<th>公司 / 组织</th>
+<th>模型家族</th>
+<th>典型方向</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alibaba / Qwen Team</td>
+<td>Qwen</td>
+<td>通用、中文、Coding、Reasoning、Agent</td>
+</tr>
+<tr>
+<td>DeepSeek</td>
+<td>DeepSeek</td>
+<td>Reasoning、Coding、MoE</td>
+</tr>
+<tr>
+<td>Z.ai / 智谱</td>
+<td>GLM</td>
+<td>通用、中文、Coding、Agent</td>
+</tr>
+<tr>
+<td>Moonshot AI / 月之暗面</td>
+<td>Kimi</td>
+<td>长上下文、Coding、Agent</td>
+</tr>
+<tr>
+<td>Google</td>
+<td>Gemma</td>
+<td>通用、小中型模型、多模态生态</td>
+</tr>
+<tr>
+<td>Meta</td>
+<td>Llama</td>
+<td>通用、开放权重生态</td>
+</tr>
+<tr>
+<td>Mistral AI</td>
+<td>Mistral / Mixtral</td>
+<td>通用、效率、MoE</td>
+</tr>
+<tr>
+<td>NVIDIA</td>
+<td>Nemotron</td>
+<td>Reasoning、Agent、企业部署</td>
+</tr>
+<tr>
+<td>Microsoft</td>
+<td>Phi</td>
+<td>小模型、端侧部署</td>
+</tr>
+</tbody>
+</table>
+<p>这里需要注意：</p>
+<blockquote>
+<p>模型家族、具体模型版本和模型能力都会持续变化。</p>
+</blockquote>
+<p>因此这张表主要用于认识模型生态，而不是作为固定的模型能力排名。</p>
 
 
 

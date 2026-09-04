@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../../../architecture/overview/">
+        <link rel="prev" href="../02_llm_precision_and_quantization/">
       
       
-        <link rel="next" href="../gRPC_proto/">
+        <link rel="next" href="../04_llm_inference_engines/">
       
       
         
@@ -23,7 +23,7 @@
     
     
       
-        <title>Overview - CvHub Docs</title>
+        <title>Model Format - CvHub Docs</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#grpc" class="md-skip">
+        <a href="#llm" class="md-skip">
           Skip to content
         </a>
       
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Overview
+              Model Format
             
           </span>
         </div>
@@ -351,20 +351,18 @@
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
         
           
           <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
@@ -385,7 +383,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -400,37 +398,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Overview
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../gRPC/gRPC/" class="md-nav__link">
         
   
   
@@ -446,165 +417,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#grpc_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        gRPC 基本介绍
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="gRPC 基本介绍">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#rpc-vs-http" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        RPC vs HTTP
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="RPC vs HTTP">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#http" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        传统 HTTP 调用：
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#rpc" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        RPC 方式：
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#grpc_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        gRPC 的核心组成
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="gRPC 的核心组成">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#proto" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Proto 文件
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#protobuf" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Protobuf
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#code-generation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Code Generation
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#grpc_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        gRPC 的主要优势
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#grpc_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        gRPC 在微服务中的作用
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#grpc_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        gRPC服务开发基本流程
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -617,7 +429,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gRPC_proto/" class="md-nav__link">
+      <a href="../../gRPC/gRPC_proto/" class="md-nav__link">
         
   
   
@@ -645,7 +457,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gRPC_patterns/" class="md-nav__link">
+      <a href="../../gRPC/gRPC_patterns/" class="md-nav__link">
         
   
   
@@ -673,7 +485,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gRPC_service_impl/" class="md-nav__link">
+      <a href="../../gRPC/gRPC_service_impl/" class="md-nav__link">
         
   
   
@@ -701,7 +513,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gRPC_Interceptor/" class="md-nav__link">
+      <a href="../../gRPC/gRPC_Interceptor/" class="md-nav__link">
         
   
   
@@ -734,18 +546,20 @@
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
         
           
           <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
@@ -766,7 +580,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -784,7 +598,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../llm/01_llm_model_basics/" class="md-nav__link">
+      <a href="../01_llm_model_basics/" class="md-nav__link">
         
   
   
@@ -812,7 +626,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../llm/02_llm_precision_and_quantization/" class="md-nav__link">
+      <a href="../02_llm_precision_and_quantization/" class="md-nav__link">
         
   
   
@@ -837,10 +651,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../llm/03_llm_model_formats/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model Format
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -856,6 +697,81 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 什么是模型文件格式
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-gguf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. GGUF
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-safetensors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. safetensors
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-gguf-safetensors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. GGUF 与 safetensors
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 核心关系
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -868,7 +784,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../llm/04_llm_inference_engines/" class="md-nav__link">
+      <a href="../04_llm_inference_engines/" class="md-nav__link">
         
   
   
@@ -896,7 +812,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../llm/05_llm_serving/" class="md-nav__link">
+      <a href="../05_llm_serving/" class="md-nav__link">
         
   
   
@@ -924,7 +840,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../llm/06_llm_applications/" class="md-nav__link">
+      <a href="../06_llm_applications/" class="md-nav__link">
         
   
   
@@ -987,116 +903,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#grpc_1" class="md-nav__link">
+  <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        gRPC 基本介绍
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="gRPC 基本介绍">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#rpc-vs-http" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        RPC vs HTTP
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="RPC vs HTTP">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#http" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        传统 HTTP 调用：
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#rpc" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        RPC 方式：
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#grpc_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        gRPC 的核心组成
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="gRPC 的核心组成">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#proto" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Proto 文件
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#protobuf" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Protobuf
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#code-generation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Code Generation
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#grpc_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        gRPC 的主要优势
+        1. 什么是模型文件格式
       
     </span>
   </a>
@@ -1104,10 +914,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#grpc_4" class="md-nav__link">
+  <a href="#2-gguf" class="md-nav__link">
     <span class="md-ellipsis">
       
-        gRPC 在微服务中的作用
+        2. GGUF
       
     </span>
   </a>
@@ -1115,10 +925,32 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#grpc_5" class="md-nav__link">
+  <a href="#3-safetensors" class="md-nav__link">
     <span class="md-ellipsis">
       
-        gRPC服务开发基本流程
+        3. safetensors
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-gguf-safetensors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. GGUF 与 safetensors
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 核心关系
       
     </span>
   </a>
@@ -1142,123 +974,134 @@
 
 
 
-<h1 id="grpc">gRPC 总结</h1>
-<h2 id="grpc_1">gRPC 基本介绍</h2>
-<p>gRPC（Google Remote Procedure Call）是 Google 开源的高性能 RPC 框架。它允许开发者像调用本地函数一样调用远程服务。</p>
-<h3 id="rpc-vs-http">RPC vs HTTP</h3>
-<h4 id="http">传统 HTTP 调用：</h4>
-<pre><code class="language-text">客户端
-  │
-  │ GET /users/1001
-  ▼
-服务端
-</code></pre>
-<p>开发者需要关心：
-- URL
-- HTTP Method
-- Header
-- JSON序列化
-- JSON反序列化</p>
-<h4 id="rpc">RPC 方式：</h4>
-<pre><code>user_service.GetUser(1001)
-</code></pre>
-<p>开发者只关注：
-- 调用哪个方法
-- 传什么参数
-- 返回什么结果</p>
-<p><strong>网络通信细节由框架处理。</strong></p>
-<h2 id="grpc_2">gRPC 的核心组成</h2>
-<h3 id="proto">Proto 文件</h3>
-<p>用于定义：
-- 服务(Service)
-- 方法(RPC)
-- 请求(Request)
-- 响应(Response)</p>
-<p>例如：</p>
-<pre><code class="language-proto">service UserService {
-    rpc GetUser(GetUserRequest)
-        returns (GetUserResponse);
-}
-</code></pre>
-<h3 id="protobuf">Protobuf</h3>
-<p>gRPC 默认使用 Protocol Buffers 作为序列化协议。</p>
-<p>特点：
-- 二进制格式
-- 数据体积小
-- 编解码速度快
-- 强类型</p>
-<h3 id="code-generation">Code Generation</h3>
-<p>根据 proto 自动生成代码：</p>
-<pre><code class="language-text">user.proto
-    │
-    ▼
-  protoc
-    │
-    ▼
-  Python
-   Java
-    Go
-   Node
-    C#
-</code></pre>
-<p>无需手写：
-- DTO
-- 接口定义
-- 序列化逻辑</p>
-<h2 id="grpc_3">gRPC 的主要优势</h2>
+<h1 id="llm">本地 LLM：模型文件与存储</h1>
+<blockquote>
+<p>本文讨论本地 LLM 的模型文件与存储，重点区分模型、量化方式与模型文件格式之间的关系，并介绍 GGUF 和 safetensors。</p>
+</blockquote>
+<h2 id="1">1. 什么是模型文件格式</h2>
+<p>训练后的模型权重最终需要保存到文件，这属于：</p>
+<p><strong>Serialization / Model File Format</strong></p>
+<p>文件格式解决的问题是：</p>
+<blockquote>
+<p><strong>模型权重、Metadata 等信息如何被保存和加载。</strong></p>
+</blockquote>
+<p>常见格式包括：</p>
 <ul>
-<li>高性能 -&gt; HTTP/2 + Protobuf -&gt; 网络开销更小，序列化更快</li>
-<li>强类型 -&gt; 编译期即可发现很多错误。</li>
-<li>多语言支持 -&gt; 同一个 proto可以生成：Python，Java，Go，Node，C++，C#</li>
-<li>自动生成代码</li>
+<li>GGUF</li>
+<li>safetensors</li>
 </ul>
-<h2 id="grpc_4">gRPC 在微服务中的作用</h2>
-<p>最常见用途：</p>
-<pre><code class="language-text">  服务A
-    │
-    ▼
-  gRPC
-    │
-    ▼
-  服务B
+<p>模型文件格式与模型本身、数据精度以及量化方法不是同一个概念。</p>
+<p>例如：</p>
+<pre><code class="language-text">Qwen3-8B       → Model
+AWQ            → Quantization Method
+Q4_K_M         → Quantization Type
+GGUF           → File Format
+safetensors    → File Format
+</code></pre>
+<h2 id="2-gguf">2. GGUF</h2>
+<p>GGUF 是 llama.cpp 生态中非常重要的模型文件格式。</p>
+<p>它可以包含：</p>
+<ul>
+<li>模型权重</li>
+<li>模型架构信息</li>
+<li>Tokenizer 信息</li>
+<li>Metadata</li>
+<li>量化权重</li>
+</ul>
+<blockquote>
+<p><strong>GGUF 是文件格式，不等于量化算法。</strong></p>
+</blockquote>
+<p>例如：</p>
+<pre><code class="language-text">Qwen-9B-Q4_K_M.gguf
+</code></pre>
+<p>可以拆成：</p>
+<pre><code class="language-text">Qwen-9B
+└── Model
+
+Q4_K_M
+└── Quantization Type
+
+GGUF
+└── File Format
+</code></pre>
+<p>GGUF 文件中经常出现 Q4_K_M、Q5_K_M、Q6_K、Q8_0 等量化类型，但这些量化类型本身并不等于 GGUF。</p>
+<h2 id="3-safetensors">3. safetensors</h2>
+<p><code>safetensors</code> 是 Hugging Face 模型生态中非常常见的权重文件格式。</p>
+<p>经常出现在：</p>
+<ul>
+<li>Hugging Face</li>
+<li>Transformers</li>
+<li>vLLM</li>
+<li>SGLang</li>
+<li>TensorRT-LLM</li>
+<li>...</li>
+</ul>
+<p>例如一个较大的模型可能包含：</p>
+<pre><code class="language-text">model-00001-of-00004.safetensors
+model-00002-of-00004.safetensors
+...
+</code></pre>
+<p>模型较大时，权重通常会被拆成多个文件。</p>
+<h2 id="4-gguf-safetensors">4. GGUF 与 safetensors</h2>
+<p>可以粗略建立下面的常见生态关系：</p>
+<pre><code class="language-text">GGUF
+ ↓
+llama.cpp ecosystem
+ ↓
+CPU / Consumer Hardware / Local LLM
+
+
+safetensors
+ ↓
+Hugging Face ecosystem
+ ↓
+Transformers / vLLM / SGLang / GPU Serving
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>文件格式</th>
+<th>常见生态</th>
+<th>常见场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GGUF</td>
+<td>llama.cpp</td>
+<td>CPU、消费级硬件、本地 LLM</td>
+</tr>
+<tr>
+<td>safetensors</td>
+<td>Hugging Face</td>
+<td>Transformers、vLLM、SGLang、GPU Serving</td>
+</tr>
+</tbody>
+</table>
+<p>但这只是常见生态关系，并不是绝对限制。</p>
+<h2 id="5">5. 核心关系</h2>
+<p>理解模型文件时，最重要的是不要把不同层次混在一起：</p>
+<pre><code class="language-text">Model
+  ↓
+Model Weights
+  ↓
+Precision / Quantization
+  ↓
+Serialization / File Format
 </code></pre>
 <p>例如：</p>
-<pre><code class="language-text">Order Service
-    │
-    ├── User Service
-    ├── Inventory Service
-    └── Payment Service
-
-服务之间通过 gRPC 通信。
+<pre><code class="language-text">Qwen3-8B-Q4_K_M.gguf
 </code></pre>
-<h2 id="grpc_5">gRPC服务开发基本流程</h2>
-<pre><code class="language-text">Proto Definition
-        │
-        ▼
-      protoc
-        │
-        ▼
-Generated Code
-(Request / Response / Service Skeleton)
-        │
-        ▼
-Service Implementation
-(XXXServiceImpl)
-        │
-        ▼
-Register Service
-(server.py)
-        │
-        ▼
-Add Interceptors
-(Auth / Log / Trace)
-        │
-        ▼
-Start gRPC Server
-        │
-        ▼
-Receive RPC Requests
+<p>描述了：</p>
+<ul>
+<li><code>Qwen3-8B</code>：模型</li>
+<li><code>Q4_K_M</code>：量化类型</li>
+<li><code>.gguf</code>：文件格式</li>
+</ul>
+<p>而类似：</p>
+<pre><code class="language-text">Qwen-xxx-AWQ
 </code></pre>
+<p>其中 <code>AWQ</code> 描述的是量化方法，并不是文件格式。</p>
 
 
 

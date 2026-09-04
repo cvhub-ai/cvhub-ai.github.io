@@ -9,10 +9,8 @@
       
       
       
-        <link rel="prev" href="../../../architecture/overview/">
+        <link rel="prev" href="../05_llm_serving/">
       
-      
-        <link rel="next" href="../gRPC_proto/">
       
       
         
@@ -23,7 +21,7 @@
     
     
       
-        <title>Overview - CvHub Docs</title>
+        <title>Application - CvHub Docs</title>
       
     
     
@@ -64,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#grpc" class="md-skip">
+        <a href="#llm" class="md-skip">
           Skip to content
         </a>
       
@@ -100,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Overview
+              Application
             
           </span>
         </div>
@@ -351,20 +349,18 @@
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
         
           
           <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
@@ -385,7 +381,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -400,37 +396,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Overview
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../gRPC/gRPC/" class="md-nav__link">
         
   
   
@@ -446,165 +415,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#grpc_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        gRPC 基本介绍
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="gRPC 基本介绍">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#rpc-vs-http" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        RPC vs HTTP
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="RPC vs HTTP">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#http" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        传统 HTTP 调用：
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#rpc" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        RPC 方式：
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#grpc_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        gRPC 的核心组成
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="gRPC 的核心组成">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#proto" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Proto 文件
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#protobuf" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Protobuf
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#code-generation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Code Generation
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#grpc_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        gRPC 的主要优势
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#grpc_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        gRPC 在微服务中的作用
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#grpc_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        gRPC服务开发基本流程
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -617,7 +427,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gRPC_proto/" class="md-nav__link">
+      <a href="../../gRPC/gRPC_proto/" class="md-nav__link">
         
   
   
@@ -645,7 +455,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gRPC_patterns/" class="md-nav__link">
+      <a href="../../gRPC/gRPC_patterns/" class="md-nav__link">
         
   
   
@@ -673,7 +483,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gRPC_service_impl/" class="md-nav__link">
+      <a href="../../gRPC/gRPC_service_impl/" class="md-nav__link">
         
   
   
@@ -701,7 +511,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gRPC_Interceptor/" class="md-nav__link">
+      <a href="../../gRPC/gRPC_Interceptor/" class="md-nav__link">
         
   
   
@@ -734,18 +544,20 @@
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
         
           
           <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
@@ -766,7 +578,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -784,7 +596,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../llm/01_llm_model_basics/" class="md-nav__link">
+      <a href="../01_llm_model_basics/" class="md-nav__link">
         
   
   
@@ -812,7 +624,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../llm/02_llm_precision_and_quantization/" class="md-nav__link">
+      <a href="../02_llm_precision_and_quantization/" class="md-nav__link">
         
   
   
@@ -840,7 +652,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../llm/03_llm_model_formats/" class="md-nav__link">
+      <a href="../03_llm_model_formats/" class="md-nav__link">
         
   
   
@@ -868,7 +680,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../llm/04_llm_inference_engines/" class="md-nav__link">
+      <a href="../04_llm_inference_engines/" class="md-nav__link">
         
   
   
@@ -896,7 +708,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../llm/05_llm_serving/" class="md-nav__link">
+      <a href="../05_llm_serving/" class="md-nav__link">
         
   
   
@@ -921,10 +733,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../llm/06_llm_applications/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Application
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -940,6 +779,92 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-application-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Application Layer
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-chat-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Chat Application
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. RAG
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Agent
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 其他业务应用
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 整体关系
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -987,116 +912,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#grpc_1" class="md-nav__link">
+  <a href="#1-application-layer" class="md-nav__link">
     <span class="md-ellipsis">
       
-        gRPC 基本介绍
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="gRPC 基本介绍">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#rpc-vs-http" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        RPC vs HTTP
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="RPC vs HTTP">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#http" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        传统 HTTP 调用：
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#rpc" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        RPC 方式：
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#grpc_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        gRPC 的核心组成
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="gRPC 的核心组成">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#proto" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Proto 文件
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#protobuf" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Protobuf
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#code-generation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Code Generation
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#grpc_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        gRPC 的主要优势
+        1. Application Layer
       
     </span>
   </a>
@@ -1104,10 +923,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#grpc_4" class="md-nav__link">
+  <a href="#2-chat-application" class="md-nav__link">
     <span class="md-ellipsis">
       
-        gRPC 在微服务中的作用
+        2. Chat Application
       
     </span>
   </a>
@@ -1115,10 +934,43 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#grpc_5" class="md-nav__link">
+  <a href="#3-rag" class="md-nav__link">
     <span class="md-ellipsis">
       
-        gRPC服务开发基本流程
+        3. RAG
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Agent
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 其他业务应用
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 整体关系
       
     </span>
   </a>
@@ -1142,123 +994,122 @@
 
 
 
-<h1 id="grpc">gRPC 总结</h1>
-<h2 id="grpc_1">gRPC 基本介绍</h2>
-<p>gRPC（Google Remote Procedure Call）是 Google 开源的高性能 RPC 框架。它允许开发者像调用本地函数一样调用远程服务。</p>
-<h3 id="rpc-vs-http">RPC vs HTTP</h3>
-<h4 id="http">传统 HTTP 调用：</h4>
-<pre><code class="language-text">客户端
-  │
-  │ GET /users/1001
-  ▼
-服务端
-</code></pre>
-<p>开发者需要关心：
-- URL
-- HTTP Method
-- Header
-- JSON序列化
-- JSON反序列化</p>
-<h4 id="rpc">RPC 方式：</h4>
-<pre><code>user_service.GetUser(1001)
-</code></pre>
-<p>开发者只关注：
-- 调用哪个方法
-- 传什么参数
-- 返回什么结果</p>
-<p><strong>网络通信细节由框架处理。</strong></p>
-<h2 id="grpc_2">gRPC 的核心组成</h2>
-<h3 id="proto">Proto 文件</h3>
-<p>用于定义：
-- 服务(Service)
-- 方法(RPC)
-- 请求(Request)
-- 响应(Response)</p>
-<p>例如：</p>
-<pre><code class="language-proto">service UserService {
-    rpc GetUser(GetUserRequest)
-        returns (GetUserResponse);
-}
-</code></pre>
-<h3 id="protobuf">Protobuf</h3>
-<p>gRPC 默认使用 Protocol Buffers 作为序列化协议。</p>
-<p>特点：
-- 二进制格式
-- 数据体积小
-- 编解码速度快
-- 强类型</p>
-<h3 id="code-generation">Code Generation</h3>
-<p>根据 proto 自动生成代码：</p>
-<pre><code class="language-text">user.proto
-    │
-    ▼
-  protoc
-    │
-    ▼
-  Python
-   Java
-    Go
-   Node
-    C#
-</code></pre>
-<p>无需手写：
-- DTO
-- 接口定义
-- 序列化逻辑</p>
-<h2 id="grpc_3">gRPC 的主要优势</h2>
+<h1 id="llm">本地 LLM：上层应用</h1>
+<blockquote>
+<p>本文讨论本地 LLM 部署体系中的 Application Layer，只说明 Chat、RAG、Agent 等上层应用与 LLM 的基本关系，不展开这些系统内部的具体实现。</p>
+</blockquote>
+<h2 id="1-application-layer">1. Application Layer</h2>
+<p>LLM 部署完成后，上层才是真正使用模型能力的业务系统。</p>
+<p>常见 Application 包括：</p>
 <ul>
-<li>高性能 -&gt; HTTP/2 + Protobuf -&gt; 网络开销更小，序列化更快</li>
-<li>强类型 -&gt; 编译期即可发现很多错误。</li>
-<li>多语言支持 -&gt; 同一个 proto可以生成：Python，Java，Go，Node，C++，C#</li>
-<li>自动生成代码</li>
+<li>Chat Application</li>
+<li>RAG</li>
+<li>Agent</li>
+<li>Coding Assistant</li>
+<li>Document Analysis</li>
+<li>Business Service</li>
 </ul>
-<h2 id="grpc_4">gRPC 在微服务中的作用</h2>
-<p>最常见用途：</p>
-<pre><code class="language-text">  服务A
-    │
-    ▼
-  gRPC
-    │
-    ▼
-  服务B
+<p>完整链路可以表示为：</p>
+<pre><code class="language-text">User
+ ↓
+Application
+ ↓
+LLM API
+ ↓
+Serving
+ ↓
+Inference Runtime
+ ↓
+Model
+ ↓
+CPU / GPU
 </code></pre>
-<p>例如：</p>
-<pre><code class="language-text">Order Service
-    │
-    ├── User Service
-    ├── Inventory Service
-    └── Payment Service
-
-服务之间通过 gRPC 通信。
+<p>Application 通常不需要直接操作模型文件或底层推理过程，而是通过 LLM API 使用模型能力。</p>
+<h2 id="2-chat-application">2. Chat Application</h2>
+<p>Chat Application 是最直接的 LLM 应用形式。</p>
+<p>基本关系：</p>
+<pre><code class="language-text">User
+ ↓
+Chat Application
+ ↓
+LLM API
+ ↓
+LLM
+ ↓
+Response
 </code></pre>
-<h2 id="grpc_5">gRPC服务开发基本流程</h2>
-<pre><code class="language-text">Proto Definition
-        │
-        ▼
-      protoc
-        │
-        ▼
-Generated Code
-(Request / Response / Service Skeleton)
-        │
-        ▼
-Service Implementation
-(XXXServiceImpl)
-        │
-        ▼
-Register Service
-(server.py)
-        │
-        ▼
-Add Interceptors
-(Auth / Log / Trace)
-        │
-        ▼
-Start gRPC Server
-        │
-        ▼
-Receive RPC Requests
+<p>Application 负责用户交互，LLM 负责根据输入生成结果。</p>
+<h2 id="3-rag">3. RAG</h2>
+<p>RAG 在调用 LLM 之前增加外部知识检索与 Context Building。</p>
+<p>基本关系：</p>
+<pre><code class="language-text">User Query
+    ↓
+Retrieval
+    ↓
+Context Building
+    ↓
+LLM API
+    ↓
+LLM
+    ↓
+Answer
 </code></pre>
+<p>因此 RAG 仍然属于 LLM 的上层应用。</p>
+<p>底层 LLM 可以通过统一 API 被 RAG 系统调用，而 RAG 本身负责检索和构建额外上下文。</p>
+<h2 id="4-agent">4. Agent</h2>
+<p>Agent 同样建立在 LLM 之上，但除了调用模型之外，还可能涉及 Tool Calling 和外部服务。</p>
+<p>基本关系：</p>
+<pre><code class="language-text">User
+ ↓
+Agent
+ ↓
+LLM API
+ ↓
+LLM
+ ↓
+Tool Calling / Reasoning
+ ↓
+External Tools / Services
+</code></pre>
+<p>因此 Agent 不是推理引擎，也不是模型文件格式，而是使用 LLM 能力构建的上层系统。</p>
+<h2 id="5">5. 其他业务应用</h2>
+<p>除了 Chat、RAG 和 Agent，LLM 还可以作为能力组件被其他应用调用，例如：</p>
+<ul>
+<li>Coding Assistant</li>
+<li>Document Analysis</li>
+<li>Business Service</li>
+</ul>
+<p>它们在整体架构中的位置基本一致：</p>
+<pre><code class="language-text">Business Application
+        ↓
+      LLM API
+        ↓
+      Serving
+        ↓
+Inference Runtime
+        ↓
+       Model
+</code></pre>
+<p>具体业务逻辑由 Application 负责，底层 LLM 提供语言模型能力。</p>
+<h2 id="6">6. 整体关系</h2>
+<p>从本地模型到最终应用，可以形成完整链路：</p>
+<pre><code class="language-text">Model
+  ↓
+Precision / Quantization
+  ↓
+File Format
+  ↓
+Inference Runtime
+  ↓
+Serving
+  ↓
+Application
+</code></pre>
+<p>其中 Application Layer 主要解决：</p>
+<blockquote>
+<p><strong>部署好的 LLM 最终被谁使用，以及如何进入实际业务系统。</strong></p>
+</blockquote>
+<p>Chat、RAG、Agent 等都属于这一层，而它们各自的内部架构可以作为独立主题继续讨论。</p>
 
 
 

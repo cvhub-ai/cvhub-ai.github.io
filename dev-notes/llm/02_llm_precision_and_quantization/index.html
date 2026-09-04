@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../../../architecture/overview/">
+        <link rel="prev" href="../01_llm_model_basics/">
       
       
-        <link rel="next" href="../gRPC_proto/">
+        <link rel="next" href="../03_llm_model_formats/">
       
       
         
@@ -23,7 +23,7 @@
     
     
       
-        <title>Overview - CvHub Docs</title>
+        <title>Precision and Quantization - CvHub Docs</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#grpc" class="md-skip">
+        <a href="#llm" class="md-skip">
           Skip to content
         </a>
       
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Overview
+              Precision and Quantization
             
           </span>
         </div>
@@ -351,20 +351,18 @@
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
         
           
           <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
@@ -385,7 +383,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -400,37 +398,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Overview
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../gRPC/gRPC/" class="md-nav__link">
         
   
   
@@ -446,165 +417,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#grpc_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        gRPC 基本介绍
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="gRPC 基本介绍">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#rpc-vs-http" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        RPC vs HTTP
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="RPC vs HTTP">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#http" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        传统 HTTP 调用：
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#rpc" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        RPC 方式：
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#grpc_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        gRPC 的核心组成
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="gRPC 的核心组成">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#proto" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Proto 文件
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#protobuf" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Protobuf
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#code-generation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Code Generation
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#grpc_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        gRPC 的主要优势
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#grpc_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        gRPC 在微服务中的作用
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#grpc_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        gRPC服务开发基本流程
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -617,7 +429,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gRPC_proto/" class="md-nav__link">
+      <a href="../../gRPC/gRPC_proto/" class="md-nav__link">
         
   
   
@@ -645,7 +457,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gRPC_patterns/" class="md-nav__link">
+      <a href="../../gRPC/gRPC_patterns/" class="md-nav__link">
         
   
   
@@ -673,7 +485,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gRPC_service_impl/" class="md-nav__link">
+      <a href="../../gRPC/gRPC_service_impl/" class="md-nav__link">
         
   
   
@@ -701,7 +513,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gRPC_Interceptor/" class="md-nav__link">
+      <a href="../../gRPC/gRPC_Interceptor/" class="md-nav__link">
         
   
   
@@ -734,18 +546,20 @@
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
         
           
           <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
@@ -766,7 +580,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -784,7 +598,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../llm/01_llm_model_basics/" class="md-nav__link">
+      <a href="../01_llm_model_basics/" class="md-nav__link">
         
   
   
@@ -809,10 +623,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../llm/02_llm_precision_and_quantization/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Precision and Quantization
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -828,6 +669,159 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-precision-data-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Precision / Data Type
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Precision / Data Type">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-fp16-bf16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 FP16 与 BF16
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-fp8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 FP8
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-quantization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 什么是 Quantization
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-quantization-method-scheme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Quantization Method 与 Scheme
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Quantization Method 与 Scheme">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-quantization-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Quantization Method
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-quantization-scheme-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Quantization Scheme / Type
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-k-quants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. K-quants
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-awq" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. AWQ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-gptq" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. GPTQ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 其他量化技术
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -840,7 +834,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../llm/03_llm_model_formats/" class="md-nav__link">
+      <a href="../03_llm_model_formats/" class="md-nav__link">
         
   
   
@@ -868,7 +862,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../llm/04_llm_inference_engines/" class="md-nav__link">
+      <a href="../04_llm_inference_engines/" class="md-nav__link">
         
   
   
@@ -896,7 +890,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../llm/05_llm_serving/" class="md-nav__link">
+      <a href="../05_llm_serving/" class="md-nav__link">
         
   
   
@@ -924,7 +918,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../llm/06_llm_applications/" class="md-nav__link">
+      <a href="../06_llm_applications/" class="md-nav__link">
         
   
   
@@ -987,34 +981,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#grpc_1" class="md-nav__link">
+  <a href="#1-precision-data-type" class="md-nav__link">
     <span class="md-ellipsis">
       
-        gRPC 基本介绍
+        1. Precision / Data Type
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="gRPC 基本介绍">
+    <nav class="md-nav" aria-label="1. Precision / Data Type">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#rpc-vs-http" class="md-nav__link">
+  <a href="#11-fp16-bf16" class="md-nav__link">
     <span class="md-ellipsis">
       
-        RPC vs HTTP
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="RPC vs HTTP">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#http" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        传统 HTTP 调用：
+        1.1 FP16 与 BF16
       
     </span>
   </a>
@@ -1022,65 +1004,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#rpc" class="md-nav__link">
+  <a href="#12-fp8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        RPC 方式：
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#grpc_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        gRPC 的核心组成
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="gRPC 的核心组成">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#proto" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Proto 文件
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#protobuf" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Protobuf
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#code-generation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Code Generation
+        1.2 FP8
       
     </span>
   </a>
@@ -1093,10 +1020,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#grpc_3" class="md-nav__link">
+  <a href="#2-quantization" class="md-nav__link">
     <span class="md-ellipsis">
       
-        gRPC 的主要优势
+        2. 什么是 Quantization
       
     </span>
   </a>
@@ -1104,10 +1031,49 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#grpc_4" class="md-nav__link">
+  <a href="#3-quantization-method-scheme" class="md-nav__link">
     <span class="md-ellipsis">
       
-        gRPC 在微服务中的作用
+        3. Quantization Method 与 Scheme
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Quantization Method 与 Scheme">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-quantization-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Quantization Method
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-quantization-scheme-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Quantization Scheme / Type
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-k-quants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. K-quants
       
     </span>
   </a>
@@ -1115,10 +1081,32 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#grpc_5" class="md-nav__link">
+  <a href="#5-awq" class="md-nav__link">
     <span class="md-ellipsis">
       
-        gRPC服务开发基本流程
+        5. AWQ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-gptq" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. GPTQ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 其他量化技术
       
     </span>
   </a>
@@ -1142,123 +1130,277 @@
 
 
 
-<h1 id="grpc">gRPC 总结</h1>
-<h2 id="grpc_1">gRPC 基本介绍</h2>
-<p>gRPC（Google Remote Procedure Call）是 Google 开源的高性能 RPC 框架。它允许开发者像调用本地函数一样调用远程服务。</p>
-<h3 id="rpc-vs-http">RPC vs HTTP</h3>
-<h4 id="http">传统 HTTP 调用：</h4>
-<pre><code class="language-text">客户端
-  │
-  │ GET /users/1001
-  ▼
-服务端
-</code></pre>
-<p>开发者需要关心：
-- URL
-- HTTP Method
-- Header
-- JSON序列化
-- JSON反序列化</p>
-<h4 id="rpc">RPC 方式：</h4>
-<pre><code>user_service.GetUser(1001)
-</code></pre>
-<p>开发者只关注：
-- 调用哪个方法
-- 传什么参数
-- 返回什么结果</p>
-<p><strong>网络通信细节由框架处理。</strong></p>
-<h2 id="grpc_2">gRPC 的核心组成</h2>
-<h3 id="proto">Proto 文件</h3>
-<p>用于定义：
-- 服务(Service)
-- 方法(RPC)
-- 请求(Request)
-- 响应(Response)</p>
-<p>例如：</p>
-<pre><code class="language-proto">service UserService {
-    rpc GetUser(GetUserRequest)
-        returns (GetUserResponse);
-}
-</code></pre>
-<h3 id="protobuf">Protobuf</h3>
-<p>gRPC 默认使用 Protocol Buffers 作为序列化协议。</p>
-<p>特点：
-- 二进制格式
-- 数据体积小
-- 编解码速度快
-- 强类型</p>
-<h3 id="code-generation">Code Generation</h3>
-<p>根据 proto 自动生成代码：</p>
-<pre><code class="language-text">user.proto
-    │
-    ▼
-  protoc
-    │
-    ▼
-  Python
-   Java
-    Go
-   Node
-    C#
-</code></pre>
-<p>无需手写：
-- DTO
-- 接口定义
-- 序列化逻辑</p>
-<h2 id="grpc_3">gRPC 的主要优势</h2>
+<h1 id="llm">本地 LLM：模型精度与量化</h1>
+<blockquote>
+<p>本文讨论本地 LLM 中的模型精度与量化，包括 Precision / Data Type、量化的目的，以及 K-quants、AWQ、GPTQ、FP8 等常见概念。</p>
+</blockquote>
+<h2 id="1-precision-data-type">1. Precision / Data Type</h2>
+<p>模型权重需要使用某种数值类型保存。常见类型包括：</p>
 <ul>
-<li>高性能 -&gt; HTTP/2 + Protobuf -&gt; 网络开销更小，序列化更快</li>
-<li>强类型 -&gt; 编译期即可发现很多错误。</li>
-<li>多语言支持 -&gt; 同一个 proto可以生成：Python，Java，Go，Node，C++，C#</li>
-<li>自动生成代码</li>
+<li>FP32</li>
+<li>FP16</li>
+<li>BF16</li>
+<li>FP8</li>
+<li>INT8</li>
+<li>INT4</li>
 </ul>
-<h2 id="grpc_4">gRPC 在微服务中的作用</h2>
-<p>最常见用途：</p>
-<pre><code class="language-text">  服务A
-    │
-    ▼
-  gRPC
-    │
-    ▼
-  服务B
+<p>粗略来看：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th style="text-align: right;">每参数理论占用</th>
+<th style="text-align: right;">8B 模型权重大小</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FP32</td>
+<td style="text-align: right;">4 Bytes</td>
+<td style="text-align: right;">~32 GB</td>
+</tr>
+<tr>
+<td>FP16 / BF16</td>
+<td style="text-align: right;">2 Bytes</td>
+<td style="text-align: right;">~16 GB</td>
+</tr>
+<tr>
+<td>FP8</td>
+<td style="text-align: right;">1 Byte</td>
+<td style="text-align: right;">~8 GB</td>
+</tr>
+<tr>
+<td>INT8</td>
+<td style="text-align: right;">1 Byte</td>
+<td style="text-align: right;">~8 GB</td>
+</tr>
+<tr>
+<td>INT4</td>
+<td style="text-align: right;">0.5 Byte</td>
+<td style="text-align: right;">~4 GB</td>
+</tr>
+</tbody>
+</table>
+<p>以上只是模型权重的粗略理论占用。实际运行时还需要额外资源，例如：</p>
+<ul>
+<li>KV Cache</li>
+<li>CUDA / Runtime</li>
+<li>临时计算空间</li>
+<li>其他内存开销</li>
+</ul>
+<blockquote>
+<p><strong>8B BF16 模型的权重大约 16 GB，并不意味着 16 GB 显存一定能够完整运行。</strong></p>
+</blockquote>
+<h3 id="11-fp16-bf16">1.1 FP16 与 BF16</h3>
+<p>FP16 和 BF16 都是 16-bit 浮点类型，常用于：</p>
+<ul>
+<li>GPU 推理</li>
+<li>模型训练</li>
+<li>Fine-tuning</li>
+<li>高质量模型 Serving</li>
+</ul>
+<p>对于现代 LLM，BF16 是非常常见的高精度部署形式之一。</p>
+<h3 id="12-fp8">1.2 FP8</h3>
+<p>FP8 是 <strong>8-bit Floating Point</strong>。</p>
+<p>FP8 首先描述的是一种低精度浮点表示 / 计算体系，而 AWQ、GPTQ 更接近具体的量化方法，因此它们并不完全处于同一个技术层次。</p>
+<p>典型关系可以简单理解为：</p>
+<pre><code class="language-text">Modern GPU
+    ↓
+FP8 Weight / Computation
+    ↓
+Tensor Core / GPU Optimization
+    ↓
+Higher Throughput + Lower Resource Usage
 </code></pre>
-<p>例如：</p>
-<pre><code class="language-text">Order Service
-    │
-    ├── User Service
-    ├── Inventory Service
-    └── Payment Service
+<p>FP8 更常见于支持相应低精度计算能力的现代 GPU 和数据中心部署环境，经常与以下技术栈一起出现：</p>
+<ul>
+<li>vLLM</li>
+<li>SGLang</li>
+<li>TensorRT-LLM</li>
+</ul>
+<h2 id="2-quantization">2. 什么是 Quantization</h2>
+<p>量化的核心目标是：</p>
+<blockquote>
+<p><strong>使用更低精度表示模型参数，从而减少模型大小、显存 / 内存占用，并在适合的硬件和推理框架上提高推理效率。</strong></p>
+</blockquote>
+<p>一般趋势：</p>
+<pre><code class="language-text">压缩程度提高
+      ↓
+资源占用降低
+      ↓
+潜在模型能力损失风险提高
+</code></pre>
+<p>实际效果并不是简单线性关系，还取决于：</p>
+<ul>
+<li>模型本身</li>
+<li>量化算法</li>
+<li>bit 数</li>
+<li>Quantization Group</li>
+<li>Calibration</li>
+<li>推理框架</li>
+<li>硬件</li>
+</ul>
+<h2 id="3-quantization-method-scheme">3. Quantization Method 与 Scheme</h2>
+<p>量化相关概念可以进一步区分为 <strong>Quantization Method</strong> 和 <strong>Quantization Scheme / Type</strong>。</p>
+<h3 id="31-quantization-method">3.1 Quantization Method</h3>
+<p>Quantization Method 描述模型<strong>如何被量化</strong>，例如：</p>
+<ul>
+<li>AWQ</li>
+<li>GPTQ</li>
+<li>SmoothQuant</li>
+<li>bitsandbytes</li>
+<li>...</li>
+</ul>
+<h3 id="32-quantization-scheme-type">3.2 Quantization Scheme / Type</h3>
+<p>Quantization Scheme / Type 描述量化权重具体采用什么表示方式。</p>
+<p>例如 llama.cpp / GGUF 生态中的：</p>
+<ul>
+<li>Q4_K_M</li>
+<li>Q5_K_M</li>
+<li>Q6_K</li>
+<li>Q8_0</li>
+</ul>
+<p>因此下面这些概念不能简单理解成同一种分类：</p>
+<pre><code class="language-text">FP8     → Precision / Data Type
+AWQ     → Quantization Method
+GPTQ    → Quantization Method
+Q4_K_M  → Quantization Scheme / Type
+GGUF    → File Format
+</code></pre>
+<h2 id="4-k-quants">4. K-quants</h2>
+<p>K-quants 是 llama.cpp / GGUF 生态中常见的一类量化体系。</p>
+<p>常见类型包括：</p>
+<ul>
+<li>Q4_K_S</li>
+<li>Q4_K_M</li>
+<li>Q5_K_S</li>
+<li>Q5_K_M</li>
+<li>Q6_K</li>
+<li>Q8_0</li>
+</ul>
+<p>其中可以粗略理解：</p>
+<pre><code class="language-text">Q4 → 主要为约 4-bit
+Q5 → 主要为约 5-bit
+Q6 → 主要为约 6-bit
+Q8 → 主要为约 8-bit
+</code></pre>
+<p><code>S</code> 和 <code>M</code> 常见于：</p>
+<pre><code class="language-text">S = Small
+M = Medium
+</code></pre>
+<p>可以粗略理解为不同的混合量化策略。不同 Tensor 可以使用不同精度，在 Model Size 与 Model Quality 之间取得平衡。</p>
+<table>
+<thead>
+<tr>
+<th>Quantization</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Q4_K_M</td>
+<td>体积和质量比较均衡，常见选择</td>
+</tr>
+<tr>
+<td>Q5_K_M</td>
+<td>占用更高，通常质量更好</td>
+</tr>
+<tr>
+<td>Q6_K</td>
+<td>更大，进一步接近高精度模型</td>
+</tr>
+<tr>
+<td>Q8_0</td>
+<td>占用明显更高，量化损失通常较小</td>
+</tr>
+</tbody>
+</table>
+<p>实际 GGUF 量化模型还存在：</p>
+<ul>
+<li>Block Quantization</li>
+<li>Scale</li>
+<li>Metadata</li>
+<li>不同 Tensor 使用不同精度</li>
+</ul>
+<p>因此模型实际大小并不是简单的 <code>参数量 × bit 数</code>。</p>
+<h2 id="5-awq">5. AWQ</h2>
+<p>AWQ：</p>
+<p><strong>Activation-aware Weight Quantization</strong></p>
+<p>它属于权重量化方法。核心思想之一是利用 activation 信息判断哪些权重更加重要，从而尽量降低低 bit 权重量化造成的能力损失。</p>
+<p>典型流程：</p>
+<pre><code class="language-text">Original Transformer Model
+        ↓
+       AWQ
+        ↓
+Quantized Weights
+        ↓
+GPU Inference Engine
+        ↓
+vLLM / SGLang / ...
+</code></pre>
+<p>AWQ 常见于：</p>
+<ul>
+<li>NVIDIA GPU</li>
+<li>GPU Server</li>
+<li>高性能推理</li>
+<li>LLM Serving</li>
+</ul>
+<p>模型仓库中经常会看到类似 <code>Qwen-xxx-AWQ</code> 的模型名称。</p>
+<h2 id="6-gptq">6. GPTQ</h2>
+<p>GPTQ 是经典的 <strong>Post-Training Quantization</strong>，即在模型训练完成以后进行量化。</p>
+<p>基本流程：</p>
+<pre><code class="language-text">Trained Model
+      ↓
+     GPTQ
+      ↓
+Low-bit Quantized Weights
+      ↓
+GPU Inference
+</code></pre>
+<p>GPTQ 长期以来被广泛用于 Transformer 模型的低 bit 推理，相关生态包括：</p>
+<ul>
+<li>GPTQModel</li>
+<li>ExLlama / ExLlamaV2</li>
+<li>Transformers</li>
+<li>部分 vLLM 场景</li>
+</ul>
+<h2 id="7">7. 其他量化技术</h2>
+<p>除了 K-quants、AWQ、GPTQ、FP8，还可能遇到：</p>
+<ul>
+<li>bitsandbytes</li>
+<li>torchao</li>
+<li>EXL2</li>
+<li>INT8</li>
+<li>SmoothQuant</li>
+<li>...</li>
+</ul>
+<p>这些技术并不全部属于相互竞争的同类方案，它们往往针对不同的：</p>
+<ul>
+<li>Hardware</li>
+<li>Runtime</li>
+<li>Model</li>
+<li>Deployment Scenario</li>
+</ul>
+<p>可以先用下面的关系进行粗略理解：</p>
+<pre><code class="language-text">消费级电脑 / CPU / 混合推理
+        ↓
+GGUF + Q4/Q5/Q6
+        ↓
+llama.cpp
 
-服务之间通过 gRPC 通信。
+消费级 / Server NVIDIA GPU
+        ↓
+AWQ / GPTQ / BF16
+        ↓
+vLLM / SGLang / ExLlamaV2
+
+现代数据中心 GPU
+        ↓
+BF16 / FP8
+        ↓
+vLLM / SGLang / TensorRT-LLM
 </code></pre>
-<h2 id="grpc_5">gRPC服务开发基本流程</h2>
-<pre><code class="language-text">Proto Definition
-        │
-        ▼
-      protoc
-        │
-        ▼
-Generated Code
-(Request / Response / Service Skeleton)
-        │
-        ▼
-Service Implementation
-(XXXServiceImpl)
-        │
-        ▼
-Register Service
-(server.py)
-        │
-        ▼
-Add Interceptors
-(Auth / Log / Trace)
-        │
-        ▼
-Start gRPC Server
-        │
-        ▼
-Receive RPC Requests
-</code></pre>
+<p>实际支持情况应以具体模型、硬件和 Runtime 的当前版本为准。</p>
 
 
 

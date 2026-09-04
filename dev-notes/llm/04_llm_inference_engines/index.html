@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../../../architecture/overview/">
+        <link rel="prev" href="../03_llm_model_formats/">
       
       
-        <link rel="next" href="../gRPC_proto/">
+        <link rel="next" href="../05_llm_serving/">
       
       
         
@@ -23,7 +23,7 @@
     
     
       
-        <title>Overview - CvHub Docs</title>
+        <title>Inference Engine - CvHub Docs</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#grpc" class="md-skip">
+        <a href="#llm" class="md-skip">
           Skip to content
         </a>
       
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Overview
+              Inference Engine
             
           </span>
         </div>
@@ -351,20 +351,18 @@
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
         
           
           <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
@@ -385,7 +383,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -400,37 +398,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Overview
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../gRPC/gRPC/" class="md-nav__link">
         
   
   
@@ -446,165 +417,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#grpc_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        gRPC 基本介绍
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="gRPC 基本介绍">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#rpc-vs-http" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        RPC vs HTTP
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="RPC vs HTTP">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#http" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        传统 HTTP 调用：
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#rpc" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        RPC 方式：
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#grpc_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        gRPC 的核心组成
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="gRPC 的核心组成">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#proto" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Proto 文件
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#protobuf" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Protobuf
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#code-generation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Code Generation
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#grpc_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        gRPC 的主要优势
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#grpc_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        gRPC 在微服务中的作用
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#grpc_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        gRPC服务开发基本流程
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -617,7 +429,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gRPC_proto/" class="md-nav__link">
+      <a href="../../gRPC/gRPC_proto/" class="md-nav__link">
         
   
   
@@ -645,7 +457,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gRPC_patterns/" class="md-nav__link">
+      <a href="../../gRPC/gRPC_patterns/" class="md-nav__link">
         
   
   
@@ -673,7 +485,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gRPC_service_impl/" class="md-nav__link">
+      <a href="../../gRPC/gRPC_service_impl/" class="md-nav__link">
         
   
   
@@ -701,7 +513,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gRPC_Interceptor/" class="md-nav__link">
+      <a href="../../gRPC/gRPC_Interceptor/" class="md-nav__link">
         
   
   
@@ -734,18 +546,20 @@
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
         
           
           <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
@@ -766,7 +580,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -784,7 +598,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../llm/01_llm_model_basics/" class="md-nav__link">
+      <a href="../01_llm_model_basics/" class="md-nav__link">
         
   
   
@@ -812,7 +626,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../llm/02_llm_precision_and_quantization/" class="md-nav__link">
+      <a href="../02_llm_precision_and_quantization/" class="md-nav__link">
         
   
   
@@ -840,7 +654,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../llm/03_llm_model_formats/" class="md-nav__link">
+      <a href="../03_llm_model_formats/" class="md-nav__link">
         
   
   
@@ -865,10 +679,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../llm/04_llm_inference_engines/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inference Engine
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -884,6 +725,147 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-inference-runtime-engine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 什么是 Inference Runtime / Engine
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-llamacpp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. llama.cpp
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-ollama" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Ollama
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-vllm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. vLLM
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-sglang" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. SGLang
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-hugging-face-transformers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Hugging Face Transformers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-tensorrt-llm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. TensorRT-LLM
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-exllamav2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. ExLlamaV2
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-mlx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. MLX
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. 推理框架对比
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-llamacppollama-vllm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. llama.cpp、Ollama 与 vLLM
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -896,7 +878,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../llm/05_llm_serving/" class="md-nav__link">
+      <a href="../05_llm_serving/" class="md-nav__link">
         
   
   
@@ -924,7 +906,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../llm/06_llm_applications/" class="md-nav__link">
+      <a href="../06_llm_applications/" class="md-nav__link">
         
   
   
@@ -987,116 +969,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#grpc_1" class="md-nav__link">
+  <a href="#1-inference-runtime-engine" class="md-nav__link">
     <span class="md-ellipsis">
       
-        gRPC 基本介绍
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="gRPC 基本介绍">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#rpc-vs-http" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        RPC vs HTTP
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="RPC vs HTTP">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#http" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        传统 HTTP 调用：
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#rpc" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        RPC 方式：
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#grpc_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        gRPC 的核心组成
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="gRPC 的核心组成">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#proto" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Proto 文件
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#protobuf" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Protobuf
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#code-generation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Code Generation
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#grpc_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        gRPC 的主要优势
+        1. 什么是 Inference Runtime / Engine
       
     </span>
   </a>
@@ -1104,10 +980,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#grpc_4" class="md-nav__link">
+  <a href="#2-llamacpp" class="md-nav__link">
     <span class="md-ellipsis">
       
-        gRPC 在微服务中的作用
+        2. llama.cpp
       
     </span>
   </a>
@@ -1115,10 +991,98 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#grpc_5" class="md-nav__link">
+  <a href="#3-ollama" class="md-nav__link">
     <span class="md-ellipsis">
       
-        gRPC服务开发基本流程
+        3. Ollama
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-vllm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. vLLM
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-sglang" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. SGLang
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-hugging-face-transformers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Hugging Face Transformers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-tensorrt-llm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. TensorRT-LLM
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-exllamav2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. ExLlamaV2
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-mlx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. MLX
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. 推理框架对比
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-llamacppollama-vllm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. llama.cpp、Ollama 与 vLLM
       
     </span>
   </a>
@@ -1142,123 +1106,326 @@
 
 
 
-<h1 id="grpc">gRPC 总结</h1>
-<h2 id="grpc_1">gRPC 基本介绍</h2>
-<p>gRPC（Google Remote Procedure Call）是 Google 开源的高性能 RPC 框架。它允许开发者像调用本地函数一样调用远程服务。</p>
-<h3 id="rpc-vs-http">RPC vs HTTP</h3>
-<h4 id="http">传统 HTTP 调用：</h4>
-<pre><code class="language-text">客户端
-  │
-  │ GET /users/1001
-  ▼
-服务端
-</code></pre>
-<p>开发者需要关心：
-- URL
-- HTTP Method
-- Header
-- JSON序列化
-- JSON反序列化</p>
-<h4 id="rpc">RPC 方式：</h4>
-<pre><code>user_service.GetUser(1001)
-</code></pre>
-<p>开发者只关注：
-- 调用哪个方法
-- 传什么参数
-- 返回什么结果</p>
-<p><strong>网络通信细节由框架处理。</strong></p>
-<h2 id="grpc_2">gRPC 的核心组成</h2>
-<h3 id="proto">Proto 文件</h3>
-<p>用于定义：
-- 服务(Service)
-- 方法(RPC)
-- 请求(Request)
-- 响应(Response)</p>
-<p>例如：</p>
-<pre><code class="language-proto">service UserService {
-    rpc GetUser(GetUserRequest)
-        returns (GetUserResponse);
-}
-</code></pre>
-<h3 id="protobuf">Protobuf</h3>
-<p>gRPC 默认使用 Protocol Buffers 作为序列化协议。</p>
-<p>特点：
-- 二进制格式
-- 数据体积小
-- 编解码速度快
-- 强类型</p>
-<h3 id="code-generation">Code Generation</h3>
-<p>根据 proto 自动生成代码：</p>
-<pre><code class="language-text">user.proto
-    │
-    ▼
-  protoc
-    │
-    ▼
-  Python
-   Java
-    Go
-   Node
-    C#
-</code></pre>
-<p>无需手写：
-- DTO
-- 接口定义
-- 序列化逻辑</p>
-<h2 id="grpc_3">gRPC 的主要优势</h2>
+<h1 id="llm">本地 LLM：推理框架与推理引擎</h1>
+<blockquote>
+<p>本文讨论模型文件准备完成后，如何通过 Inference Runtime / Engine 将模型真正运行起来，以及常见的 llama.cpp、Ollama、vLLM、SGLang、Transformers 等工具的定位。</p>
+</blockquote>
+<h2 id="1-inference-runtime-engine">1. 什么是 Inference Runtime / Engine</h2>
+<p>模型训练完成以后，本质上拥有：</p>
 <ul>
-<li>高性能 -&gt; HTTP/2 + Protobuf -&gt; 网络开销更小，序列化更快</li>
-<li>强类型 -&gt; 编译期即可发现很多错误。</li>
-<li>多语言支持 -&gt; 同一个 proto可以生成：Python，Java，Go，Node，C++，C#</li>
-<li>自动生成代码</li>
+<li>Model Architecture</li>
+<li>Model Weights</li>
+<li>Tokenizer / Config</li>
 </ul>
-<h2 id="grpc_4">gRPC 在微服务中的作用</h2>
-<p>最常见用途：</p>
-<pre><code class="language-text">  服务A
-    │
-    ▼
-  gRPC
-    │
-    ▼
-  服务B
+<p>还需要程序负责：</p>
+<pre><code class="language-text">Load Model
+     ↓
+Load Tokenizer
+     ↓
+Receive Prompt / Messages
+     ↓
+Transformer Forward
+     ↓
+Manage KV Cache
+     ↓
+Token Sampling
+     ↓
+Generate Output
 </code></pre>
-<p>例如：</p>
-<pre><code class="language-text">Order Service
-    │
-    ├── User Service
-    ├── Inventory Service
-    └── Payment Service
+<p>负责这些工作的系统可以称为：</p>
+<p><strong>Inference Runtime / Inference Engine</strong></p>
+<p>常见工具包括：</p>
+<ul>
+<li>llama.cpp</li>
+<li>vLLM</li>
+<li>SGLang</li>
+<li>Transformers</li>
+<li>TensorRT-LLM</li>
+<li>ExLlamaV2</li>
+<li>MLX</li>
+</ul>
+<p>Ollama 与这些工具存在功能重叠，但更接近封装好的本地模型运行与管理平台。</p>
+<h2 id="2-llamacpp">2. llama.cpp</h2>
+<p><code>llama.cpp</code> 是本地 LLM 推理领域非常重要的 Runtime。</p>
+<p>主要特点：</p>
+<ul>
+<li>GGUF 核心生态</li>
+<li>CPU 推理能力强</li>
+<li>支持 GPU Offload</li>
+<li>支持消费级 GPU</li>
+<li>支持多种硬件平台</li>
+<li>适合低资源本地运行</li>
+</ul>
+<p>典型关系：</p>
+<pre><code class="language-text">GGUF
+  ↓
+llama.cpp
+  ↓
+CPU / GPU
+  ↓
+Text Output
+</code></pre>
+<p>llama.cpp 也可以通过 <code>llama-server</code> 提供 HTTP 服务：</p>
+<pre><code class="language-text">Application
+     ↓
+HTTP
+     ↓
+llama-server
+     ↓
+GGUF Model
+</code></pre>
+<h2 id="3-ollama">3. Ollama</h2>
+<p>Ollama 与 llama.cpp、vLLM 的定位并不完全相同。</p>
+<p>它更接近：</p>
+<blockquote>
+<p><strong>易用的本地模型运行、管理和服务平台。</strong></p>
+</blockquote>
+<p>它提供：</p>
+<ul>
+<li>模型下载</li>
+<li>模型管理</li>
+<li>模型加载 / 卸载</li>
+<li>模型配置</li>
+<li>CLI</li>
+<li>Local API</li>
+<li>本地服务管理</li>
+</ul>
+<p>可以粗略理解为：</p>
+<pre><code class="language-text">Ollama
+│
+├── Model Management
+├── API
+├── Configuration
+└── Inference Backend
+        ↓
+    Local Model
+</code></pre>
+<p>因此：</p>
+<blockquote>
+<p><strong>llama.cpp 更接近底层 Inference Runtime。</strong></p>
+<p><strong>Ollama 更接近封装好的 Local LLM Platform。</strong></p>
+</blockquote>
+<h2 id="4-vllm">4. vLLM</h2>
+<p>vLLM 的核心定位是：</p>
+<blockquote>
+<p><strong>High-performance GPU LLM Inference / Serving Engine</strong></p>
+</blockquote>
+<p>它重点解决：</p>
+<ul>
+<li>GPU 利用率</li>
+<li>High Throughput</li>
+<li>Concurrent Requests</li>
+<li>Continuous Batching</li>
+<li>KV Cache Management</li>
+<li>Multi-GPU</li>
+<li>Model Serving</li>
+</ul>
+<p>典型场景：</p>
+<pre><code class="language-text">User A ─┐
+User B ─┤
+User C ─┤
+User D ─┘
+         ↓
+     API Server
+         ↓
+       vLLM
+         ↓
+ GPU / GPU Cluster
+</code></pre>
+<p>vLLM 的代表性技术之一是 <strong>PagedAttention</strong>，用于更加高效地管理 Attention 推理过程中涉及的 KV Cache 等资源。</p>
+<p>工程部署中常见：</p>
+<pre><code class="language-text">Application
+     ↓
+OpenAI-compatible API
+     ↓
+vLLM
+     ↓
+Model
+</code></pre>
+<p>这样上层 Application 可以通过统一 API 调用模型，而不需要直接依赖模型内部实现。</p>
+<h2 id="5-sglang">5. SGLang</h2>
+<p>SGLang 同样属于高性能 LLM Serving / Runtime 生态。</p>
+<p>主要关注：</p>
+<ul>
+<li>High-performance Serving</li>
+<li>Structured Generation</li>
+<li>Reasoning Workload</li>
+<li>Agent Workload</li>
+<li>GPU Inference Optimization</li>
+<li>Concurrent Requests</li>
+</ul>
+<p>可以粗略理解：</p>
+<pre><code class="language-text">        GPU LLM Serving
+              │
+      ┌───────┴───────┐
+      ↓               ↓
+    vLLM           SGLang
+</code></pre>
+<p>两者存在明显的使用场景重叠。</p>
+<blockquote>
+<p>具体性能、功能和模型支持会随着版本快速变化，因此不适合长期固定地认为其中一个一定优于另一个。</p>
+</blockquote>
+<h2 id="6-hugging-face-transformers">6. Hugging Face Transformers</h2>
+<p>Transformers 和 vLLM、Ollama 的定位并不完全一样。</p>
+<p>它首先是完整的 Transformer 模型开发生态：</p>
+<pre><code class="language-text">Transformers
+│
+├── Model
+├── Tokenizer
+├── Generation
+├── Training
+├── Fine-tuning
+└── Inference
+</code></pre>
+<p>非常适合：</p>
+<ul>
+<li>模型研究</li>
+<li>加载 Hugging Face 模型</li>
+<li>修改模型结构</li>
+<li>Fine-tuning</li>
+<li>推理实验</li>
+<li>开发模型相关功能</li>
+</ul>
+<p>如果目标是 Large-scale、High-concurrency、Production Serving，通常会进一步考虑专门的 Serving Engine。</p>
+<h2 id="7-tensorrt-llm">7. TensorRT-LLM</h2>
+<p>TensorRT-LLM 是 NVIDIA 面向 LLM 推理优化的重要技术栈。</p>
+<p>重点包括：</p>
+<ul>
+<li>NVIDIA GPU</li>
+<li>CUDA</li>
+<li>TensorRT</li>
+<li>Kernel Optimization</li>
+<li>Low Latency</li>
+<li>High Throughput</li>
+<li>Multi-GPU</li>
+<li>Data Center Deployment</li>
+</ul>
+<p>整体方向：</p>
+<pre><code class="language-text">Model
+  ↓
+NVIDIA Inference Optimization
+  ↓
+TensorRT-LLM
+  ↓
+NVIDIA GPU
+</code></pre>
+<p>它通常更适合追求 NVIDIA 平台极致推理性能的部署环境。</p>
+<h2 id="8-exllamav2">8. ExLlamaV2</h2>
+<p>ExLlamaV2 主要面向 NVIDIA GPU 上的高效量化模型推理。</p>
+<p>相关生态经常包括：</p>
+<ul>
+<li>EXL2</li>
+<li>GPTQ</li>
+<li>NVIDIA GPU</li>
+<li>Consumer GPU</li>
+</ul>
+<p>它更偏向：</p>
+<blockquote>
+<p><strong>单机 NVIDIA GPU 上高效运行低 bit 模型。</strong></p>
+</blockquote>
+<h2 id="9-mlx">9. MLX</h2>
+<p>MLX 是 Apple 面向 Apple Silicon 的机器学习框架。</p>
+<p>典型硬件包括：</p>
+<ul>
+<li>M1</li>
+<li>M2</li>
+<li>M3</li>
+<li>M4</li>
+<li>...</li>
+</ul>
+<p>Apple Silicon 使用 Unified Memory，因此其本地 LLM 部署方式和传统的 <code>CPU RAM + Discrete NVIDIA VRAM</code> 存在明显区别。</p>
+<p>MLX 因此形成了自己的模型与量化生态。</p>
+<h2 id="10">10. 推理框架对比</h2>
+<table>
+<thead>
+<tr>
+<th>Runtime / Platform</th>
+<th>常见模型生态</th>
+<th>主要定位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>llama.cpp</td>
+<td>GGUF、K-quants</td>
+<td>本地、CPU、消费级硬件</td>
+</tr>
+<tr>
+<td>Ollama</td>
+<td>本地模型生态</td>
+<td>简单运行、管理和提供本地 LLM</td>
+</tr>
+<tr>
+<td>vLLM</td>
+<td>HF、safetensors、BF16、AWQ、GPTQ、FP8 等</td>
+<td>GPU 高吞吐 Serving</td>
+</tr>
+<tr>
+<td>SGLang</td>
+<td>HF、BF16、FP16、FP8、AWQ 等</td>
+<td>高性能 Serving / Agent Workload</td>
+</tr>
+<tr>
+<td>Transformers</td>
+<td>safetensors、BF16/FP16、bitsandbytes 等</td>
+<td>模型开发、研究、实验</td>
+</tr>
+<tr>
+<td>TensorRT-LLM</td>
+<td>FP16、BF16、FP8、INT8、INT4 等</td>
+<td>NVIDIA 高性能部署</td>
+</tr>
+<tr>
+<td>ExLlamaV2</td>
+<td>EXL2、GPTQ 等</td>
+<td>NVIDIA GPU 本地低 bit 推理</td>
+</tr>
+<tr>
+<td>MLX</td>
+<td>MLX 模型及量化生态</td>
+<td>Apple Silicon</td>
+</tr>
+</tbody>
+</table>
+<p>具体支持情况会随版本变化，应以各项目当前文档为准。</p>
+<h2 id="11-llamacppollama-vllm">11. llama.cpp、Ollama 与 vLLM</h2>
+<p>这三个概念非常容易混淆，可以粗略理解为：</p>
+<pre><code class="language-text">llama.cpp
+→ 怎么高效地在本地硬件上运行模型
 
-服务之间通过 gRPC 通信。
+Ollama
+→ 怎么方便地管理和使用本地模型
+
+vLLM
+→ 怎么高性能地把 GPU 模型作为服务提供出去
 </code></pre>
-<h2 id="grpc_5">gRPC服务开发基本流程</h2>
-<pre><code class="language-text">Proto Definition
-        │
-        ▼
-      protoc
-        │
-        ▼
-Generated Code
-(Request / Response / Service Skeleton)
-        │
-        ▼
-Service Implementation
-(XXXServiceImpl)
-        │
-        ▼
-Register Service
-(server.py)
-        │
-        ▼
-Add Interceptors
-(Auth / Log / Trace)
-        │
-        ▼
-Start gRPC Server
-        │
-        ▼
-Receive RPC Requests
-</code></pre>
+<table>
+<thead>
+<tr>
+<th>工具</th>
+<th>核心定位</th>
+<th>更强调</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>llama.cpp</td>
+<td>Local Inference Runtime</td>
+<td>GGUF、CPU、GPU Offload、Consumer Hardware</td>
+</tr>
+<tr>
+<td>Ollama</td>
+<td>Local Model Platform</td>
+<td>Easy Installation、Model Management、CLI、Local API</td>
+</tr>
+<tr>
+<td>vLLM</td>
+<td>High-performance GPU Serving Engine</td>
+<td>GPU、Concurrency、Batching、KV Cache、Throughput</td>
+</tr>
+</tbody>
+</table>
+<p>三者存在功能重叠，但核心设计目标不同。</p>
 
 
 
