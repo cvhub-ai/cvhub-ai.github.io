@@ -16,7 +16,7 @@ The platform consists of six core systems:
 - Visual Microservices
 - Infrastructure Layer
 ## Project Structure
-![Architecture](../assets/images/agent_architecture.png)
+![Architecture](../assets/images/architecture/agent_architecture.png)
 
 ## Client
 
